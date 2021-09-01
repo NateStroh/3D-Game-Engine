@@ -21,6 +21,31 @@ void eae6320::cMyGame::UpdateBasedOnInput()
 		const auto result = Exit( EXIT_SUCCESS );
 		EAE6320_ASSERT( result );
 	}
+
+	//pauses simulation
+	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Down))
+	{
+		eae6320::Application::iApplication::SetSimulationRate(0);
+	}
+
+	//resumes - sets it to regular speed
+	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Up))
+	{
+		eae6320::Application::iApplication::SetSimulationRate(1);
+	}
+
+	//fast forward
+	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Right))
+	{
+		eae6320::Application::iApplication::SetSimulationRate(2);
+	}
+
+	//slow mo
+	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Left))
+	{
+		eae6320::Application::iApplication::SetSimulationRate(.5);
+	}
+
 }
 
 // Initialize / Clean Up
