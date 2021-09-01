@@ -28,10 +28,16 @@ void eae6320::cMyGame::UpdateBasedOnInput()
 
 eae6320::cResult eae6320::cMyGame::Initialize()
 {
+	eae6320::Logging::OutputMessage("Initializing MyGame");
+	
+	eae6320::Logging::OutputMessage("Finished Initializing MyGame");
 	return Results::Success;
 }
 
 eae6320::cResult eae6320::cMyGame::CleanUp()
 {
+	eae6320::Logging::OutputMessage("Cleaning Up MyGame");
+
+	eae6320::Logging::OutputMessage("Finished Cleaning Up MyGame");
 	return Results::Success;
 }
