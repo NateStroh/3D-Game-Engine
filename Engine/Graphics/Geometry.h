@@ -24,10 +24,17 @@ namespace eae6320
 {
 	namespace Graphics
 	{
+		struct point
+		{
+			float x = 0;
+			float y = 0;
+			float z = 0;
+		};
+
 		class Geometry
 		{
 		public:
-			cResult Initialize();
+			cResult Initialize(point vertex0, point vertex1, point vertex2);
 			cResult CleanUp();
 
 #if defined( EAE6320_PLATFORM_D3D )

@@ -15,6 +15,7 @@
 #include <Engine/Asserts/Asserts.h>
 #include <Engine/Concurrency/cEvent.h>
 #include <Engine/Graphics/Geometry.h>
+#include <Engine/Graphics/Effect.h>
 #include <Engine/Logging/Logging.h>
 #include <Engine/Platform/Platform.h>
 #include <Engine/ScopeGuard/cScopeGuard.h>
@@ -76,10 +77,12 @@ namespace
 	// Shading Data
 	//-------------
 
-	eae6320::Graphics::cShader* s_vertexShader = nullptr;
-	eae6320::Graphics::cShader* s_fragmentShader = nullptr;
+	//eae6320::Graphics::cShader* s_vertexShader = nullptr;
+	//eae6320::Graphics::cShader* s_fragmentShader = nullptr;
+	//
+	//eae6320::Graphics::cRenderState s_renderState;
 
-	eae6320::Graphics::cRenderState s_renderState;
+	eae6320::Graphics::Effect testEffect;
 }
 
 // Helper Declarations
@@ -189,18 +192,18 @@ void eae6320::Graphics::RenderFrame()
 			constexpr unsigned int interfaceCount = 0;
 			// Vertex shader
 			{
-				EAE6320_ASSERT( ( s_vertexShader != nullptr ) && ( s_vertexShader->m_shaderObject.vertex != nullptr ) );
-				direct3dImmediateContext->VSSetShader( s_vertexShader->m_shaderObject.vertex, noInterfaces, interfaceCount );
+				EAE6320_ASSERT( (testEffect.m_vertexShader != nullptr ) && ( testEffect.m_vertexShader->m_shaderObject.vertex != nullptr ) );
+				direct3dImmediateContext->VSSetShader(testEffect.m_vertexShader->m_shaderObject.vertex, noInterfaces, interfaceCount );
 			}
 			// Fragment shader
 			{
-				EAE6320_ASSERT( ( s_fragmentShader != nullptr ) && ( s_fragmentShader->m_shaderObject.vertex != nullptr ) );
-				direct3dImmediateContext->PSSetShader( s_fragmentShader->m_shaderObject.fragment, noInterfaces, interfaceCount );
+				EAE6320_ASSERT( (testEffect.m_fragmentShader != nullptr ) && (testEffect.m_fragmentShader->m_shaderObject.vertex != nullptr ) );
+				direct3dImmediateContext->PSSetShader(testEffect.m_fragmentShader->m_shaderObject.fragment, noInterfaces, interfaceCount );
 			}
 		}
 		// Render state
 		{
-			s_renderState.Bind();
+			testEffect.m_renderState.Bind();
 		}
 	}
 	// Draw the geometry
@@ -353,15 +356,15 @@ eae6320::cResult eae6320::Graphics::CleanUp()
 	//cleanup geometry here
 	testGeometry.CleanUp();
 
-	if ( s_vertexShader )
+	if (testEffect.m_vertexShader )
 	{
-		s_vertexShader->DecrementReferenceCount();
-		s_vertexShader = nullptr;
+		testEffect.m_vertexShader->DecrementReferenceCount();
+		testEffect.m_vertexShader = nullptr;
 	}
-	if ( s_fragmentShader )
+	if (testEffect.m_fragmentShader )
 	{
-		s_fragmentShader->DecrementReferenceCount();
-		s_fragmentShader = nullptr;
+		testEffect.m_fragmentShader->DecrementReferenceCount();
+		testEffect.m_fragmentShader = nullptr;
 	}
 
 	{
@@ -399,7 +402,7 @@ namespace
 	eae6320::cResult InitializeAllGeometry()
 	{
 		//TODO: stuff here
-		eae6320::cResult result = testGeometry.Initialize();
+		eae6320::cResult result = testGeometry.Initialize({0.0, 0.0, 0.0}, {1.0, 1.0, 0.0}, {1.0, 0.0, 0.0});
 		return result;
 	}
 
@@ -407,36 +410,7 @@ namespace
 	{
 		auto result = eae6320::Results::Success;
 
-		if ( !( result = eae6320::Graphics::cShader::Load( "data/Shaders/Vertex/standard.shader",
-			s_vertexShader, eae6320::Graphics::eShaderType::Vertex ) ) )
-		{
-			EAE6320_ASSERTF( false, "Can't initialize shading data without vertex shader" );
-			return result;
-		}
-		if ( !( result = eae6320::Graphics::cShader::Load( "data/Shaders/Fragment/animatedColor.shader",
-			s_fragmentShader, eae6320::Graphics::eShaderType::Fragment ) ) )
-		{
-			EAE6320_ASSERTF( false, "Can't initialize shading data without fragment shader" );
-			return result;
-		}
-		{
-			constexpr auto renderStateBits = []
-			{
-				uint8_t renderStateBits = 0;
-
-				eae6320::Graphics::RenderStates::DisableAlphaTransparency( renderStateBits );
-				eae6320::Graphics::RenderStates::DisableDepthTesting( renderStateBits );
-				eae6320::Graphics::RenderStates::DisableDepthWriting( renderStateBits );
-				eae6320::Graphics::RenderStates::DisableDrawingBothTriangleSides( renderStateBits );
-
-				return renderStateBits;
-			}();
-			if ( !( result = s_renderState.Initialize( renderStateBits ) ) )
-			{
-				EAE6320_ASSERTF( false, "Can't initialize shading data without render state" );
-				return result;
-			}
-		}
+		result = testEffect.Initialize();
 
 		return result;
 	}

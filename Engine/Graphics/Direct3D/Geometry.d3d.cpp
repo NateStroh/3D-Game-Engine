@@ -4,9 +4,9 @@
 //instantiations
 namespace 
 {
-	eae6320::Graphics::cVertexFormat* m_vertexFormat = nullptr;
-	// A vertex buffer holds the data for each vertex
-	ID3D11Buffer* m_vertexBuffer = nullptr;
+	//eae6320::Graphics::cVertexFormat* m_vertexFormat = nullptr;
+	//// A vertex buffer holds the data for each vertex
+	//ID3D11Buffer* m_vertexBuffer = nullptr;
 
 	eae6320::Graphics::cVertexFormat* GetVertexFormat();
 	void SetVertexFormat(eae6320::Graphics::cVertexFormat* i_vertexFormat);
@@ -16,7 +16,7 @@ namespace
 
 }
 
-eae6320::cResult eae6320::Graphics::Geometry::Initialize() {
+eae6320::cResult eae6320::Graphics::Geometry::Initialize(eae6320::Graphics::point vertex0, eae6320::Graphics::point vertex1, eae6320::Graphics::point vertex2) {
 	auto result = eae6320::Results::Success;
 
 	auto* const direct3dDevice = eae6320::Graphics::sContext::g_context.direct3dDevice;
@@ -40,17 +40,17 @@ eae6320::cResult eae6320::Graphics::Geometry::Initialize() {
 		{
 			// Direct3D is left-handed
 
-			vertexData[0].x = 0.0f;
-			vertexData[0].y = 0.0f;
-			vertexData[0].z = 0.0f;
+			vertexData[0].x = vertex0.x;
+			vertexData[0].y = vertex0.y;
+			vertexData[0].z = vertex0.z;
 
-			vertexData[1].x = 1.0f;
-			vertexData[1].y = 1.0f;
-			vertexData[1].z = 0.0f;
+			vertexData[1].x = vertex1.x;
+			vertexData[1].y = vertex1.y;
+			vertexData[1].z = vertex1.z;
 
-			vertexData[2].x = 1.0f;
-			vertexData[2].y = 0.0f;
-			vertexData[2].z = 0.0f;
+			vertexData[2].x = vertex2.x;
+			vertexData[2].y = vertex2.y;
+			vertexData[2].z = vertex2.z;
 		}
 		constexpr auto bufferSize = sizeof(vertexData[0]) * vertexCount;
 		EAE6320_ASSERT(bufferSize <= std::numeric_limits<decltype(D3D11_BUFFER_DESC::ByteWidth)>::max());
@@ -109,24 +109,24 @@ eae6320::cResult eae6320::Graphics::Geometry::CleanUp() {
 }
 
 //definitions 
-namespace {
-	eae6320::Graphics::cVertexFormat* GetVertexFormat()
-	{
-		return m_vertexFormat;
-	}
-
-	void SetVertexFormat(eae6320::Graphics::cVertexFormat* i_vertexFormat)
-	{ 
-		m_vertexFormat = i_vertexFormat;
-	}
-
-	ID3D11Buffer* GetVertexBuffer()
-	{
-		return m_vertexBuffer;
-	}
-
-	void SetVertexBuffer(ID3D11Buffer* i_vertexBuffer)
-	{
-		m_vertexBuffer = i_vertexBuffer;
-	}
-}
+//namespace {
+//	eae6320::Graphics::cVertexFormat* GetVertexFormat()
+//	{
+//		return m_vertexFormat;
+//	}
+//
+//	void SetVertexFormat(eae6320::Graphics::cVertexFormat* i_vertexFormat)
+//	{ 
+//		m_vertexFormat = i_vertexFormat;
+//	}
+//
+//	ID3D11Buffer* GetVertexBuffer()
+//	{
+//		return m_vertexBuffer;
+//	}
+//
+//	void SetVertexBuffer(ID3D11Buffer* i_vertexBuffer)
+//	{
+//		m_vertexBuffer = i_vertexBuffer;
+//	}
+//}

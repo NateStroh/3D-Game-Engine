@@ -14,6 +14,7 @@
 #include <Engine/Asserts/Asserts.h>
 #include <Engine/Concurrency/cEvent.h>
 #include <Engine/Graphics/Geometry.h>
+#include <Engine/Graphics/Effect.h>
 #include <Engine/Logging/Logging.h>
 #include <Engine/Platform/Platform.h>
 #include <Engine/ScopeGuard/cScopeGuard.h>
@@ -373,7 +374,7 @@ namespace
 	{
 		auto result = eae6320::Results::Success;
 
-		result = testGeometry.Initialize();
+		result = testGeometry.Initialize({0.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {1.0, 1.0, 0.0});
 
 		return result;
 	}
