@@ -1,21 +1,6 @@
 #include "../Geometry.h"
 #include <Engine/Logging/Logging.h>
 
-//instantiations
-namespace 
-{
-	//eae6320::Graphics::cVertexFormat* m_vertexFormat = nullptr;
-	//// A vertex buffer holds the data for each vertex
-	//ID3D11Buffer* m_vertexBuffer = nullptr;
-
-	eae6320::Graphics::cVertexFormat* GetVertexFormat();
-	void SetVertexFormat(eae6320::Graphics::cVertexFormat* i_vertexFormat);
-
-	ID3D11Buffer* GetVertexBuffer();
-	void SetVertexBuffer(ID3D11Buffer* i_vertexBuffer);
-
-}
-
 eae6320::cResult eae6320::Graphics::Geometry::Initialize() {
 	auto result = eae6320::Results::Success;
 
@@ -160,26 +145,3 @@ void eae6320::Graphics::Geometry::Draw() {
 		direct3dImmediateContext->Draw(vertexCountToRender, indexOfFirstVertexToRender);
 	}
 }
-
-//definitions 
-//namespace {
-//	eae6320::Graphics::cVertexFormat* GetVertexFormat()
-//	{
-//		return m_vertexFormat;
-//	}
-//
-//	void SetVertexFormat(eae6320::Graphics::cVertexFormat* i_vertexFormat)
-//	{ 
-//		m_vertexFormat = i_vertexFormat;
-//	}
-//
-//	ID3D11Buffer* GetVertexBuffer()
-//	{
-//		return m_vertexBuffer;
-//	}
-//
-//	void SetVertexBuffer(ID3D11Buffer* i_vertexBuffer)
-//	{
-//		m_vertexBuffer = i_vertexBuffer;
-//	}
-//}

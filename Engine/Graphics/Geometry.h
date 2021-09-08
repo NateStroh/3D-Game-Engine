@@ -38,6 +38,7 @@ namespace eae6320
 			cResult CleanUp();
 			void Draw();
 
+		private:
 #if defined( EAE6320_PLATFORM_D3D )
 			cVertexFormat* m_vertexFormat = nullptr;
 			//// A vertex buffer holds the data for each vertex
@@ -48,9 +49,6 @@ namespace eae6320
 			// A vertex array encapsulates the vertex data as well as the vertex input layout
 			GLuint m_vertexArrayId = 0;
 #endif
-
-		private:
-
 
 		};
 	}

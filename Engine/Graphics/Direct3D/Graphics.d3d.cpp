@@ -80,7 +80,7 @@ namespace
 
 namespace
 {
-	eae6320::cResult InitializeAllGeometry();
+	eae6320::cResult InitializeGeometry();
 	eae6320::cResult InitializeShadingData();
 	eae6320::cResult InitializeViews( const unsigned int i_resolutionWidth, const unsigned int i_resolutionHeight );
 }
@@ -266,7 +266,7 @@ eae6320::cResult eae6320::Graphics::Initialize( const sInitializationParameters&
 	}
 	// Initialize the geometry
 	{
-		if ( !( result = InitializeAllGeometry() ) )
+		if ( !( result = InitializeGeometry() ) )
 		{
 			EAE6320_ASSERTF( false, "Can't initialize Graphics without the geometry data" );
 			return result;
@@ -329,7 +329,7 @@ eae6320::cResult eae6320::Graphics::CleanUp()
 
 namespace
 {
-	eae6320::cResult InitializeAllGeometry()
+	eae6320::cResult InitializeGeometry()
 	{
 		//TODO: stuff here
 		eae6320::cResult result = testGeometry.Initialize();

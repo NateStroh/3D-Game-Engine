@@ -1,16 +1,6 @@
 #include "../Geometry.h"
 #include <Engine/Logging/Logging.h>
 
-namespace
-{
-	GLuint GetvertexArrayId();
-	void SetvertexArrayId(GLuint i_vertexArrayId);
-
-	GLuint GetvertexBufferId();
-	void SetVertexBuffer(GLuint i_vertexBufferId);
-
-}
-
 eae6320::cResult eae6320::Graphics::Geometry::Initialize() {
 	auto result = eae6320::Results::Success;
 
