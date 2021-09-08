@@ -67,20 +67,10 @@ namespace
 	// Geometry Data
 	//--------------
 
-	//eae6320::Graphics::cVertexFormat* s_vertexFormat = nullptr;
-
-	// A vertex buffer holds the data for each vertex
-	//ID3D11Buffer* s_vertexBuffer = nullptr;
-
 	eae6320::Graphics::Geometry testGeometry;
 
 	// Shading Data
 	//-------------
-
-	//eae6320::Graphics::cShader* s_vertexShader = nullptr;
-	//eae6320::Graphics::cShader* s_fragmentShader = nullptr;
-	//
-	//eae6320::Graphics::cRenderState s_renderState;
 
 	eae6320::Graphics::Effect testEffect;
 }
@@ -187,11 +177,11 @@ void eae6320::Graphics::RenderFrame()
 
 	// Bind the shading data
 	{
-		testEffect.Bind(direct3dImmediateContext);
+		testEffect.Bind();
 	}
 	// Draw the geometry
 	{
-		testGeometry.Draw(direct3dImmediateContext);
+		testGeometry.Draw();
 	}
 
 	// Everything has been drawn to the "back buffer", which is just an image in memory.
@@ -342,7 +332,8 @@ namespace
 	eae6320::cResult InitializeAllGeometry()
 	{
 		//TODO: stuff here
-		eae6320::cResult result = testGeometry.Initialize({0.0, 0.0, 0.0}, {1.0, 1.0, 0.0}, {1.0, 0.0, 0.0});
+		eae6320::cResult result = testGeometry.Initialize();
+
 		return result;
 	}
 
@@ -351,7 +342,7 @@ namespace
 		auto result = eae6320::Results::Success;
 		
 		result = testEffect.Initialize("data/Shaders/Vertex/standard.shader", "data/Shaders/Fragment/animatedColor.shader");
-		
+
 		return result;
 	}
 

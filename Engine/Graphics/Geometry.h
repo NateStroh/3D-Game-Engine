@@ -34,18 +34,15 @@ namespace eae6320
 		class Geometry
 		{
 		public:
-			cResult Initialize(point vertex0, point vertex1, point vertex2);
+			cResult Initialize();
 			cResult CleanUp();
-			void Draw(
+			void Draw();
 
 #if defined( EAE6320_PLATFORM_D3D )
-			ID3D11DeviceContext* const i_direct3dImmediateContext);
-
 			cVertexFormat* m_vertexFormat = nullptr;
 			//// A vertex buffer holds the data for each vertex
 			ID3D11Buffer* m_vertexBuffer = nullptr;
 #elif defined( EAE6320_PLATFORM_GL )
-			);
 			// A vertex buffer holds the data for each vertex
 			GLuint m_vertexBufferId = 0;
 			// A vertex array encapsulates the vertex data as well as the vertex input layout

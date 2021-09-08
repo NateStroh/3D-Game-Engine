@@ -61,21 +61,11 @@ namespace
 	// Geometry Data
 	//--------------
 
-	// A vertex buffer holds the data for each vertex
-	//GLuint s_vertexBufferId = 0;
-	// A vertex array encapsulates the vertex data as well as the vertex input layout
-	//GLuint s_vertexArrayId = 0;
-
 	eae6320::Graphics::Geometry testGeometry;
 
 	// Shading Data
 	//-------------
 
-	//eae6320::Graphics::cShader* s_vertexShader = nullptr;
-	//eae6320::Graphics::cShader* s_fragmentShader = nullptr;
-	//GLuint s_programId = 0;
-	//
-	//eae6320::Graphics::cRenderState s_renderState;
 	eae6320::Graphics::Effect testEffect;
 }
 
@@ -321,9 +311,7 @@ namespace
 {
 	eae6320::cResult InitializeGeometry()
 	{
-		auto result = eae6320::Results::Success;
-
-		result = testGeometry.Initialize({0.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {1.0, 1.0, 0.0});
+		auto result = testGeometry.Initialize();
 
 		return result;
 	}
