@@ -31,15 +31,11 @@ namespace eae6320
 			void Bind();
 
 		private:
-#if defined( EAE6320_PLATFORM_D3D )
 			eae6320::Graphics::cShader* m_vertexShader = nullptr;
 			eae6320::Graphics::cShader* m_fragmentShader = nullptr;
 			eae6320::Graphics::cRenderState m_renderState;
-#elif defined( EAE6320_PLATFORM_GL )
-			eae6320::Graphics::cShader* m_vertexShader = nullptr;
-			eae6320::Graphics::cShader* m_fragmentShader = nullptr;
+#if defined( EAE6320_PLATFORM_GL )
 			GLuint m_programId = 0;
-			eae6320::Graphics::cRenderState m_renderState;
 #endif	
 
 			eae6320::cResult OpenGLInitilizaiton();
