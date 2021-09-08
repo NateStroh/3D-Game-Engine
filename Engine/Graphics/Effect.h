@@ -41,12 +41,17 @@ namespace eae6320
 			
 
 #endif
-			cResult Initialize();
+			cResult Initialize(std::string i_vertexShaderLocation, std::string i_fragmentShaderLocation);
 			cResult CleanUp();
-			cResult Draw();
+			void Bind(
+#if defined( EAE6320_PLATFORM_D3D )
+				ID3D11DeviceContext* const i_direct3dImmediateContext
+#endif
+			);
+
 		private:
 			eae6320::cResult OpenGLInitilizaiton();
-
+			eae6320::cResult OpenGLCleanUp();
 		};
 	}
 }

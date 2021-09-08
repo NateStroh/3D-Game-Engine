@@ -187,63 +187,11 @@ void eae6320::Graphics::RenderFrame()
 
 	// Bind the shading data
 	{
-		{
-			constexpr ID3D11ClassInstance* const* noInterfaces = nullptr;
-			constexpr unsigned int interfaceCount = 0;
-			// Vertex shader
-			{
-				EAE6320_ASSERT( (testEffect.m_vertexShader != nullptr ) && ( testEffect.m_vertexShader->m_shaderObject.vertex != nullptr ) );
-				direct3dImmediateContext->VSSetShader(testEffect.m_vertexShader->m_shaderObject.vertex, noInterfaces, interfaceCount );
-			}
-			// Fragment shader
-			{
-				EAE6320_ASSERT( (testEffect.m_fragmentShader != nullptr ) && (testEffect.m_fragmentShader->m_shaderObject.vertex != nullptr ) );
-				direct3dImmediateContext->PSSetShader(testEffect.m_fragmentShader->m_shaderObject.fragment, noInterfaces, interfaceCount );
-			}
-		}
-		// Render state
-		{
-			testEffect.m_renderState.Bind();
-		}
+		testEffect.Bind(direct3dImmediateContext);
 	}
 	// Draw the geometry
 	{
-		// Bind a specific vertex buffer to the device as a data source
-		{
-			EAE6320_ASSERT( testGeometry.m_vertexBuffer != nullptr );
-			constexpr unsigned int startingSlot = 0;
-			constexpr unsigned int vertexBufferCount = 1;
-			// The "stride" defines how large a single vertex is in the stream of data
-			constexpr unsigned int bufferStride = sizeof( VertexFormats::sVertex_mesh );
-			// It's possible to start streaming data in the middle of a vertex buffer
-			constexpr unsigned int bufferOffset = 0;
-			direct3dImmediateContext->IASetVertexBuffers( startingSlot, vertexBufferCount, &testGeometry.m_vertexBuffer, &bufferStride, &bufferOffset );
-		}
-		// Specify what kind of data the vertex buffer holds
-		{
-			// Bind the vertex format (which defines how to interpret a single vertex)
-			{
-				//EAE6320_ASSERT( s_vertexFormat != nullptr );
-				//s_vertexFormat->Bind();
-				EAE6320_ASSERT(testGeometry.m_vertexFormat != nullptr);
-				testGeometry.m_vertexFormat->Bind();
-			}
-			// Set the topology (which defines how to interpret multiple vertices as a single "primitive";
-			// the vertex buffer was defined as a triangle list
-			// (meaning that every primitive is a triangle and will be defined by three vertices)
-			direct3dImmediateContext->IASetPrimitiveTopology( D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
-		}
-		// Render triangles from the currently-bound vertex buffer
-		{
-			// As of this comment only a single triangle is drawn
-			// (you will have to update this code in future assignments!)
-			constexpr unsigned int triangleCount = 1;
-			constexpr unsigned int vertexCountPerTriangle = 3;
-			constexpr auto vertexCountToRender = triangleCount * vertexCountPerTriangle;
-			// It's possible to start rendering primitives in the middle of the stream
-			constexpr unsigned int indexOfFirstVertexToRender = 0;
-			direct3dImmediateContext->Draw( vertexCountToRender, indexOfFirstVertexToRender );
-		}
+		testGeometry.Draw(direct3dImmediateContext);
 	}
 
 	// Everything has been drawn to the "back buffer", which is just an image in memory.
@@ -353,19 +301,11 @@ eae6320::cResult eae6320::Graphics::CleanUp()
 		s_depthStencilView = nullptr;
 	}
 
-	//cleanup geometry here
+	//cleanup geometry
 	testGeometry.CleanUp();
 
-	if (testEffect.m_vertexShader )
-	{
-		testEffect.m_vertexShader->DecrementReferenceCount();
-		testEffect.m_vertexShader = nullptr;
-	}
-	if (testEffect.m_fragmentShader )
-	{
-		testEffect.m_fragmentShader->DecrementReferenceCount();
-		testEffect.m_fragmentShader = nullptr;
-	}
+	//shader cleanup
+	testEffect.CleanUp();
 
 	{
 		const auto result_constantBuffer_frame = s_constantBuffer_frame.CleanUp();
@@ -410,7 +350,7 @@ namespace
 	{
 		auto result = eae6320::Results::Success;
 		
-		result = testEffect.Initialize();
+		result = testEffect.Initialize("data/Shaders/Vertex/standard.shader", "data/Shaders/Fragment/animatedColor.shader");
 		
 		return result;
 	}

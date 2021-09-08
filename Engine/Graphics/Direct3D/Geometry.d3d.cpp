@@ -108,6 +108,45 @@ eae6320::cResult eae6320::Graphics::Geometry::CleanUp() {
 	return result;
 }
 
+void eae6320::Graphics::Geometry::Draw(ID3D11DeviceContext* const i_direct3dImmediateContext) {
+	// Bind a specific vertex buffer to the device as a data source
+	{
+		EAE6320_ASSERT(m_vertexBuffer != nullptr);
+		constexpr unsigned int startingSlot = 0;
+		constexpr unsigned int vertexBufferCount = 1;
+		// The "stride" defines how large a single vertex is in the stream of data
+		constexpr unsigned int bufferStride = sizeof(VertexFormats::sVertex_mesh);
+		// It's possible to start streaming data in the middle of a vertex buffer
+		constexpr unsigned int bufferOffset = 0;
+		i_direct3dImmediateContext->IASetVertexBuffers(startingSlot, vertexBufferCount, &m_vertexBuffer, &bufferStride, &bufferOffset);
+	}
+	// Specify what kind of data the vertex buffer holds
+	{
+		// Bind the vertex format (which defines how to interpret a single vertex)
+		{
+			//EAE6320_ASSERT( s_vertexFormat != nullptr );
+			//s_vertexFormat->Bind();
+			EAE6320_ASSERT(m_vertexFormat != nullptr);
+			m_vertexFormat->Bind();
+		}
+		// Set the topology (which defines how to interpret multiple vertices as a single "primitive";
+		// the vertex buffer was defined as a triangle list
+		// (meaning that every primitive is a triangle and will be defined by three vertices)
+		i_direct3dImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	}
+	// Render triangles from the currently-bound vertex buffer
+	{
+		// As of this comment only a single triangle is drawn
+		// (you will have to update this code in future assignments!)
+		constexpr unsigned int triangleCount = 1;
+		constexpr unsigned int vertexCountPerTriangle = 3;
+		constexpr auto vertexCountToRender = triangleCount * vertexCountPerTriangle;
+		// It's possible to start rendering primitives in the middle of the stream
+		constexpr unsigned int indexOfFirstVertexToRender = 0;
+		i_direct3dImmediateContext->Draw(vertexCountToRender, indexOfFirstVertexToRender);
+	}
+}
+
 //definitions 
 //namespace {
 //	eae6320::Graphics::cVertexFormat* GetVertexFormat()
