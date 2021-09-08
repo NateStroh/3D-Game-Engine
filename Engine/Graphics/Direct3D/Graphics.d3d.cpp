@@ -409,9 +409,9 @@ namespace
 	eae6320::cResult InitializeShadingData()
 	{
 		auto result = eae6320::Results::Success;
-
+		
 		result = testEffect.Initialize();
-
+		
 		return result;
 	}
 

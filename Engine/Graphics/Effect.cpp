@@ -35,7 +35,9 @@ eae6320::cResult eae6320::Graphics::Effect::Initialize()
 		}
 	}
 
-	
-	
+#if defined( EAE6320_PLATFORM_GL )
+	OpenGLInitilizaiton();
+
+#endif
 	return result;
 }
