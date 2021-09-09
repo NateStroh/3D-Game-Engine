@@ -36,11 +36,10 @@ namespace eae6320
 			eae6320::Graphics::cRenderState m_renderState;
 #if defined( EAE6320_PLATFORM_GL )
 			GLuint m_programId = 0;
-#endif	
 
 			eae6320::cResult OpenGLInitilizaiton();
 			eae6320::cResult OpenGLCleanUp();
-		
+#endif	
 		};
 	}
 }
