@@ -1,6 +1,8 @@
 #include "../GraphicsHelper.h"
 #include "Includes.h"
 
+#include <Engine/Graphics/sContext.h>
+
 namespace
 {
 	// In Direct3D "views" are objects that allow a texture to be used a particular way:
@@ -49,12 +51,13 @@ void eae6320::Graphics::GraphicsHelper::Present() {
 	EAE6320_ASSERT(SUCCEEDED(result));
 }
 
-eae6320::cResult eae6320::Graphics::GraphicsHelper::Initialize(const sInitializationParameters& i_initializationParameters) {
+eae6320::cResult eae6320::Graphics::GraphicsHelper::Initialize(const unsigned int i_resolutionWidth, const unsigned int i_resolutionHeight) {
 	auto result = eae6320::Results::Success;
 
 	// Initialize the views
 	{
-		if (!(result = InitializeViews(i_initializationParameters.resolutionWidth, i_initializationParameters.resolutionHeight)))
+		//if (!(result = InitializeViews(i_initializationParameters.resolutionWidth, i_initializationParameters.resolutionHeight)))
+		if (!(result = InitializeViews(i_resolutionWidth, i_resolutionHeight)))
 		{
 			EAE6320_ASSERTF(false, "Can't initialize Graphics without the views");
 			return result;

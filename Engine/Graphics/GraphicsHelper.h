@@ -5,7 +5,6 @@
 #include <Engine/Asserts/Asserts.h>
 #include <Engine/ScopeGuard/cScopeGuard.h>
 #include <Engine/Logging/Logging.h>
-#include <Engine/Graphics/sContext.h>
 
 namespace eae6320
 {
@@ -17,8 +16,8 @@ namespace eae6320
 
 			void Present();
 
-			cResult Initialize(const sInitializationParameters& i_initializationParameters);
-
+			//cResult Initialize(const sInitializationParameters& i_initializationParameters);
+			cResult Initialize(const unsigned int i_resolutionWidth, const unsigned int i_resolutionHeight);
 			cResult CleanUp();
 		}
 	}

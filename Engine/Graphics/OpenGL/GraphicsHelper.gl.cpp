@@ -1,6 +1,8 @@
 #include "../GraphicsHelper.h"
 #include "Includes.h"
 
+#include <Engine/Graphics/sContext.h>
+
 namespace
 { }
 
@@ -51,10 +53,10 @@ void eae6320::Graphics::GraphicsHelper::Present() {
 	}
 }
 
-eae6320::cResult eae6320::Graphics::GraphicsHelper::Initialize(const sInitializationParameters& i_initializationParameters) { 
-
+eae6320::cResult eae6320::Graphics::GraphicsHelper::Initialize(const unsigned int i_resolutionWidth, const unsigned int i_resolutionHeight) {
+	return eae6320::Results::Success;
 }
 
 eae6320::cResult eae6320::Graphics::GraphicsHelper::CleanUp() { 
-
+	return eae6320::Results::Success;
 }
