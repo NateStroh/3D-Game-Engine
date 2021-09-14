@@ -11,6 +11,7 @@
 #include <Engine/Asserts/Asserts.h>
 #include <Engine/Concurrency/cEvent.h>
 #include <Engine/Graphics/Geometry.h>
+#include <Engine/Graphics/GraphicsHelper.h>
 #include <Engine/Graphics/Effect.h>
 #include <Engine/Logging/Logging.h>
 #include <Engine/Platform/Platform.h>
@@ -191,13 +192,8 @@ eae6320::cResult eae6320::Graphics::Initialize(const sInitializationParameters& 
 			return result;
 		}
 	}
-
-#if defined( EAE6320_PLATFORM_D3D )
-	// TODO:: fix this Initialize the views
-	{
-		GraphicsHelper::Initialize(i_initializationParameters.resolutionWidth, i_initializationParameters.resolutionHeight);
-	}
-#endif
+	
+	GraphicsHelper::Initialize(i_initializationParameters);
 
 	// Initialize the shading data
 	{

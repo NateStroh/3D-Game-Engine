@@ -6,6 +6,8 @@
 #include <Engine/ScopeGuard/cScopeGuard.h>
 #include <Engine/Logging/Logging.h>
 
+#include "Graphics.h"
+
 namespace eae6320
 {
 	namespace Graphics
@@ -16,8 +18,7 @@ namespace eae6320
 
 			void Present();
 
-			//cResult Initialize(const sInitializationParameters& i_initializationParameters);
-			cResult Initialize(const unsigned int i_resolutionWidth, const unsigned int i_resolutionHeight);
+			cResult Initialize(const sInitializationParameters& i_initializationParameters);
 			cResult CleanUp();
 		}
 	}

@@ -53,7 +53,7 @@ void eae6320::Graphics::GraphicsHelper::Present() {
 	}
 }
 
-eae6320::cResult eae6320::Graphics::GraphicsHelper::Initialize(const unsigned int i_resolutionWidth, const unsigned int i_resolutionHeight) {
+eae6320::cResult eae6320::Graphics::GraphicsHelper::Initialize(const sInitializationParameters& i_initializationParameters) {
 	return eae6320::Results::Success;
 }
 

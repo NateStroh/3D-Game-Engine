@@ -12,7 +12,6 @@
 
 #include <cstdint>
 #include <Engine/Results/Results.h>
-#include <Engine/Graphics/GraphicsHelper.h>
 
 #if defined( EAE6320_PLATFORM_WINDOWS )
 	#include <Engine/Windows/Includes.h>

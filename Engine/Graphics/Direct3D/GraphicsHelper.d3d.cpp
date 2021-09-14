@@ -51,13 +51,13 @@ void eae6320::Graphics::GraphicsHelper::Present() {
 	EAE6320_ASSERT(SUCCEEDED(result));
 }
 
-eae6320::cResult eae6320::Graphics::GraphicsHelper::Initialize(const unsigned int i_resolutionWidth, const unsigned int i_resolutionHeight) {
+eae6320::cResult eae6320::Graphics::GraphicsHelper::Initialize(const sInitializationParameters& i_initializationParameters) {
 	auto result = eae6320::Results::Success;
 
 	// Initialize the views
 	{
 		//if (!(result = InitializeViews(i_initializationParameters.resolutionWidth, i_initializationParameters.resolutionHeight)))
-		if (!(result = InitializeViews(i_resolutionWidth, i_resolutionHeight)))
+		if (!(result = InitializeViews(i_initializationParameters.resolutionWidth, i_initializationParameters.resolutionHeight)))
 		{
 			EAE6320_ASSERTF(false, "Can't initialize Graphics without the views");
 			return result;
