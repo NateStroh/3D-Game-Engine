@@ -126,7 +126,8 @@ void eae6320::Graphics::RenderFrame()
 			return;
 		}
 	}
-	GraphicsHelper::ClearBackGroundBuffers();
+
+	GraphicsHelper::ClearBackGroundBuffers(1, 0, 0, 1);
 
 	EAE6320_ASSERT(s_dataBeingRenderedByRenderThread);
 

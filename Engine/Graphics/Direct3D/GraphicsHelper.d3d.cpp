@@ -16,7 +16,7 @@ namespace
 }
 
 
-void eae6320::Graphics::GraphicsHelper::ClearBackGroundBuffers() {
+void eae6320::Graphics::GraphicsHelper::ClearBackGroundBuffers(float i_rValue, float i_gValue, float i_bValue, float i_aValue) {
 	auto* const direct3dImmediateContext = sContext::g_context.direct3dImmediateContext;
 	EAE6320_ASSERT(direct3dImmediateContext);
 
@@ -27,7 +27,7 @@ void eae6320::Graphics::GraphicsHelper::ClearBackGroundBuffers() {
 		EAE6320_ASSERT(s_renderTargetView);
 
 		// Black is usually used
-		constexpr float clearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
+		float clearColor[4] = { i_rValue, i_gValue, i_bValue, i_aValue };
 		direct3dImmediateContext->ClearRenderTargetView(s_renderTargetView, clearColor);
 	}
 	// In addition to the color buffer there is also a hidden image called the "depth buffer"

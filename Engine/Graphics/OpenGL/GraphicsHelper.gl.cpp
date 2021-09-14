@@ -6,14 +6,14 @@
 namespace
 { }
 
-void eae6320::Graphics::GraphicsHelper::ClearBackGroundBuffers() {
+void eae6320::Graphics::GraphicsHelper::ClearBackGroundBuffers(float i_rValue, float i_gValue, float i_bValue, float i_aValue) {
 	// Every frame an entirely new image will be created.
 	// Before drawing anything, then, the previous image will be erased
 	// by "clearing" the image buffer (filling it with a solid color)
 	{
 		// Black is usually used
 		{
-			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+			glClearColor(i_rValue, i_gValue, i_bValue, i_aValue);
 			EAE6320_ASSERT(glGetError() == GL_NO_ERROR);
 		}
 		{
