@@ -55,6 +55,12 @@
     <ClCompile Include="OpenGL\Effect.gl.cpp">
       <Filter>OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="OpenGL\GraphicsHelper.gl.cpp">
+      <Filter>OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Direct3D\GraphicsHelper.d3d.cpp">
+      <Filter>Direct3D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cConstantBuffer.h" />
@@ -77,6 +83,7 @@
     </ClInclude>
     <ClInclude Include="Effect.h" />
     <ClInclude Include="Geometry.h" />
+    <ClInclude Include="GraphicsHelper.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cRenderState.inl" />
