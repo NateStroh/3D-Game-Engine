@@ -56,11 +56,13 @@ namespace
 	//--------------
 
 	eae6320::Graphics::Geometry testGeometry;
+	eae6320::Graphics::Geometry testGeometry2;
 
 	// Shading Data
 	//-------------
 
 	eae6320::Graphics::Effect testEffect;
+	eae6320::Graphics::Effect testEffect2;
 }
 
 // Helper Declarations
@@ -147,6 +149,14 @@ void eae6320::Graphics::RenderFrame()
 	{
 		testGeometry.Draw();
 	}
+	// Bind the shading data
+	{
+		testEffect2.Bind();
+	}
+	// Draw the geometry
+	{
+		testGeometry2.Draw();
+	}
 
 	GraphicsHelper::Present();
 
@@ -223,9 +233,11 @@ eae6320::cResult eae6320::Graphics::CleanUp()
 
 	//geometry cleanup
 	testGeometry.CleanUp();
+	testGeometry2.CleanUp();
 
 	//shader cleanup
 	testEffect.CleanUp();
+	testEffect2.CleanUp();
 
 	{
 		const auto result_constantBuffer_frame = s_constantBuffer_frame.CleanUp();
@@ -261,7 +273,52 @@ namespace
 {
 	eae6320::cResult InitializeGeometry()
 	{
-		auto result = testGeometry.Initialize();
+
+		//first geometry
+		eae6320::Graphics::VertexFormats::sVertex_mesh geometryVertexData[4];
+		{
+			geometryVertexData[0].x = 0.0f;
+			geometryVertexData[0].y = 0.0f;
+			geometryVertexData[0].z = 0.0f;
+
+			geometryVertexData[1].x = 0.0f;
+			geometryVertexData[1].y = 1.0f;
+			geometryVertexData[1].z = 0.0f;
+
+			geometryVertexData[2].x = 1.0f;
+			geometryVertexData[2].y = 1.0f;
+			geometryVertexData[2].z = 0.0f;
+
+			geometryVertexData[3].x = 1.0f;
+			geometryVertexData[3].y = 0.0f;
+			geometryVertexData[3].z = 0.0f;
+		}
+		uint16_t indexData[6] = {0, 1, 2, 0, 2, 3};
+		//{0, 3, 2, 0, 2, 1}
+
+		auto result = testGeometry.Initialize(geometryVertexData, 4, indexData, 6);
+		if (!result)
+			return result;
+
+		//second geometry
+		eae6320::Graphics::VertexFormats::sVertex_mesh geometryVertexData2[3];
+		{
+			geometryVertexData2[0].x = -1.0f;
+			geometryVertexData2[0].y = -1.0f;
+			geometryVertexData2[0].z = 0.0f;
+							  
+			geometryVertexData2[1].x = 0.0f;
+			geometryVertexData2[1].y = 0.0f;
+			geometryVertexData2[1].z = 0.0f;
+							  
+			geometryVertexData2[2].x = 0.0f;
+			geometryVertexData2[2].y = -1.0f;
+			geometryVertexData2[2].z = 0.0f;
+		}
+		uint16_t indexData2[3] = {0, 1, 2};
+		//{0,2,1}
+
+		result = testGeometry2.Initialize(geometryVertexData2, 3, indexData2, 3);
 
 		return result;
 	}
@@ -269,6 +326,11 @@ namespace
 	eae6320::cResult InitializeShadingData()
 	{
 		auto result = testEffect.Initialize("data/Shaders/Vertex/standard.shader", "data/Shaders/Fragment/animatedColor.shader");
+		if (!result)
+			return result;
+
+		result = testEffect2.Initialize("data/Shaders/Vertex/standard.shader", "data/Shaders/Fragment/standard.shader");
+
 		return result;
 	}
 }

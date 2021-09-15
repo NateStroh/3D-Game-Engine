@@ -34,7 +34,7 @@ namespace eae6320
 		class Geometry
 		{
 		public:
-			cResult Initialize();
+			cResult Initialize(eae6320::Graphics::VertexFormats::sVertex_mesh i_vertexData[], const unsigned int i_vertexCount, uint16_t i_indexData[], const unsigned int i_indexCount);
 			cResult CleanUp();
 			void Draw();
 
@@ -51,7 +51,9 @@ namespace eae6320
 			// A vertex array encapsulates the vertex data as well as the vertex input layout
 			GLuint m_vertexArrayId = 0;
 #endif
-
+			unsigned int m_indexCount = 0;
+			//eae6320::Graphics::VertexFormats::sVertex_mesh *m_vertexData;
+			//uint16_t* m_indexData;
 		};
 	}
 }

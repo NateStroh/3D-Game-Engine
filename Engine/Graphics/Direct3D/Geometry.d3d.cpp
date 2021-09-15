@@ -1,11 +1,14 @@
 #include "../Geometry.h"
 #include <Engine/Logging/Logging.h>
 
-eae6320::cResult eae6320::Graphics::Geometry::Initialize() {
+eae6320::cResult eae6320::Graphics::Geometry::Initialize(eae6320::Graphics::VertexFormats::sVertex_mesh i_vertexData[], const unsigned int i_vertexCount, uint16_t i_indexData[], const unsigned int i_indexCount) {
 	auto result = eae6320::Results::Success;
 
 	auto* const direct3dDevice = eae6320::Graphics::sContext::g_context.direct3dDevice;
 	EAE6320_ASSERT(direct3dDevice);
+
+	eae6320::Graphics::VertexFormats::sVertex_mesh* m_vertexData = new eae6320::Graphics::VertexFormats::sVertex_mesh[i_vertexCount];
+	uint16_t* m_indexData = new uint16_t[i_indexCount];
 
 	// Vertex Format
 	{
@@ -18,32 +21,13 @@ eae6320::cResult eae6320::Graphics::Geometry::Initialize() {
 	}
 	// Vertex Buffer
 	{
-		//constexpr unsigned int triangleCount = 2;
-		//constexpr unsigned int vertexCountPerTriangle = 3;
-		//constexpr auto vertexCount = triangleCount * vertexCountPerTriangle;
-		constexpr unsigned int vertexCount = 4;
-		eae6320::Graphics::VertexFormats::sVertex_mesh vertexData[vertexCount];
-		{
-			// Direct3D is left-handed
-			vertexData[0].x = 0.0f;
-			vertexData[0].y = 0.0f;
-			vertexData[0].z = 0.0f;
-
-			vertexData[1].x = 0.0f;
-			vertexData[1].y = 1.0f;
-			vertexData[1].z = 0.0f;
-
-			vertexData[2].x = 1.0f;
-			vertexData[2].y = 1.0f;
-			vertexData[2].z = 0.0f;
-
-			vertexData[3].x = 1.0f;
-			vertexData[3].y = 0.0f;
-			vertexData[3].z = 0.0f;
+		for (unsigned int i = 0; i < i_vertexCount; i++) {
+			m_vertexData[i] = i_vertexData[i];
 		}
-		constexpr auto bufferSize = sizeof(vertexData[0]) * vertexCount;
+
+		const auto bufferSize = sizeof(m_vertexData[0]) * i_vertexCount;
 		EAE6320_ASSERT(bufferSize <= std::numeric_limits<decltype(D3D11_BUFFER_DESC::ByteWidth)>::max());
-		constexpr auto bufferDescription = [bufferSize]
+		const auto bufferDescription = [bufferSize]
 		{
 			D3D11_BUFFER_DESC bufferDescription{};
 
@@ -57,11 +41,11 @@ eae6320::cResult eae6320::Graphics::Geometry::Initialize() {
 			return bufferDescription;
 		}();
 
-		const auto initialData = [vertexData]
+		const auto initialData = [&]
 		{
 			D3D11_SUBRESOURCE_DATA initialData{};
 
-			initialData.pSysMem = vertexData;
+			initialData.pSysMem = m_vertexData;
 			// (The other data members are ignored for non-texture buffers)
 
 			return initialData;
@@ -79,20 +63,14 @@ eae6320::cResult eae6320::Graphics::Geometry::Initialize() {
 
 	//Index Buffer
 	{
-		constexpr auto indexCount = 6;
-		uint16_t indexData[indexCount];
-		{
-			// Direct3D is left-handed
-			indexData[0] = 0;
-			indexData[1] = 1;
-			indexData[2] = 2;
-			indexData[3] = 0;
-			indexData[4] = 2;
-			indexData[5] = 3;
+		m_indexCount = i_indexCount;
+		for (unsigned int i = 0; i < i_indexCount; i++) {
+			m_indexData[i] = i_indexData[i];
 		}
-		constexpr auto bufferSize = sizeof(indexData[0]) * indexCount;
+
+		const auto bufferSize = sizeof(m_indexData[0]) * i_indexCount;
 		EAE6320_ASSERT(bufferSize <= std::numeric_limits<decltype(D3D11_BUFFER_DESC::ByteWidth)>::max());
-		constexpr auto bufferDescription = [bufferSize]
+		const auto bufferDescription = [bufferSize]
 		{
 			D3D11_BUFFER_DESC bufferDescription{};
 
@@ -106,11 +84,11 @@ eae6320::cResult eae6320::Graphics::Geometry::Initialize() {
 			return bufferDescription;
 		}();
 
-		const auto initialData = [indexData]
+		const auto initialData = [&]
 		{
 			D3D11_SUBRESOURCE_DATA initialData{};
 
-			initialData.pSysMem = indexData;
+			initialData.pSysMem = m_indexData;
 			// (The other data members are ignored for non-texture buffers)
 
 			return initialData;
@@ -125,6 +103,9 @@ eae6320::cResult eae6320::Graphics::Geometry::Initialize() {
 			return result;
 		}
 	}
+
+	delete[] m_vertexData;
+	delete[] m_indexData;
 
 	return result;
 }
@@ -192,9 +173,9 @@ void eae6320::Graphics::Geometry::Draw() {
 	// Render triangles from the currently-bound vertex buffer
 	{
 		// It's possible to start rendering primitives in the middle of the stream
-		constexpr unsigned int indexOfFirstIndexToUse = 0;
-		constexpr unsigned int offsetToAddToEachIndex = 0;
-		constexpr unsigned int indexCountToRender = 6;
+		const unsigned int indexOfFirstIndexToUse = 0;
+		const unsigned int offsetToAddToEachIndex = 0;
+		const unsigned int indexCountToRender = m_indexCount;
 		direct3dImmediateContext->DrawIndexed(static_cast<unsigned int>(indexCountToRender), indexOfFirstIndexToUse, offsetToAddToEachIndex);
 	}
 }
