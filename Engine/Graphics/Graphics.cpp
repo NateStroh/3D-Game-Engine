@@ -294,31 +294,39 @@ namespace
 			geometryVertexData[3].z = 0.0f;
 		}
 		uint16_t indexData[6] = {0, 1, 2, 0, 2, 3};
-		//{0, 3, 2, 0, 2, 1}
+		//{0, 3, 2, 0, 2, 1};
 
 		auto result = testGeometry.Initialize(geometryVertexData, 4, indexData, 6);
 		if (!result)
 			return result;
 
 		//second geometry
-		eae6320::Graphics::VertexFormats::sVertex_mesh geometryVertexData2[3];
+		eae6320::Graphics::VertexFormats::sVertex_mesh geometryVertexData2[5];
 		{
 			geometryVertexData2[0].x = -1.0f;
 			geometryVertexData2[0].y = -1.0f;
 			geometryVertexData2[0].z = 0.0f;
 							  
-			geometryVertexData2[1].x = 0.0f;
+			geometryVertexData2[1].x = -1.0f;
 			geometryVertexData2[1].y = 0.0f;
 			geometryVertexData2[1].z = 0.0f;
 							  
-			geometryVertexData2[2].x = 0.0f;
-			geometryVertexData2[2].y = -1.0f;
+			geometryVertexData2[2].x = -0.5f;
+			geometryVertexData2[2].y = 0.5f;
 			geometryVertexData2[2].z = 0.0f;
-		}
-		uint16_t indexData2[3] = {0, 1, 2};
-		//{0,2,1}
 
-		result = testGeometry2.Initialize(geometryVertexData2, 3, indexData2, 3);
+			geometryVertexData2[3].x = 0.0f;
+			geometryVertexData2[3].y = 0.0f;
+			geometryVertexData2[3].z = 0.0f;
+
+			geometryVertexData2[4].x = 0.0f;
+			geometryVertexData2[4].y = -1.0f;
+			geometryVertexData2[4].z = 0.0f;
+		}
+		uint16_t indexData2[9] = {0, 1, 3, 1, 2, 3, 0, 3, 4};
+		//{0, 3, 1, 1, 3, 2, 0, 4, 3};
+
+		result = testGeometry2.Initialize(geometryVertexData2, 5, indexData2, 9);
 
 		return result;
 	}

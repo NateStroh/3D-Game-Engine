@@ -1,6 +1,10 @@
 #include "../Geometry.h"
 #include <Engine/Logging/Logging.h>
 
+namespace {
+	void ReorderIndices(uint16_t* i_indexData, unsigned int i_indexCount);
+}
+
 eae6320::cResult eae6320::Graphics::Geometry::Initialize(eae6320::Graphics::VertexFormats::sVertex_mesh i_vertexData[], const unsigned int i_vertexCount, uint16_t i_indexData[], const unsigned int i_indexCount) {
 	auto result = eae6320::Results::Success;
 
@@ -116,6 +120,8 @@ eae6320::cResult eae6320::Graphics::Geometry::Initialize(eae6320::Graphics::Vert
 		for (unsigned int i = 0; i < i_indexCount; i++) {
 			m_indexData[i] = i_indexData[i];
 		}
+
+		ReorderIndices(m_indexData, m_indexCount);
 
 		const GLsizeiptr bufferSize = sizeof(m_indexData[0]) * i_indexCount;
 		EAE6320_ASSERT(bufferSize <= std::numeric_limits<GLsizeiptr>::max());
@@ -271,5 +277,25 @@ void eae6320::Graphics::Geometry::Draw() {
 		GLsizei indexCountToRender = m_indexCount;
 		glDrawElements(mode, indexCountToRender, GL_UNSIGNED_SHORT, offset);
 		EAE6320_ASSERT(glGetError() == GL_NO_ERROR);
+	}
+}
+
+namespace {
+	void ReorderIndices(uint16_t* i_indexData, unsigned int i_indexCount) {
+		unsigned int tempIndex = 0;
+		for (unsigned int i = 1; i < i_indexCount; i++) {
+			int mod = i % 3;
+			if (mod == 0) {
+				continue;
+			}
+			else if(mod == 1){
+				tempIndex = i_indexData[i];
+			}
+			else {
+				i_indexData[i - 1] = i_indexData[i];
+				i_indexData[i] = tempIndex;
+			}
+		}
+		return;
 	}
 }
