@@ -42,6 +42,32 @@ void eae6320::Graphics::GraphicsHelper::ClearBackGroundBuffers(float i_rValue, f
 	}
 }
 
+void eae6320::Graphics::GraphicsHelper::ClearBackGroundBuffers(Graphics::sColor i_color) {
+	auto* const direct3dImmediateContext = sContext::g_context.direct3dImmediateContext;
+	EAE6320_ASSERT(direct3dImmediateContext);
+
+	// Every frame an entirely new image will be created.
+	// Before drawing anything, then, the previous image will be erased
+	// by "clearing" the image buffer (filling it with a solid color)
+	{
+		EAE6320_ASSERT(s_renderTargetView);
+
+		// Black is usually used
+		float clearColor[4] = { i_color.Red, i_color.Green, i_color.Blue, i_color.Opacity};
+		direct3dImmediateContext->ClearRenderTargetView(s_renderTargetView, clearColor);
+	}
+	// In addition to the color buffer there is also a hidden image called the "depth buffer"
+	// which is used to make it less important which order draw calls are made.
+	// It must also be "cleared" every frame just like the visible color buffer.
+	{
+		EAE6320_ASSERT(s_depthStencilView);
+
+		constexpr float clearToFarDepth = 1.0f;
+		constexpr uint8_t stencilValue = 0;	// Arbitrary if stencil isn't used
+		direct3dImmediateContext->ClearDepthStencilView(s_depthStencilView, D3D11_CLEAR_DEPTH, clearToFarDepth, stencilValue);
+	}
+}
+
 void eae6320::Graphics::GraphicsHelper::Present() {
 	auto* const swapChain = sContext::g_context.swapChain;
 	EAE6320_ASSERT(swapChain);

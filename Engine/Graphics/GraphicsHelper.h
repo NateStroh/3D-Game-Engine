@@ -16,6 +16,8 @@ namespace eae6320
 
 			void ClearBackGroundBuffers(float i_rValue = 0, float i_gValue = 0, float i_bValue = 0, float i_aValue = 1);
 
+			void ClearBackGroundBuffers(Graphics::sColor i_color);
+
 			void Present();
 
 			cResult Initialize(const sInitializationParameters& i_initializationParameters);

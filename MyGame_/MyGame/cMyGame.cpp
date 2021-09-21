@@ -12,6 +12,10 @@
 // Run
 //----
 
+void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate) {
+	Graphics::SetBackGroundColor(1.0f, 0.0f, 1.0f, 1.0f);
+}
+
 void eae6320::cMyGame::UpdateBasedOnInput()
 {
 	// Is the user pressing the ESC key?

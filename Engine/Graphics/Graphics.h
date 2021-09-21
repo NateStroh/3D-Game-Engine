@@ -26,7 +26,19 @@ namespace eae6320
 	{
 		// Submission
 		//-----------
+		struct sColor {
+			float Red;
+			float Green;
+			float Blue;
+			float Opacity;
 
+			sColor(float i_redVal = 0.0f, float i_greenVal = 0.0f, float i_blueVal = 0.0f, float i_opacity = 1.0f) :
+				Red(i_redVal),
+				Green(i_greenVal),
+				Blue(i_blueVal),
+				Opacity(i_opacity)
+			{ };
+		};
 		// These functions should be called from the application (on the application loop thread)
 
 		// As the class progresses you will add your own functions for submitting data,
@@ -69,6 +81,10 @@ namespace eae6320
 
 		cResult Initialize( const sInitializationParameters& i_initializationParameters );
 		cResult CleanUp();
+
+		void SetBackGroundColor(float i_redVal = 0.0f, float i_greenVal = 0.0f, float i_blueVal = 0.0f, float i_opacity = 1.0f);
+		void SetBackGroundColor(sColor i_color);
+
 	}
 }
 

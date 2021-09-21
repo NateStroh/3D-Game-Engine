@@ -33,6 +33,7 @@ namespace
 	struct sDataRequiredToRenderAFrame
 	{
 		eae6320::Graphics::ConstantBufferFormats::sFrame constantData_frame;
+		eae6320::Graphics::sColor backgroundColor;
 	};
 	// In our class there will be two copies of the data required to render a frame:
 	//	* One of them will be in the process of being populated by the data currently being submitted by the application loop thread
@@ -130,7 +131,8 @@ void eae6320::Graphics::RenderFrame()
 		}
 	}
 
-	GraphicsHelper::ClearBackGroundBuffers(1, 0, 0, 1);
+	//TODO: MAY NEED TO GET FIXED
+	GraphicsHelper::ClearBackGroundBuffers(s_dataBeingRenderedByRenderThread->backgroundColor);
 
 	EAE6320_ASSERT(s_dataBeingRenderedByRenderThread);
 
@@ -264,6 +266,17 @@ eae6320::cResult eae6320::Graphics::CleanUp()
 	}
 
 	return result;
+}
+
+void eae6320::Graphics::SetBackGroundColor(float i_redVal, float i_greenVal, float i_blueVal, float i_opacity) {
+	s_dataBeingSubmittedByApplicationThread->backgroundColor.Red = i_redVal;
+	s_dataBeingSubmittedByApplicationThread->backgroundColor.Green = i_greenVal; 
+	s_dataBeingSubmittedByApplicationThread->backgroundColor.Blue = i_blueVal; 
+	s_dataBeingSubmittedByApplicationThread->backgroundColor.Opacity = i_opacity;
+}
+
+void eae6320::Graphics::SetBackGroundColor(sColor i_color) {
+	s_dataBeingSubmittedByApplicationThread->backgroundColor = i_color;
 }
 
 // Helper Definitions
