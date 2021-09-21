@@ -9,6 +9,8 @@
 #include "sContext.h"
 #include "VertexFormats.h"
 
+#include <Engine/Assets/ReferenceCountedAssets.h>
+
 #if defined( EAE6320_PLATFORM_WINDOWS )
 #include <Engine/Windows/Includes.h>
 #endif
@@ -30,7 +32,14 @@ namespace eae6320
 			cResult CleanUp();
 			void Bind();
 
+			Effect() = default;
+
+			EAE6320_ASSETS_DECLAREREFERENCECOUNTINGFUNCTIONS();
+
 		private:
+			EAE6320_ASSETS_DECLAREDELETEDREFERENCECOUNTEDFUNCTIONS(Effect);
+			EAE6320_ASSETS_DECLAREREFERENCECOUNT();
+
 			eae6320::Graphics::cShader* m_vertexShader = nullptr;
 			eae6320::Graphics::cShader* m_fragmentShader = nullptr;
 			eae6320::Graphics::cRenderState m_renderState;

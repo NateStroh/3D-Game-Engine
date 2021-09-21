@@ -131,7 +131,6 @@ void eae6320::Graphics::RenderFrame()
 		}
 	}
 
-	//TODO: MAY NEED TO GET FIXED
 	GraphicsHelper::ClearBackGroundBuffers(s_dataBeingRenderedByRenderThread->backgroundColor);
 
 	EAE6320_ASSERT(s_dataBeingRenderedByRenderThread);
