@@ -1,11 +1,6 @@
 #ifndef EAE6320_GRAPHICSHELPER_H
 #define EAE6320_GRAPHICSHELPER_H
 
-#include <Engine/Results/cResult.h>
-#include <Engine/Asserts/Asserts.h>
-#include <Engine/ScopeGuard/cScopeGuard.h>
-#include <Engine/Logging/Logging.h>
-
 #include "Graphics.h"
 
 namespace eae6320

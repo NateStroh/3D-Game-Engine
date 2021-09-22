@@ -10,7 +10,6 @@
 
 #include "Configuration.h"
 
-#include <cstdint>
 #include <Engine/Results/Results.h>
 
 #if defined( EAE6320_PLATFORM_WINDOWS )

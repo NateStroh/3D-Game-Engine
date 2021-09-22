@@ -1,6 +1,7 @@
 #include "../GraphicsHelper.h"
 #include "Includes.h"
 
+#include <Engine/Asserts/Asserts.h>
 #include <Engine/Graphics/sContext.h>
 
 namespace

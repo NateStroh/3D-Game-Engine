@@ -1,7 +1,10 @@
 #include "../GraphicsHelper.h"
 #include "Includes.h"
 
+#include <Engine/Asserts/Asserts.h>
 #include <Engine/Graphics/sContext.h>
+#include <Engine/Logging/Logging.h>
+#include <Engine/ScopeGuard/cScopeGuard.h>
 
 namespace
 {

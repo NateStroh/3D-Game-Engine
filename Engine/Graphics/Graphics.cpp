@@ -2,23 +2,16 @@
 
 #include "cConstantBuffer.h"
 #include "ConstantBufferFormats.h"
-#include "cRenderState.h"
-#include "cShader.h"
-#include "cVertexFormat.h"
 #include "sContext.h"
-#include "VertexFormats.h"
 
 #include <Engine/Asserts/Asserts.h>
 #include <Engine/Concurrency/cEvent.h>
 #include <Engine/Graphics/Geometry.h>
 #include <Engine/Graphics/GraphicsHelper.h>
 #include <Engine/Graphics/Effect.h>
-#include <Engine/Logging/Logging.h>
-#include <Engine/Platform/Platform.h>
-#include <Engine/ScopeGuard/cScopeGuard.h>
-#include <Engine/Time/Time.h>
 #include <Engine/UserOutput/UserOutput.h>
-#include <utility>
+#include <Engine/Logging/Logging.h>
+
 
 namespace
 {
