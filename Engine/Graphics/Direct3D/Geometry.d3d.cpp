@@ -1,5 +1,6 @@
 #include "../Geometry.h"
 #include <Engine/Logging/Logging.h>
+#include <Engine/Graphics/sContext.h>
 
 eae6320::cResult eae6320::Graphics::Geometry::Initialize(eae6320::Graphics::VertexFormats::sVertex_mesh i_vertexData[], const unsigned int i_vertexCount, uint16_t i_indexData[], const unsigned int i_indexCount) {
 	auto result = eae6320::Results::Success;
