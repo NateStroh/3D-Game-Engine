@@ -14,6 +14,8 @@
 
 void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate) {
 	Graphics::SetBackGroundColor(1.0f, 0.0f, 1.0f, 1.0f);
+	Graphics::AddGeometryEffectPair(testGeometry, testEffect, 0);
+	Graphics::AddGeometryEffectPair(testGeometry2, testEffect2, 1);
 }
 
 void eae6320::cMyGame::UpdateBasedOnInput()
@@ -58,22 +60,40 @@ void eae6320::cMyGame::UpdateBasedOnInput()
 eae6320::cResult eae6320::cMyGame::Initialize()
 {
 	eae6320::Logging::OutputMessage("Initializing MyGame");
+	auto result = Results::Success;
 	
+	// Initialize the shading data
+	{
+		if (!(result = InitializeShadingData()))
+		{
+			EAE6320_ASSERTF(false, "Can't initialize Graphics without the shading data");
+			return result;
+		}
+	}
+	// Initialize the geometry
+	{
+		if (!(result = InitializeGeometry()))
+		{
+			EAE6320_ASSERTF(false, "Can't initialize Graphics without the geometry data");
+			return result;
+		}
+	}
+
 	eae6320::Logging::OutputMessage("Finished Initializing MyGame");
-	return Results::Success;
+	return result;
 }
 
 eae6320::cResult eae6320::cMyGame::CleanUp()
 {
 	eae6320::Logging::OutputMessage("Cleaning Up MyGame");
 
-	/*//geometry cleanup
+	//geometry cleanup
 	testGeometry->DecrementReferenceCount();
 	testGeometry2->DecrementReferenceCount();
 	
 	//shader cleanup
 	testEffect->DecrementReferenceCount();
-	testEffect2->DecrementReferenceCount();*/
+	testEffect2->DecrementReferenceCount();
 
 	eae6320::Logging::OutputMessage("Finished Cleaning Up MyGame");
 	return Results::Success;
