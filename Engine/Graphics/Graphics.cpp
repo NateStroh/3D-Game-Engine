@@ -18,14 +18,14 @@ namespace
 
 	// Submission Data
 	//----------------
-
+	const unsigned int MAX_GEOMETRY_EFFECT_PAIRS = 500;
 	// This struct's data is populated at submission time;
 	// it must cache whatever is necessary in order to render a frame
-	struct sDataRequiredToRenderAFrame
-	{
+	struct sDataRequiredToRenderAFrame {
 		eae6320::Graphics::ConstantBufferFormats::sFrame constantData_frame;
 		eae6320::Graphics::sColor backgroundColor;
-		eae6320::Graphics::sGeometryEffectPair geometryEffectPairList[2];
+		eae6320::Graphics::sGeometryEffectPair geometryEffectPairList[MAX_GEOMETRY_EFFECT_PAIRS];
+		unsigned int geometryEffectPairsToRender = 0;
 	};
 	// In our class there will be two copies of the data required to render a frame:
 	//	* One of them will be in the process of being populated by the data currently being submitted by the application loop thread
@@ -103,9 +103,10 @@ void eae6320::Graphics::RenderFrame()
 		}
 	}
 
-	GraphicsHelper::ClearBackGroundBuffers(s_dataBeingRenderedByRenderThread->backgroundColor);
-
 	EAE6320_ASSERT(s_dataBeingRenderedByRenderThread);
+	EAE6320_ASSERT(s_dataBeingRenderedByRenderThread->geometryEffectPairsToRender < MAX_GEOMETRY_EFFECT_PAIRS);
+
+	GraphicsHelper::ClearBackGroundBuffers(s_dataBeingRenderedByRenderThread->backgroundColor);
 
 	// Update the frame constant buffer
 	{
@@ -114,25 +115,17 @@ void eae6320::Graphics::RenderFrame()
 		s_constantBuffer_frame.Update(&constantData_frame);
 	}
 
-	// Bind the shading data
-	{
-		s_dataBeingRenderedByRenderThread->geometryEffectPairList[0].effect->Bind();
-	}
-	// Draw the geometry
-	{
-		s_dataBeingRenderedByRenderThread->geometryEffectPairList[0].geometry->Draw();
-	}
-	// Bind the shading data
-	{
-		s_dataBeingRenderedByRenderThread->geometryEffectPairList[1].effect->Bind();
-	}
-	// Draw the geometry
-	{
-		s_dataBeingRenderedByRenderThread->geometryEffectPairList[1].geometry->Draw();
+	for (unsigned int i = 0; i < s_dataBeingRenderedByRenderThread->geometryEffectPairsToRender; i++) {
+		// Bind the shading data
+		s_dataBeingRenderedByRenderThread->geometryEffectPairList[i].effect->Bind();
+		
+		// Draw the geometry
+		s_dataBeingRenderedByRenderThread->geometryEffectPairList[i].geometry->Draw();
 	}
 
 	GraphicsHelper::Present();
 
+	s_dataBeingRenderedByRenderThread->geometryEffectPairsToRender = 0;
 }
 
 eae6320::cResult eae6320::Graphics::Initialize(const sInitializationParameters& i_initializationParameters)
@@ -187,14 +180,6 @@ eae6320::cResult eae6320::Graphics::CleanUp()
 
 	GraphicsHelper::CleanUp();
 
-	/*//geometry cleanup
-	testGeometry->DecrementReferenceCount();
-	testGeometry2->DecrementReferenceCount();
-
-	//shader cleanup
-	testEffect->DecrementReferenceCount();
-	testEffect2->DecrementReferenceCount();*/
-
 	{
 		const auto result_constantBuffer_frame = s_constantBuffer_frame.CleanUp();
 		if (!result_constantBuffer_frame)
@@ -233,7 +218,9 @@ void eae6320::Graphics::SetBackGroundColor(sColor i_color) {
 	s_dataBeingSubmittedByApplicationThread->backgroundColor = i_color;
 }
 
-void eae6320::Graphics::AddGeometryEffectPair(Geometry* i_geometry, Effect* i_effect, unsigned int i_index) {
-	s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[i_index].geometry = i_geometry;
-	s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[i_index].effect = i_effect;
+void eae6320::Graphics::AddGeometryEffectPair(Geometry* i_geometry, Effect* i_effect) {
+	EAE6320_ASSERT(s_dataBeingRenderedByRenderThread->geometryEffectPairsToRender < MAX_GEOMETRY_EFFECT_PAIRS);
+	s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender].geometry = i_geometry;
+	s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender].effect = i_effect;
+	s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender++;
 }

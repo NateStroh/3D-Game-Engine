@@ -14,8 +14,9 @@
 
 void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate) {
 	Graphics::SetBackGroundColor(1.0f, 0.0f, 1.0f, 1.0f);
-	Graphics::AddGeometryEffectPair(testGeometry, testEffect, 0);
-	Graphics::AddGeometryEffectPair(testGeometry2, testEffect2, 1);
+
+	Graphics::AddGeometryEffectPair(testGeometry, testEffect);
+	Graphics::AddGeometryEffectPair(testGeometry2, testEffect2);
 }
 
 void eae6320::cMyGame::UpdateBasedOnInput()

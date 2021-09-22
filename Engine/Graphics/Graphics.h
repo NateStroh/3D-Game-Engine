@@ -92,7 +92,7 @@ namespace eae6320
 		void SetBackGroundColor(float i_redVal = 0.0f, float i_greenVal = 0.0f, float i_blueVal = 0.0f, float i_opacity = 1.0f);
 		void SetBackGroundColor(sColor i_color);
 
-		void AddGeometryEffectPair(Geometry* i_geometry, Effect* i_effect, unsigned int i_index);
+		void AddGeometryEffectPair(Geometry* i_geometry, Effect* i_effect);
 	}
 }
 
