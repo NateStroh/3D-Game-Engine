@@ -1,4 +1,5 @@
 #include "../Effect.h"
+#include <Engine/Graphics/sContext.h>
 
 void eae6320::Graphics::Effect::Bind() {
 	auto* const direct3dImmediateContext = sContext::g_context.direct3dImmediateContext;

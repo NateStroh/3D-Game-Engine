@@ -2,12 +2,8 @@
 #define EAE6320_EFFECT_H
 
 #include "Configuration.h"
-#include "cConstantBuffer.h"
-#include "ConstantBufferFormats.h"
 #include "cRenderState.h"
 #include "cShader.h"
-#include "sContext.h"
-#include "VertexFormats.h"
 
 #include <Engine/Assets/ReferenceCountedAssets.h>
 
