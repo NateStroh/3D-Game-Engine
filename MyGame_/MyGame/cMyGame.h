@@ -12,6 +12,8 @@
 #include <Engine/Results/Results.h>
 #include <Engine/Logging/Logging.h>
 #include <Engine/Graphics/Graphics.h>
+#include <Engine/Graphics/Effect.h>
+#include <Engine/Graphics/Geometry.h>
 
 #if defined( EAE6320_PLATFORM_WINDOWS )
 	#include "Resource Files/Resource.h"
@@ -81,6 +83,20 @@ namespace eae6320
 		cResult Initialize() final;
 		cResult CleanUp() final;
 
+		eae6320::cResult InitializeGeometry();
+		eae6320::cResult InitializeShadingData();
+
+		// Geometry Data
+		//--------------
+
+		eae6320::Graphics::Geometry* testGeometry;
+		eae6320::Graphics::Geometry* testGeometry2;
+
+		// Shading Data
+		//-------------
+
+		eae6320::Graphics::Effect* testEffect;
+		eae6320::Graphics::Effect* testEffect2;
 	};
 }
 

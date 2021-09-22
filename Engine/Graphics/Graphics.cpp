@@ -6,9 +6,7 @@
 
 #include <Engine/Asserts/Asserts.h>
 #include <Engine/Concurrency/cEvent.h>
-#include <Engine/Graphics/Geometry.h>
 #include <Engine/Graphics/GraphicsHelper.h>
-#include <Engine/Graphics/Effect.h>
 #include <Engine/UserOutput/UserOutput.h>
 #include <Engine/Logging/Logging.h>
 
@@ -27,6 +25,7 @@ namespace
 	{
 		eae6320::Graphics::ConstantBufferFormats::sFrame constantData_frame;
 		eae6320::Graphics::sColor backgroundColor;
+		eae6320::Graphics::sGeometryEffectPair geometryEffectPairList[2];
 	};
 	// In our class there will be two copies of the data required to render a frame:
 	//	* One of them will be in the process of being populated by the data currently being submitted by the application loop thread
@@ -277,6 +276,11 @@ void eae6320::Graphics::SetBackGroundColor(float i_redVal, float i_greenVal, flo
 
 void eae6320::Graphics::SetBackGroundColor(sColor i_color) {
 	s_dataBeingSubmittedByApplicationThread->backgroundColor = i_color;
+}
+
+void eae6320::Graphics::AddGeometryEffectPair(Geometry* i_geometry, Effect* i_effect, unsigned int i_index) {
+	s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[i_index].geometry = i_geometry;
+	s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[i_index].effect = i_effect;
 }
 
 // Helper Definitions

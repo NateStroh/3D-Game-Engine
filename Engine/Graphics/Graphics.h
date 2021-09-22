@@ -11,6 +11,8 @@
 #include "Configuration.h"
 
 #include <Engine/Results/Results.h>
+#include <Engine/Graphics/Effect.h>
+#include <Engine/Graphics/Geometry.h>
 
 #if defined( EAE6320_PLATFORM_WINDOWS )
 	#include <Engine/Windows/Includes.h>
@@ -38,6 +40,12 @@ namespace eae6320
 				Opacity(i_opacity)
 			{ };
 		};
+
+		struct sGeometryEffectPair {
+			Geometry* geometry = nullptr;
+			Effect* effect = nullptr;
+		};
+
 		// These functions should be called from the application (on the application loop thread)
 
 		// As the class progresses you will add your own functions for submitting data,
@@ -84,6 +92,7 @@ namespace eae6320
 		void SetBackGroundColor(float i_redVal = 0.0f, float i_greenVal = 0.0f, float i_blueVal = 0.0f, float i_opacity = 1.0f);
 		void SetBackGroundColor(sColor i_color);
 
+		void AddGeometryEffectPair(Geometry* i_geometry, Effect* i_effect, unsigned int i_index);
 	}
 }
 
