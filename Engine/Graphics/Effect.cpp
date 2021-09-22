@@ -62,3 +62,17 @@ eae6320::cResult eae6320::Graphics::Effect::CleanUp()
 
 	return result;
 }
+
+eae6320::Graphics::Effect::~Effect() {
+	CleanUp();
+}
+
+eae6320::cResult eae6320::Graphics::Effect::MakeEffect(std::string i_vertexShaderLocation, std::string i_fragmentShaderLocation, Effect*& o_effect) {
+	auto result = eae6320::Results::Success;
+
+	Effect* effect = new Effect();
+	result = effect->Initialize(i_vertexShaderLocation, i_fragmentShaderLocation);
+	o_effect = effect;
+
+	return result;
+}

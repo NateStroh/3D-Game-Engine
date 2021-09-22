@@ -56,14 +56,14 @@ namespace
 	// Geometry Data
 	//--------------
 
-	eae6320::Graphics::Geometry testGeometry;
-	eae6320::Graphics::Geometry testGeometry2;
+	eae6320::Graphics::Geometry* testGeometry;
+	eae6320::Graphics::Geometry* testGeometry2;
 
 	// Shading Data
 	//-------------
 
-	eae6320::Graphics::Effect testEffect;
-	eae6320::Graphics::Effect testEffect2;
+	eae6320::Graphics::Effect* testEffect;
+	eae6320::Graphics::Effect* testEffect2;
 }
 
 // Helper Declarations
@@ -144,19 +144,19 @@ void eae6320::Graphics::RenderFrame()
 
 	// Bind the shading data
 	{
-		testEffect.Bind();
+		testEffect->Bind();
 	}
 	// Draw the geometry
 	{
-		testGeometry.Draw();
+		testGeometry->Draw();
 	}
 	// Bind the shading data
 	{
-		testEffect2.Bind();
+		testEffect2->Bind();
 	}
 	// Draw the geometry
 	{
-		testGeometry2.Draw();
+		testGeometry2->Draw();
 	}
 
 	GraphicsHelper::Present();
@@ -232,13 +232,21 @@ eae6320::cResult eae6320::Graphics::CleanUp()
 
 	GraphicsHelper::CleanUp();
 
+	////geometry cleanup
+	//testGeometry.CleanUp();
+	//testGeometry2.CleanUp();
+	//
+	////shader cleanup
+	//testEffect.CleanUp();
+	//testEffect2.CleanUp();
+
 	//geometry cleanup
-	testGeometry.CleanUp();
-	testGeometry2.CleanUp();
+	testGeometry->DecrementReferenceCount();
+	testGeometry2->DecrementReferenceCount();
 
 	//shader cleanup
-	testEffect.CleanUp();
-	testEffect2.CleanUp();
+	testEffect->DecrementReferenceCount();
+	testEffect2->DecrementReferenceCount();
 
 	{
 		const auto result_constantBuffer_frame = s_constantBuffer_frame.CleanUp();
@@ -308,7 +316,8 @@ namespace
 		uint16_t indexData[6] = {0, 1, 2, 0, 2, 3};
 		//{0, 3, 2, 0, 2, 1};
 
-		auto result = testGeometry.Initialize(geometryVertexData, 4, indexData, 6);
+		//auto result = testGeometry.Initialize(geometryVertexData, 4, indexData, 6);
+		auto result = eae6320::Graphics::Geometry::MakeGeometry(geometryVertexData, 4, indexData, 6, testGeometry);
 		if (!result)
 			return result;
 
@@ -338,18 +347,21 @@ namespace
 		uint16_t indexData2[9] = {0, 1, 3, 1, 2, 3, 0, 3, 4};
 		//{0, 3, 1, 1, 3, 2, 0, 4, 3};
 
-		result = testGeometry2.Initialize(geometryVertexData2, 5, indexData2, 9);
+		//result = testGeometry2.Initialize(geometryVertexData2, 5, indexData2, 9);
+		result = eae6320::Graphics::Geometry::MakeGeometry(geometryVertexData2, 5, indexData2, 9, testGeometry2);
 
 		return result;
 	}
 
 	eae6320::cResult InitializeShadingData()
 	{
-		auto result = testEffect.Initialize("data/Shaders/Vertex/standard.shader", "data/Shaders/Fragment/animatedColor.shader");
+		//auto result = testEffect.Initialize("data/Shaders/Vertex/standard.shader", "data/Shaders/Fragment/animatedColor.shader");
+		auto result = eae6320::Graphics::Effect::MakeEffect("data/Shaders/Vertex/standard.shader", "data/Shaders/Fragment/animatedColor.shader", testEffect);
 		if (!result)
 			return result;
 
-		result = testEffect2.Initialize("data/Shaders/Vertex/standard.shader", "data/Shaders/Fragment/standard.shader");
+		//result = testEffect2.Initialize("data/Shaders/Vertex/standard.shader", "data/Shaders/Fragment/standard.shader");
+		result = eae6320::Graphics::Effect::MakeEffect("data/Shaders/Vertex/standard.shader", "data/Shaders/Fragment/standard.shader", testEffect2);
 
 		return result;
 	}

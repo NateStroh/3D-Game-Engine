@@ -28,17 +28,21 @@ namespace eae6320
 		class Effect
 		{
 		public:
-			cResult Initialize(std::string i_vertexShaderLocation, std::string i_fragmentShaderLocation);
-			cResult CleanUp();
 			void Bind();
 
-			Effect() = default;
+			static cResult MakeEffect(std::string i_vertexShaderLocation, std::string i_fragmentShaderLocation, Effect*& o_effect);
 
 			EAE6320_ASSETS_DECLAREREFERENCECOUNTINGFUNCTIONS();
 
 		private:
 			EAE6320_ASSETS_DECLAREDELETEDREFERENCECOUNTEDFUNCTIONS(Effect);
 			EAE6320_ASSETS_DECLAREREFERENCECOUNT();
+
+			cResult Initialize(std::string i_vertexShaderLocation, std::string i_fragmentShaderLocation);
+			cResult CleanUp();
+
+			Effect() = default;
+			~Effect();
 
 			eae6320::Graphics::cShader* m_vertexShader = nullptr;
 			eae6320::Graphics::cShader* m_fragmentShader = nullptr;

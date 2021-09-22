@@ -36,21 +36,21 @@ namespace eae6320
 		class Geometry
 		{
 		public:
-			cResult Initialize(eae6320::Graphics::VertexFormats::sVertex_mesh i_vertexData[], const unsigned int i_vertexCount, uint16_t i_indexData[], const unsigned int i_indexCount);
-			cResult CleanUp();
 			void Draw(); 
 
-			static Geometry* MakeGeometry();
-
-			Geometry() = default;
-			//Geometry(const Geometry&) = delete;
-			//Geometry& operator=(const Geometry&) = delete;
-
+			static cResult MakeGeometry(eae6320::Graphics::VertexFormats::sVertex_mesh i_vertexData[], const unsigned int i_vertexCount, uint16_t i_indexData[], const unsigned int i_indexCount, Geometry*& o_geometry);
+			
 			EAE6320_ASSETS_DECLAREREFERENCECOUNTINGFUNCTIONS();
 
 		private:
 			EAE6320_ASSETS_DECLAREDELETEDREFERENCECOUNTEDFUNCTIONS(Geometry);
 			EAE6320_ASSETS_DECLAREREFERENCECOUNT();
+
+			cResult Initialize(eae6320::Graphics::VertexFormats::sVertex_mesh i_vertexData[], const unsigned int i_vertexCount, uint16_t i_indexData[], const unsigned int i_indexCount);
+			cResult CleanUp();
+
+			Geometry() = default;
+			~Geometry();
 
 #if defined( EAE6320_PLATFORM_D3D )
 			cVertexFormat* m_vertexFormat = nullptr;
