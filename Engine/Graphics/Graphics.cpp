@@ -185,6 +185,15 @@ eae6320::cResult eae6320::Graphics::CleanUp()
 {
 	auto result = Results::Success;
 
+	//clearing any data that was waiting to be submitted
+	for (unsigned int i = 0; i < s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender; i++) {
+		s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[i].effect->DecrementReferenceCount();
+		s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[i].geometry->DecrementReferenceCount();
+		s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[i].effect = nullptr;
+		s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[i].geometry = nullptr;
+	}
+	s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender = 0;
+
 	GraphicsHelper::CleanUp();
 
 	{
@@ -210,15 +219,6 @@ eae6320::cResult eae6320::Graphics::CleanUp()
 			}
 		}
 	}
-
-	//clearing any data that was waiting to be submitting
-	for (unsigned int i = 0; i < s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender; i++) {
-		s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[i].effect->DecrementReferenceCount();
-		s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[i].geometry->DecrementReferenceCount();
-		s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[i].effect = nullptr;
-		s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[i].geometry = nullptr;
-	}
-	s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender = 0;
 
 	return result;
 }
