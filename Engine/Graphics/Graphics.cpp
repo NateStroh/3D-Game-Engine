@@ -83,6 +83,7 @@ void eae6320::Graphics::RenderFrame()
 			// Switch the render data pointers so that
 			// the data that the application just submitted becomes the data that will now be rendered
 			std::swap(s_dataBeingSubmittedByApplicationThread, s_dataBeingRenderedByRenderThread);
+			s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender = 0;
 			// Once the pointers have been swapped the application loop can submit new data
 			if (!s_whenDataForANewFrameCanBeSubmittedFromApplicationThread.Signal())
 			{

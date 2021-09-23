@@ -76,6 +76,7 @@ namespace eae6320
 		//----
 
 		void UpdateBasedOnInput() final;
+		void UpdateSimulationBasedOnInput() final;
 
 		// Initialize / Clean Up
 		//----------------------
@@ -86,18 +87,16 @@ namespace eae6320
 		eae6320::cResult InitializeGeometry();
 		eae6320::cResult InitializeShadingData();
 
+		bool spacepressed = false;
+		bool shiftpressed = false;
+
 		// Geometry Data
 		//--------------
-
 		eae6320::Graphics::Geometry* geometryArray[30];
-		//eae6320::Graphics::Geometry* testGeometry;
-		//eae6320::Graphics::Geometry* testGeometry2;
-
+	
 		// Shading Data
 		//-------------
 		eae6320::Graphics::Effect* effectArray[30];
-		//eae6320::Graphics::Effect* testEffect;
-		//eae6320::Graphics::Effect* testEffect2;
 	};
 }
 

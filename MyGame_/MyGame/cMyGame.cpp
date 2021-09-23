@@ -14,19 +14,35 @@
 
 void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate) {
 	Graphics::SetBackGroundColor(1.0f, 0.0f, 1.0f, 1.0f);
+	
+	if (spacepressed) {
+		geometryArray[2]->IncrementReferenceCount();
+		effectArray[0]->IncrementReferenceCount();
 
-	geometryArray[0]->IncrementReferenceCount();
-	geometryArray[1]->IncrementReferenceCount();
-	effectArray[0]->IncrementReferenceCount();
-	effectArray[1]->IncrementReferenceCount();
+		Graphics::AddGeometryEffectPair(geometryArray[2], effectArray[0]);
 
-	Graphics::AddGeometryEffectPair(geometryArray[0], effectArray[0]);
-	Graphics::AddGeometryEffectPair(geometryArray[1], effectArray[1]);
+		geometryArray[2]->DecrementReferenceCount();
+		effectArray[0]->DecrementReferenceCount();
+	}
+	else {
+		geometryArray[0]->IncrementReferenceCount();
+		effectArray[0]->IncrementReferenceCount();
 
-	geometryArray[0]->DecrementReferenceCount();
-	geometryArray[1]->DecrementReferenceCount();
-	effectArray[0]->DecrementReferenceCount();
-	effectArray[1]->DecrementReferenceCount();
+		Graphics::AddGeometryEffectPair(geometryArray[0], effectArray[0]);
+		
+		geometryArray[0]->DecrementReferenceCount();
+		effectArray[0]->DecrementReferenceCount();
+	}
+
+	if (!shiftpressed) {
+		geometryArray[1]->IncrementReferenceCount();
+		effectArray[1]->IncrementReferenceCount();
+
+		Graphics::AddGeometryEffectPair(geometryArray[1], effectArray[1]);
+
+		geometryArray[1]->DecrementReferenceCount();
+		effectArray[1]->DecrementReferenceCount();
+	}
 }
 
 void eae6320::cMyGame::UpdateBasedOnInput()
@@ -65,6 +81,22 @@ void eae6320::cMyGame::UpdateBasedOnInput()
 
 }
 
+void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
+	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Space)) {
+		spacepressed = true;
+	}
+	else {
+		spacepressed = false;
+	}
+
+	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Shift)) {
+		shiftpressed = true;
+	}
+	else {
+		shiftpressed = false;
+	}
+}
+
 // Initialize / Clean Up
 //----------------------
 
@@ -101,8 +133,10 @@ eae6320::cResult eae6320::cMyGame::CleanUp()
 	//geometry cleanup
 	geometryArray[0]->DecrementReferenceCount();
 	geometryArray[1]->DecrementReferenceCount();
+	geometryArray[2]->DecrementReferenceCount();
 	geometryArray[0] = nullptr;
 	geometryArray[1] = nullptr;
+	geometryArray[2] = nullptr;
 
 	//shader cleanup
 	effectArray[0]->DecrementReferenceCount();
@@ -168,6 +202,55 @@ eae6320::cResult eae6320::cMyGame::InitializeGeometry() {
 	//{0, 3, 1, 1, 3, 2, 0, 4, 3};
 
 	result = eae6320::Graphics::Geometry::MakeGeometry(geometryVertexData2, 5, indexData2, 9, geometryArray[1]);
+
+	//third mesh
+	eae6320::Graphics::VertexFormats::sVertex_mesh geometryVertexData3[10];
+	{
+		geometryVertexData3[0].x = 0.0f;
+		geometryVertexData3[0].y = -1.0f;
+		geometryVertexData3[0].z = 0.0f;
+
+		geometryVertexData3[1].x = 0.0f;
+		geometryVertexData3[1].y = 0.0f;
+		geometryVertexData3[1].z = 0.0f;
+						  
+		geometryVertexData3[2].x = 0.2f;
+		geometryVertexData3[2].y = 0.0f;
+		geometryVertexData3[2].z = 0.0f;
+						  
+		geometryVertexData3[3].x = 0.2f;
+		geometryVertexData3[3].y = -0.2f;
+		geometryVertexData3[3].z = 0.0f;
+						  
+		geometryVertexData3[4].x = 0.2f;
+		geometryVertexData3[4].y = -1.0f;
+		geometryVertexData3[4].z = 0.0f;
+						  
+		geometryVertexData3[5].x = 0.8f;
+		geometryVertexData3[5].y = -1.0f;
+		geometryVertexData3[5].z = 0.0f;
+						  
+		geometryVertexData3[6].x = 0.8f;
+		geometryVertexData3[6].y = -0.8f;
+		geometryVertexData3[6].z = 0.0f;
+						  
+		geometryVertexData3[7].x = 0.8f;
+		geometryVertexData3[7].y = 0.0f;
+		geometryVertexData3[7].z = 0.0f;
+						  
+		geometryVertexData3[8].x = 1.0f;
+		geometryVertexData3[8].y = 0.0f;
+		geometryVertexData3[8].z = 0.0f;
+						  
+		geometryVertexData3[9].x = 1.0f;
+		geometryVertexData3[9].y = -1.0f;
+		geometryVertexData3[9].z = 0.0f;
+	}
+	uint16_t indexData3[18] = { 0, 1, 2, 0, 2, 4,
+								3, 2, 5, 5, 2, 6,
+								5, 7, 8, 5, 8, 9 };
+
+	result = eae6320::Graphics::Geometry::MakeGeometry(geometryVertexData3, 10, indexData3, 18, geometryArray[2]);
 
 	return result;
 }
