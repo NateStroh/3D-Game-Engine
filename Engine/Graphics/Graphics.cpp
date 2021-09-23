@@ -234,10 +234,18 @@ void eae6320::Graphics::SetBackGroundColor(sColor i_color) {
 }
 
 void eae6320::Graphics::AddGeometryEffectPair(Geometry* i_geometry, Effect* i_effect) {
-	EAE6320_ASSERT(s_dataBeingRenderedByRenderThread->geometryEffectPairsToRender < MAX_GEOMETRY_EFFECT_PAIRS);
-	i_geometry->IncrementReferenceCount();
-	i_effect->IncrementReferenceCount();
-	s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender].geometry = i_geometry;
-	s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender].effect = i_effect;
-	s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender++;
+#ifdef _DEBUG
+	EAE6320_ASSERT(s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender < MAX_GEOMETRY_EFFECT_PAIRS);
+#endif
+	if (s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender < MAX_GEOMETRY_EFFECT_PAIRS) {
+		i_geometry->IncrementReferenceCount();
+		i_effect->IncrementReferenceCount();
+		s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender].geometry = i_geometry;
+		s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender].effect = i_effect;
+		s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender++;
+
+	}
+	else {
+		Logging::OutputError("Went over the mesh/effect limit - offending item was not submitted to be rendered\n");
+	}
 }
