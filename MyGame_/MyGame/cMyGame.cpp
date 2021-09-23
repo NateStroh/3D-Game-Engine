@@ -15,8 +15,18 @@
 void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate) {
 	Graphics::SetBackGroundColor(1.0f, 0.0f, 1.0f, 1.0f);
 
-	Graphics::AddGeometryEffectPair(testGeometry, testEffect);
-	Graphics::AddGeometryEffectPair(testGeometry2, testEffect2);
+	geometryArray[0]->IncrementReferenceCount();
+	geometryArray[1]->IncrementReferenceCount();
+	effectArray[0]->IncrementReferenceCount();
+	effectArray[1]->IncrementReferenceCount();
+
+	Graphics::AddGeometryEffectPair(geometryArray[0], effectArray[0]);
+	Graphics::AddGeometryEffectPair(geometryArray[1], effectArray[1]);
+
+	geometryArray[0]->DecrementReferenceCount();
+	geometryArray[1]->DecrementReferenceCount();
+	effectArray[0]->DecrementReferenceCount();
+	effectArray[1]->DecrementReferenceCount();
 }
 
 void eae6320::cMyGame::UpdateBasedOnInput()
@@ -89,12 +99,16 @@ eae6320::cResult eae6320::cMyGame::CleanUp()
 	eae6320::Logging::OutputMessage("Cleaning Up MyGame");
 
 	//geometry cleanup
-	testGeometry->DecrementReferenceCount();
-	testGeometry2->DecrementReferenceCount();
-	
+	geometryArray[0]->DecrementReferenceCount();
+	geometryArray[1]->DecrementReferenceCount();
+	geometryArray[0] = nullptr;
+	geometryArray[1] = nullptr;
+
 	//shader cleanup
-	testEffect->DecrementReferenceCount();
-	testEffect2->DecrementReferenceCount();
+	effectArray[0]->DecrementReferenceCount();
+	effectArray[1]->DecrementReferenceCount();
+	effectArray[0] = nullptr;
+	effectArray[1] = nullptr;
 
 	eae6320::Logging::OutputMessage("Finished Cleaning Up MyGame");
 	return Results::Success;
@@ -123,7 +137,7 @@ eae6320::cResult eae6320::cMyGame::InitializeGeometry() {
 	uint16_t indexData[6] = { 0, 1, 2, 0, 2, 3 };
 	//{0, 3, 2, 0, 2, 1};
 
-	auto result = eae6320::Graphics::Geometry::MakeGeometry(geometryVertexData, 4, indexData, 6, testGeometry);
+	auto result = eae6320::Graphics::Geometry::MakeGeometry(geometryVertexData, 4, indexData, 6, geometryArray[0]);
 	if (!result)
 		return result;
 
@@ -153,17 +167,17 @@ eae6320::cResult eae6320::cMyGame::InitializeGeometry() {
 	uint16_t indexData2[9] = { 0, 1, 3, 1, 2, 3, 0, 3, 4 };
 	//{0, 3, 1, 1, 3, 2, 0, 4, 3};
 
-	result = eae6320::Graphics::Geometry::MakeGeometry(geometryVertexData2, 5, indexData2, 9, testGeometry2);
+	result = eae6320::Graphics::Geometry::MakeGeometry(geometryVertexData2, 5, indexData2, 9, geometryArray[1]);
 
 	return result;
 }
 
 eae6320::cResult eae6320::cMyGame::InitializeShadingData() {
-	auto result = eae6320::Graphics::Effect::MakeEffect("data/Shaders/Vertex/standard.shader", "data/Shaders/Fragment/animatedColor.shader", testEffect);
+	auto result = eae6320::Graphics::Effect::MakeEffect("data/Shaders/Vertex/standard.shader", "data/Shaders/Fragment/animatedColor.shader", effectArray[0]);
 	if (!result)
 		return result;
 
-	result = eae6320::Graphics::Effect::MakeEffect("data/Shaders/Vertex/standard.shader", "data/Shaders/Fragment/standard.shader", testEffect2);
+	result = eae6320::Graphics::Effect::MakeEffect("data/Shaders/Vertex/standard.shader", "data/Shaders/Fragment/standard.shader", effectArray[1]);
 
 	return result;
 }

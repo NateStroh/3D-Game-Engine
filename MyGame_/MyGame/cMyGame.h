@@ -89,14 +89,15 @@ namespace eae6320
 		// Geometry Data
 		//--------------
 
-		eae6320::Graphics::Geometry* testGeometry;
-		eae6320::Graphics::Geometry* testGeometry2;
+		eae6320::Graphics::Geometry* geometryArray[30];
+		//eae6320::Graphics::Geometry* testGeometry;
+		//eae6320::Graphics::Geometry* testGeometry2;
 
 		// Shading Data
 		//-------------
-
-		eae6320::Graphics::Effect* testEffect;
-		eae6320::Graphics::Effect* testEffect2;
+		eae6320::Graphics::Effect* effectArray[30];
+		//eae6320::Graphics::Effect* testEffect;
+		//eae6320::Graphics::Effect* testEffect2;
 	};
 }
 

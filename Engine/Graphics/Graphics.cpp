@@ -104,7 +104,6 @@ void eae6320::Graphics::RenderFrame()
 	}
 
 	EAE6320_ASSERT(s_dataBeingRenderedByRenderThread);
-	EAE6320_ASSERT(s_dataBeingRenderedByRenderThread->geometryEffectPairsToRender < MAX_GEOMETRY_EFFECT_PAIRS);
 
 	GraphicsHelper::ClearBackGroundBuffers(s_dataBeingRenderedByRenderThread->backgroundColor);
 
@@ -125,6 +124,13 @@ void eae6320::Graphics::RenderFrame()
 
 	GraphicsHelper::Present();
 
+	//clearing render frame before it's swapped back so the next frame will start clear
+	for (unsigned int i = 0; i < s_dataBeingRenderedByRenderThread->geometryEffectPairsToRender; i++) {
+		s_dataBeingRenderedByRenderThread->geometryEffectPairList[i].effect->DecrementReferenceCount();
+		s_dataBeingRenderedByRenderThread->geometryEffectPairList[i].geometry->DecrementReferenceCount();
+		s_dataBeingRenderedByRenderThread->geometryEffectPairList[i].effect = nullptr;
+		s_dataBeingRenderedByRenderThread->geometryEffectPairList[i].geometry = nullptr;
+	}
 	s_dataBeingRenderedByRenderThread->geometryEffectPairsToRender = 0;
 }
 
@@ -204,6 +210,15 @@ eae6320::cResult eae6320::Graphics::CleanUp()
 		}
 	}
 
+	//clearing any data that was waiting to be submitting
+	for (unsigned int i = 0; i < s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender; i++) {
+		s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[i].effect->DecrementReferenceCount();
+		s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[i].geometry->DecrementReferenceCount();
+		s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[i].effect = nullptr;
+		s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[i].geometry = nullptr;
+	}
+	s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender = 0;
+
 	return result;
 }
 
@@ -220,6 +235,8 @@ void eae6320::Graphics::SetBackGroundColor(sColor i_color) {
 
 void eae6320::Graphics::AddGeometryEffectPair(Geometry* i_geometry, Effect* i_effect) {
 	EAE6320_ASSERT(s_dataBeingRenderedByRenderThread->geometryEffectPairsToRender < MAX_GEOMETRY_EFFECT_PAIRS);
+	i_geometry->IncrementReferenceCount();
+	i_effect->IncrementReferenceCount();
 	s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender].geometry = i_geometry;
 	s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender].effect = i_effect;
 	s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender++;
