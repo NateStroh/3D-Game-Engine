@@ -15,34 +15,31 @@
 void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate) {
 	Graphics::SetBackGroundColor(1.0f, 0.0f, 1.0f, 1.0f);
 	
+	geometryArray[2]->IncrementReferenceCount();
+	effectArray[0]->IncrementReferenceCount();
+	effectArray[1]->IncrementReferenceCount();
+
 	if (spacepressed) {
-		geometryArray[2]->IncrementReferenceCount();
-		effectArray[0]->IncrementReferenceCount();
-
 		Graphics::AddGeometryEffectPair(geometryArray[2], effectArray[0]);
-
-		geometryArray[2]->DecrementReferenceCount();
-		effectArray[0]->DecrementReferenceCount();
 	}
 	else {
-		geometryArray[0]->IncrementReferenceCount();
-		effectArray[0]->IncrementReferenceCount();
-
-		Graphics::AddGeometryEffectPair(geometryArray[0], effectArray[0]);
-		
-		geometryArray[0]->DecrementReferenceCount();
-		effectArray[0]->DecrementReferenceCount();
+		Graphics::AddGeometryEffectPair(geometryArray[2], effectArray[1]);
 	}
 
 	if (!shiftpressed) {
+		geometryArray[0]->IncrementReferenceCount();
 		geometryArray[1]->IncrementReferenceCount();
-		effectArray[1]->IncrementReferenceCount();
 
+		Graphics::AddGeometryEffectPair(geometryArray[0], effectArray[0]);
 		Graphics::AddGeometryEffectPair(geometryArray[1], effectArray[1]);
 
+		geometryArray[0]->DecrementReferenceCount();
 		geometryArray[1]->DecrementReferenceCount();
-		effectArray[1]->DecrementReferenceCount();
 	}
+
+	geometryArray[2]->DecrementReferenceCount();
+	effectArray[0]->DecrementReferenceCount();
+	effectArray[1]->DecrementReferenceCount();
 }
 
 void eae6320::cMyGame::UpdateBasedOnInput()
