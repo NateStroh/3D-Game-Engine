@@ -15,6 +15,7 @@ namespace
 {
 	// Constant buffer object
 	eae6320::Graphics::cConstantBuffer s_constantBuffer_frame(eae6320::Graphics::ConstantBufferTypes::Frame);
+	eae6320::Graphics::cConstantBuffer s_constantBuffer_drawCall(eae6320::Graphics::ConstantBufferTypes::DrawCall);
 
 	// Submission Data
 	//----------------
@@ -23,6 +24,7 @@ namespace
 	// it must cache whatever is necessary in order to render a frame
 	struct sDataRequiredToRenderAFrame {
 		eae6320::Graphics::ConstantBufferFormats::sFrame constantData_frame;
+		eae6320::Graphics::ConstantBufferFormats::sDrawCall constantData_drawCall;
 		eae6320::Graphics::sColor backgroundColor;
 		eae6320::Graphics::sGeometryEffectPair geometryEffectPairList[MAX_GEOMETRY_EFFECT_PAIRS];
 		unsigned int geometryEffectPairsToRender = 0;
@@ -113,6 +115,9 @@ void eae6320::Graphics::RenderFrame()
 		// Copy the data from the system memory that the application owns to GPU memory
 		auto& constantData_frame = s_dataBeingRenderedByRenderThread->constantData_frame;
 		s_constantBuffer_frame.Update(&constantData_frame);
+
+		auto& constantData_drawCall = s_dataBeingRenderedByRenderThread->constantData_drawCall;
+		s_constantBuffer_drawCall.Update(&constantData_drawCall);
 	}
 
 	for (unsigned int i = 0; i < s_dataBeingRenderedByRenderThread->geometryEffectPairsToRender; i++) {
@@ -133,6 +138,7 @@ void eae6320::Graphics::RenderFrame()
 		s_dataBeingRenderedByRenderThread->geometryEffectPairList[i].geometry = nullptr;
 	}
 	s_dataBeingRenderedByRenderThread->geometryEffectPairsToRender = 0;
+	//s_dataBeingRenderedByRenderThread->constantData_drawCall.g_transform_localToWorld = eae6320::Math::cMatrix_transformation();
 }
 
 eae6320::cResult eae6320::Graphics::Initialize(const sInitializationParameters& i_initializationParameters)
@@ -158,6 +164,22 @@ eae6320::cResult eae6320::Graphics::Initialize(const sInitializationParameters& 
 		else
 		{
 			EAE6320_ASSERTF(false, "Can't initialize Graphics without frame constant buffer");
+			return result;
+		}
+	}
+	// Initialize the platform-independent graphics objects
+	{
+		if (result = s_constantBuffer_drawCall.Initialize())
+		{
+			// There is only a single frame constant buffer that is reused
+			// and so it can be bound at initialization time and never unbound
+			s_constantBuffer_drawCall.Bind(
+				// In our class both vertex and fragment shaders use per-frame constant data
+				static_cast<uint_fast8_t>(eShaderType::Vertex) | static_cast<uint_fast8_t>(eShaderType::Fragment));
+		}
+		else
+		{
+			EAE6320_ASSERTF(false, "Can't initialize Graphics without drawCall constant buffer");
 			return result;
 		}
 	}
@@ -209,6 +231,18 @@ eae6320::cResult eae6320::Graphics::CleanUp()
 	}
 
 	{
+		const auto result_constantBuffer_drawCall = s_constantBuffer_drawCall.CleanUp();
+		if (!result_constantBuffer_drawCall)
+		{
+			EAE6320_ASSERT(false);
+			if (result)
+			{
+				result = result_constantBuffer_drawCall;
+			}
+		}
+	}
+
+	{
 		const auto result_context = sContext::g_context.CleanUp();
 		if (!result_context)
 		{
@@ -249,4 +283,8 @@ void eae6320::Graphics::AddGeometryEffectPair(Geometry* i_geometry, Effect* i_ef
 	else {
 		Logging::OutputError("Went over the mesh/effect limit - offending item was not submitted to be rendered\n");
 	}
+}
+
+void eae6320::Graphics::SetDrawCallData(Math::cMatrix_transformation i_transform) {
+	s_dataBeingSubmittedByApplicationThread->constantData_drawCall.g_transform_localToWorld = i_transform;
 }

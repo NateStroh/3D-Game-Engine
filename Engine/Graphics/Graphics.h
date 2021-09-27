@@ -13,6 +13,7 @@
 #include <Engine/Results/Results.h>
 #include <Engine/Graphics/Effect.h>
 #include <Engine/Graphics/Geometry.h>
+#include <Engine/Math/cMatrix_transformation.h>
 
 #if defined( EAE6320_PLATFORM_WINDOWS )
 	#include <Engine/Windows/Includes.h>
@@ -93,6 +94,8 @@ namespace eae6320
 		void SetBackGroundColor(sColor i_color);
 
 		void AddGeometryEffectPair(Geometry* i_geometry, Effect* i_effect);
+
+		void SetDrawCallData(Math::cMatrix_transformation i_transform);
 	}
 }
 

@@ -5,6 +5,7 @@
 
 #include <Engine/Asserts/Asserts.h>
 #include <Engine/UserInput/UserInput.h>
+#include <Engine/Math/cMatrix_transformation.h>
 
 // Inherited Implementation
 //=========================
@@ -15,7 +16,7 @@
 void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate) {
 	Graphics::SetBackGroundColor(1.0f, 0.0f, 1.0f, 1.0f);
 	
-	geometryArray[2]->IncrementReferenceCount();
+	/*geometryArray[2]->IncrementReferenceCount();
 	effectArray[0]->IncrementReferenceCount();
 	effectArray[1]->IncrementReferenceCount();
 
@@ -39,7 +40,15 @@ void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_s
 
 	geometryArray[2]->DecrementReferenceCount();
 	effectArray[0]->DecrementReferenceCount();
-	effectArray[1]->DecrementReferenceCount();
+	effectArray[1]->DecrementReferenceCount();*/
+	m_gameObject.m_geometry->IncrementReferenceCount();
+	m_gameObject.m_effect->IncrementReferenceCount();
+
+	Graphics::AddGeometryEffectPair(m_gameObject.m_geometry, m_gameObject.m_effect);
+	Graphics::SetDrawCallData(m_gameObject.m_rigidBody.PredictFutureTransform(i_elapsedSecondCount_sinceLastSimulationUpdate));
+
+	m_gameObject.m_geometry->DecrementReferenceCount();
+	m_gameObject.m_effect->DecrementReferenceCount();
 }
 
 void eae6320::cMyGame::UpdateBasedOnInput()
@@ -92,6 +101,16 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 	else {
 		shiftpressed = false;
 	}
+	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Up)) {
+		m_gameObject.m_rigidBody.velocity = { 10.0f, 0.0f, 0.0f };
+	}
+	else {
+		m_gameObject.m_rigidBody.velocity = { 0.0f, 0.0f, 0.0f };
+	}
+}
+
+void eae6320::cMyGame::UpdateSimulationBasedOnTime(const float i_elapsedSecondCount_sinceLastUpdate) {
+	m_gameObject.m_rigidBody.Update(i_elapsedSecondCount_sinceLastUpdate);
 }
 
 // Initialize / Clean Up
