@@ -101,7 +101,7 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 {
 	eae6320::Logging::OutputMessage("Initializing MyGame");
 	auto result = Results::Success;
-	
+
 	// Initialize the shading data
 	{
 		if (!(result = InitializeShadingData()))
@@ -118,6 +118,10 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 			return result;
 		}
 	}
+
+	m_gameObject.m_geometry = geometryArray[2];
+	m_gameObject.m_effect = effectArray[0];
+	m_gameObject.m_rigidBody;
 
 	eae6320::Logging::OutputMessage("Finished Initializing MyGame");
 	return result;

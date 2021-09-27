@@ -14,6 +14,7 @@
 #include <Engine/Graphics/Graphics.h>
 #include <Engine/Graphics/Effect.h>
 #include <Engine/Graphics/Geometry.h>
+#include <Engine/Application/GameObject.h>
 
 #if defined( EAE6320_PLATFORM_WINDOWS )
 	#include "Resource Files/Resource.h"
@@ -97,6 +98,8 @@ namespace eae6320
 		// Shading Data
 		//-------------
 		eae6320::Graphics::Effect* effectArray[30];
+
+		eae6320::Application::GameObject m_gameObject;
 	};
 }
 
