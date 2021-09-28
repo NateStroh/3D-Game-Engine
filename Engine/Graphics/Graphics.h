@@ -9,6 +9,7 @@
 //=========
 
 #include "Configuration.h"
+#include "ConstantBufferFormats.h"
 
 #include <Engine/Results/Results.h>
 #include <Engine/Graphics/Effect.h>
@@ -45,6 +46,7 @@ namespace eae6320
 		struct sGeometryEffectPair {
 			Geometry* geometry = nullptr;
 			Effect* effect = nullptr;
+			eae6320::Graphics::ConstantBufferFormats::sDrawCall constantData_drawCall;
 		};
 
 		// These functions should be called from the application (on the application loop thread)
@@ -93,9 +95,7 @@ namespace eae6320
 		void SetBackGroundColor(float i_redVal = 0.0f, float i_greenVal = 0.0f, float i_blueVal = 0.0f, float i_opacity = 1.0f);
 		void SetBackGroundColor(sColor i_color);
 
-		void AddGeometryEffectPair(Geometry* i_geometry, Effect* i_effect);
-
-		void SetDrawCallData(Math::cMatrix_transformation i_transform);
+		void AddGeometryEffectPair(Geometry* i_geometry, Math::cMatrix_transformation i_transform, Effect* i_effect);
 	}
 }
 

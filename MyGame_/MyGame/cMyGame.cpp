@@ -44,8 +44,7 @@ void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_s
 	m_gameObject.m_geometry->IncrementReferenceCount();
 	m_gameObject.m_effect->IncrementReferenceCount();
 
-	Graphics::AddGeometryEffectPair(m_gameObject.m_geometry, m_gameObject.m_effect);
-	Graphics::SetDrawCallData(m_gameObject.m_rigidBody.PredictFutureTransform(i_elapsedSecondCount_sinceLastSimulationUpdate));
+	Graphics::AddGeometryEffectPair(m_gameObject.m_geometry, m_gameObject.m_rigidBody.PredictFutureTransform(i_elapsedSecondCount_sinceLastSimulationUpdate), m_gameObject.m_effect);
 
 	m_gameObject.m_geometry->DecrementReferenceCount();
 	m_gameObject.m_effect->DecrementReferenceCount();

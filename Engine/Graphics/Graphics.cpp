@@ -1,7 +1,7 @@
 #include "Graphics.h"
 
 #include "cConstantBuffer.h"
-#include "ConstantBufferFormats.h"
+
 #include "sContext.h"
 
 #include <Engine/Asserts/Asserts.h>
@@ -24,7 +24,6 @@ namespace
 	// it must cache whatever is necessary in order to render a frame
 	struct sDataRequiredToRenderAFrame {
 		eae6320::Graphics::ConstantBufferFormats::sFrame constantData_frame;
-		eae6320::Graphics::ConstantBufferFormats::sDrawCall constantData_drawCall;
 		eae6320::Graphics::sColor backgroundColor;
 		eae6320::Graphics::sGeometryEffectPair geometryEffectPairList[MAX_GEOMETRY_EFFECT_PAIRS];
 		unsigned int geometryEffectPairsToRender = 0;
@@ -115,12 +114,14 @@ void eae6320::Graphics::RenderFrame()
 		// Copy the data from the system memory that the application owns to GPU memory
 		auto& constantData_frame = s_dataBeingRenderedByRenderThread->constantData_frame;
 		s_constantBuffer_frame.Update(&constantData_frame);
-
-		auto& constantData_drawCall = s_dataBeingRenderedByRenderThread->constantData_drawCall;
-		s_constantBuffer_drawCall.Update(&constantData_drawCall);
 	}
 
 	for (unsigned int i = 0; i < s_dataBeingRenderedByRenderThread->geometryEffectPairsToRender; i++) {
+		s_constantBuffer_frame.Bind(static_cast<uint_fast8_t>(eShaderType::Vertex) | static_cast<uint_fast8_t>(eShaderType::Fragment));
+
+		auto& constantData_drawCall = s_dataBeingRenderedByRenderThread->geometryEffectPairList[i].constantData_drawCall;
+		s_constantBuffer_drawCall.Update(&constantData_drawCall);
+		
 		// Bind the shading data
 		s_dataBeingRenderedByRenderThread->geometryEffectPairList[i].effect->Bind();
 		
@@ -157,9 +158,8 @@ eae6320::cResult eae6320::Graphics::Initialize(const sInitializationParameters& 
 		{
 			// There is only a single frame constant buffer that is reused
 			// and so it can be bound at initialization time and never unbound
-			s_constantBuffer_frame.Bind(
-				// In our class both vertex and fragment shaders use per-frame constant data
-				static_cast<uint_fast8_t>(eShaderType::Vertex) | static_cast<uint_fast8_t>(eShaderType::Fragment));
+			// In our class both vertex and fragment shaders use per-frame constant data
+			s_constantBuffer_frame.Bind(static_cast<uint_fast8_t>(eShaderType::Vertex) | static_cast<uint_fast8_t>(eShaderType::Fragment));
 		}
 		else
 		{
@@ -268,7 +268,7 @@ void eae6320::Graphics::SetBackGroundColor(sColor i_color) {
 	s_dataBeingSubmittedByApplicationThread->backgroundColor = i_color;
 }
 
-void eae6320::Graphics::AddGeometryEffectPair(Geometry* i_geometry, Effect* i_effect) {
+void eae6320::Graphics::AddGeometryEffectPair(Geometry* i_geometry, Math::cMatrix_transformation i_transform, Effect* i_effect) {
 #ifdef _DEBUG
 	EAE6320_ASSERT(s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender < MAX_GEOMETRY_EFFECT_PAIRS);
 #endif
@@ -276,6 +276,7 @@ void eae6320::Graphics::AddGeometryEffectPair(Geometry* i_geometry, Effect* i_ef
 		i_geometry->IncrementReferenceCount();
 		i_effect->IncrementReferenceCount();
 		s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender].geometry = i_geometry;
+		s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender].constantData_drawCall.g_transform_localToWorld = i_transform;
 		s_dataBeingSubmittedByApplicationThread->geometryEffectPairList[s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender].effect = i_effect;
 		s_dataBeingSubmittedByApplicationThread->geometryEffectPairsToRender++;
 
@@ -285,6 +286,3 @@ void eae6320::Graphics::AddGeometryEffectPair(Geometry* i_geometry, Effect* i_ef
 	}
 }
 
-void eae6320::Graphics::SetDrawCallData(Math::cMatrix_transformation i_transform) {
-	s_dataBeingSubmittedByApplicationThread->constantData_drawCall.g_transform_localToWorld = i_transform;
-}
