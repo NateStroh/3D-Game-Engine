@@ -117,11 +117,11 @@ void eae6320::Graphics::RenderFrame()
 	}
 
 	for (unsigned int i = 0; i < s_dataBeingRenderedByRenderThread->geometryEffectPairsToRender; i++) {
-		s_constantBuffer_frame.Bind(static_cast<uint_fast8_t>(eShaderType::Vertex) | static_cast<uint_fast8_t>(eShaderType::Fragment));
+		s_constantBuffer_drawCall.Bind(static_cast<uint_fast8_t>(eShaderType::Vertex) | static_cast<uint_fast8_t>(eShaderType::Fragment));
 
 		auto& constantData_drawCall = s_dataBeingRenderedByRenderThread->geometryEffectPairList[i].constantData_drawCall;
 		s_constantBuffer_drawCall.Update(&constantData_drawCall);
-		
+
 		// Bind the shading data
 		s_dataBeingRenderedByRenderThread->geometryEffectPairList[i].effect->Bind();
 		

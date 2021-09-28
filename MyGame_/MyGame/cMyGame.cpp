@@ -102,7 +102,7 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 		shiftpressed = false;
 	}
 	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Up)) {
-		m_gameObject.m_rigidBody.velocity = { 10.0f, 0.0f, 0.0f };
+		m_gameObject.m_rigidBody.velocity = { 1.0f, 0.0f, 0.0f };
 	}
 	else {
 		m_gameObject.m_rigidBody.velocity = { 0.0f, 0.0f, 0.0f };
