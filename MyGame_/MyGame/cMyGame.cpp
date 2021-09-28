@@ -102,7 +102,16 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 		shiftpressed = false;
 	}
 	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Up)) {
-		m_gameObject.m_rigidBody.velocity = { 1.0f, 0.0f, 0.0f };
+		m_gameObject.m_rigidBody.velocity += { 0.0f, 1.0f, 0.0f };
+	}
+	else if (UserInput::IsKeyPressed(UserInput::KeyCodes::Down)) {
+		m_gameObject.m_rigidBody.velocity += { 0.0f, -1.0f, 0.0f };
+	}
+	else  if (UserInput::IsKeyPressed(UserInput::KeyCodes::Right)) {
+		m_gameObject.m_rigidBody.velocity += { 1.0f, 0.0f, 0.0f };
+	}
+	else if (UserInput::IsKeyPressed(UserInput::KeyCodes::Left)) {
+		m_gameObject.m_rigidBody.velocity += { -1.0f, 0.0f, 0.0f };
 	}
 	else {
 		m_gameObject.m_rigidBody.velocity = { 0.0f, 0.0f, 0.0f };
