@@ -44,7 +44,8 @@ void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_s
 	m_gameObject.m_geometry->IncrementReferenceCount();
 	m_gameObject.m_effect->IncrementReferenceCount();
 
-	Graphics::AddGeometryEffectPair(m_gameObject.m_geometry, m_gameObject.m_rigidBody.PredictFutureTransform(i_elapsedSecondCount_sinceLastSimulationUpdate), m_gameObject.m_effect);
+	auto predictedTransform = m_gameObject.m_rigidBody.PredictFutureTransform(i_elapsedSecondCount_sinceLastSimulationUpdate);
+	Graphics::AddGeometryEffectPair(m_gameObject.m_geometry, predictedTransform , m_gameObject.m_effect);
 
 	m_gameObject.m_geometry->DecrementReferenceCount();
 	m_gameObject.m_effect->DecrementReferenceCount();
@@ -60,29 +61,29 @@ void eae6320::cMyGame::UpdateBasedOnInput()
 		EAE6320_ASSERT( result );
 	}
 
-	//pauses simulation
-	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Down))
-	{
-		eae6320::Application::iApplication::SetSimulationRate(0);
-	}
-
-	//resumes - sets it to regular speed
-	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Up))
-	{
-		eae6320::Application::iApplication::SetSimulationRate(1);
-	}
-
-	//fast forward
-	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Right))
-	{
-		eae6320::Application::iApplication::SetSimulationRate(2);
-	}
-
-	//slow mo
-	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Left))
-	{
-		eae6320::Application::iApplication::SetSimulationRate(.5);
-	}
+	////pauses simulation
+	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Down))
+	//{
+	//	eae6320::Application::iApplication::SetSimulationRate(0);
+	//}
+	//
+	////resumes - sets it to regular speed
+	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Up))
+	//{
+	//	eae6320::Application::iApplication::SetSimulationRate(1);
+	//}
+	//
+	////fast forward
+	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Right))
+	//{
+	//	eae6320::Application::iApplication::SetSimulationRate(2);
+	//}
+	//
+	////slow mo
+	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Left))
+	//{
+	//	eae6320::Application::iApplication::SetSimulationRate(.5);
+	//}
 
 }
 
