@@ -14,6 +14,7 @@
 #include <Engine/Results/Results.h>
 #include <Engine/Graphics/Effect.h>
 #include <Engine/Graphics/Geometry.h>
+#include <Engine/Application/CameraObject.h>
 #include <Engine/Math/cMatrix_transformation.h>
 
 #if defined( EAE6320_PLATFORM_WINDOWS )
@@ -96,7 +97,7 @@ namespace eae6320
 		void SetBackGroundColor(sColor i_color);
 
 		void AddGeometryEffectPair(Geometry* i_geometry, Math::cMatrix_transformation i_transform, Effect* i_effect);
-		void SetCamera(Math::cMatrix_transformation i_transform);
+		void SetCamera(Math::cMatrix_transformation i_transform, eae6320::Application::sCameraData i_cameraData);
 	}
 }
 

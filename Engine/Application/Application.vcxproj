@@ -19,11 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CameraObject.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="iApplication.cpp" />
     <ClCompile Include="Windows\iApplication.win.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CameraObject.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="iApplication.h" />
     <ClInclude Include="Windows\iApplication.win.h" />

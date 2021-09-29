@@ -117,7 +117,7 @@ void eae6320::Graphics::RenderFrame()
 	}
 
 	for (unsigned int i = 0; i < s_dataBeingRenderedByRenderThread->geometryEffectPairsToRender; i++) {
-		s_constantBuffer_drawCall.Bind(static_cast<uint_fast8_t>(eShaderType::Vertex) | static_cast<uint_fast8_t>(eShaderType::Fragment));
+		//s_constantBuffer_drawCall.Bind(static_cast<uint_fast8_t>(eShaderType::Vertex) | static_cast<uint_fast8_t>(eShaderType::Fragment));
 
 		auto& constantData_drawCall = s_dataBeingRenderedByRenderThread->geometryEffectPairList[i].constantData_drawCall;
 		s_constantBuffer_drawCall.Update(&constantData_drawCall);
@@ -285,13 +285,12 @@ void eae6320::Graphics::AddGeometryEffectPair(Geometry* i_geometry, Math::cMatri
 	}
 }
 
-void eae6320::Graphics::SetCamera(Math::cMatrix_transformation i_transform) {
+void eae6320::Graphics::SetCamera(Math::cMatrix_transformation i_transform, eae6320::Application::sCameraData i_cameraData) {
 	s_dataBeingRenderedByRenderThread->constantData_frame.g_transform_worldToCamera = Math::cMatrix_transformation::CreateWorldToCameraTransform(i_transform);
 	s_dataBeingRenderedByRenderThread->constantData_frame.g_transform_cameraToProjected = Math::cMatrix_transformation::CreateCameraToProjectedTransform_perspective(
-		Math::ConvertDegreesToRadians(45.0f),
-		1.0f,
-		0.1f,
-		10.0f
-	);
+		i_cameraData.verticalFieldOfView_inRadians,
+		i_cameraData.aspectRatio,
+		i_cameraData.z_nearPlane, 
+		i_cameraData.z_farPlane);
 }
 

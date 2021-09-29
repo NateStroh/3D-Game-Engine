@@ -26,7 +26,7 @@ void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_s
 	}
 
 	auto predictedCameraTransform = m_mainCamera.m_rigidBody.PredictFutureTransform(i_elapsedSecondCount_sinceLastSimulationUpdate);
-	Graphics::SetCamera(predictedCameraTransform);
+	Graphics::SetCamera(predictedCameraTransform, m_mainCamera.m_cameraData);
 
 	m_gameObject.m_geometry->IncrementReferenceCount();
 	m_gameObject.m_effect->IncrementReferenceCount();
@@ -36,6 +36,16 @@ void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_s
 
 	m_gameObject.m_geometry->DecrementReferenceCount();
 	m_gameObject.m_effect->DecrementReferenceCount();
+
+	m_gameObject2.m_geometry->IncrementReferenceCount();
+	m_gameObject2.m_effect->IncrementReferenceCount();
+
+	predictedTransform = m_gameObject2.m_rigidBody.PredictFutureTransform(i_elapsedSecondCount_sinceLastSimulationUpdate);
+	Graphics::AddGeometryEffectPair(m_gameObject2.m_geometry, predictedTransform, m_gameObject2.m_effect);
+
+	m_gameObject2.m_geometry->DecrementReferenceCount();
+	m_gameObject2.m_effect->DecrementReferenceCount();
+
 }
 
 void eae6320::cMyGame::UpdateBasedOnInput()
@@ -141,8 +151,10 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 	m_gameObject.m_effect = effectArray[0];
 	m_gameObject.m_rigidBody;
 
-	m_mainCamera.m_geometry = nullptr;
-	m_mainCamera.m_effect = nullptr;
+	m_gameObject2.m_geometry = geometryArray[1];
+	m_gameObject2.m_effect = effectArray[1];
+	m_gameObject2.m_rigidBody;
+
 	m_mainCamera.m_rigidBody.position = {0,0,5};
 
 	eae6320::Logging::OutputMessage("Finished Initializing MyGame");

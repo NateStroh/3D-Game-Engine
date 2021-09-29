@@ -15,6 +15,7 @@
 #include <Engine/Graphics/Effect.h>
 #include <Engine/Graphics/Geometry.h>
 #include <Engine/Application/GameObject.h>
+#include <Engine/Application/CameraObject.h>
 
 #if defined( EAE6320_PLATFORM_WINDOWS )
 	#include "Resource Files/Resource.h"
@@ -100,7 +101,8 @@ namespace eae6320
 		eae6320::Graphics::Effect* effectArray[30];
 
 		eae6320::Application::GameObject m_gameObject;
-		eae6320::Application::GameObject m_mainCamera;
+		eae6320::Application::GameObject m_gameObject2;
+		eae6320::Application::CameraObject m_mainCamera;
 	};
 }
 
