@@ -16,7 +16,6 @@ namespace eae6320
 	{
 		class GameObject {
 		public:
-			//SHOULD MOVE TO PRIVATE!
 			eae6320::Graphics::Geometry* m_geometry;
 			eae6320::Graphics::Effect* m_effect;
 			eae6320::Physics::sRigidBodyState m_rigidBody;

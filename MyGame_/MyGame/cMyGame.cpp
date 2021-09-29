@@ -15,32 +15,16 @@
 
 void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate) {
 	Graphics::SetBackGroundColor(1.0f, 0.0f, 1.0f, 1.0f);
-	
-	/*geometryArray[2]->IncrementReferenceCount();
-	effectArray[0]->IncrementReferenceCount();
-	effectArray[1]->IncrementReferenceCount();
 
-	if (spacepressed) {
-		Graphics::AddGeometryEffectPair(geometryArray[2], effectArray[0]);
+	if(shiftpressed){
+		m_gameObject.m_geometry = geometryArray[2];
+		m_gameObject.m_effect = effectArray[0];
 	}
 	else {
-		Graphics::AddGeometryEffectPair(geometryArray[2], effectArray[1]);
+		m_gameObject.m_geometry = geometryArray[0];
+		m_gameObject.m_effect = effectArray[1];
 	}
 
-	if (!shiftpressed) {
-		geometryArray[0]->IncrementReferenceCount();
-		geometryArray[1]->IncrementReferenceCount();
-
-		Graphics::AddGeometryEffectPair(geometryArray[0], effectArray[0]);
-		Graphics::AddGeometryEffectPair(geometryArray[1], effectArray[1]);
-
-		geometryArray[0]->DecrementReferenceCount();
-		geometryArray[1]->DecrementReferenceCount();
-	}
-
-	geometryArray[2]->DecrementReferenceCount();
-	effectArray[0]->DecrementReferenceCount();
-	effectArray[1]->DecrementReferenceCount();*/
 	m_gameObject.m_geometry->IncrementReferenceCount();
 	m_gameObject.m_effect->IncrementReferenceCount();
 
@@ -61,29 +45,14 @@ void eae6320::cMyGame::UpdateBasedOnInput()
 		EAE6320_ASSERT( result );
 	}
 	
-	////pauses simulation
-	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Down))
-	//{
-	//	eae6320::Application::iApplication::SetSimulationRate(0);
-	//}
-	//
-	////resumes - sets it to regular speed
-	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Up))
-	//{
-	//	eae6320::Application::iApplication::SetSimulationRate(1);
-	//}
-	//
-	////fast forward
-	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Right))
-	//{
-	//	eae6320::Application::iApplication::SetSimulationRate(2);
-	//}
-	//
-	////slow mo
-	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Left))
-	//{
-	//	eae6320::Application::iApplication::SetSimulationRate(.5);
-	//}
+	//pauses simulation
+	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Space)) {
+		eae6320::Application::iApplication::SetSimulationRate(0);
+	}
+	else {
+		eae6320::Application::iApplication::SetSimulationRate(1);
+	}
+
 
 }
 
@@ -94,13 +63,13 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 	else {
 		spacepressed = false;
 	}
-
 	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Shift)) {
 		shiftpressed = true;
 	}
 	else {
 		shiftpressed = false;
 	}
+
 	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Up)) {
 		m_gameObject.m_rigidBody.velocity += { 0.0f, 1.0f, 0.0f };
 	}
@@ -112,9 +81,6 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 	}
 	else if (UserInput::IsKeyPressed(UserInput::KeyCodes::Left)) {
 		m_gameObject.m_rigidBody.velocity += { -1.0f, 0.0f, 0.0f };
-	}
-	else {
-		m_gameObject.m_rigidBody.velocity = { 0.0f, 0.0f, 0.0f };
 	}
 }
 
