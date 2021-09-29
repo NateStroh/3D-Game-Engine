@@ -25,6 +25,9 @@ void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_s
 		m_gameObject.m_effect = effectArray[1];
 	}
 
+	auto predictedCameraTransform = m_mainCamera.m_rigidBody.PredictFutureTransform(i_elapsedSecondCount_sinceLastSimulationUpdate);
+	Graphics::SetCamera(predictedCameraTransform);
+
 	m_gameObject.m_geometry->IncrementReferenceCount();
 	m_gameObject.m_effect->IncrementReferenceCount();
 
@@ -73,19 +76,40 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Up)) {
 		m_gameObject.m_rigidBody.velocity += { 0.0f, 1.0f, 0.0f };
 	}
-	else if (UserInput::IsKeyPressed(UserInput::KeyCodes::Down)) {
+	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Down)) {
 		m_gameObject.m_rigidBody.velocity += { 0.0f, -1.0f, 0.0f };
 	}
-	else  if (UserInput::IsKeyPressed(UserInput::KeyCodes::Right)) {
+	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Right)) {
 		m_gameObject.m_rigidBody.velocity += { 1.0f, 0.0f, 0.0f };
 	}
-	else if (UserInput::IsKeyPressed(UserInput::KeyCodes::Left)) {
+	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Left)) {
 		m_gameObject.m_rigidBody.velocity += { -1.0f, 0.0f, 0.0f };
 	}
+
+	if (UserInput::IsKeyPressed('W')) {
+		m_mainCamera.m_rigidBody.velocity += { 0.0f, 1.0f, 0.0f };
+	}
+	if (UserInput::IsKeyPressed('S')) {
+		m_mainCamera.m_rigidBody.velocity += { 0.0f, -1.0f, 0.0f };
+	}
+	if (UserInput::IsKeyPressed('D')) {
+		m_mainCamera.m_rigidBody.velocity += { 1.0f, 0.0f, 0.0f };
+	}
+	if (UserInput::IsKeyPressed('A')) {
+		m_mainCamera.m_rigidBody.velocity += { -1.0f, 0.0f, 0.0f };
+	}
+	if (UserInput::IsKeyPressed('X')) {
+		m_mainCamera.m_rigidBody.velocity += { 0.0f, 0.0f, 1.0f };
+	}
+	if (UserInput::IsKeyPressed('Z')) {
+		m_mainCamera.m_rigidBody.velocity += { 0.0f, 0.0f, -1.0f };
+	}
+
 }
 
 void eae6320::cMyGame::UpdateSimulationBasedOnTime(const float i_elapsedSecondCount_sinceLastUpdate) {
 	m_gameObject.m_rigidBody.Update(i_elapsedSecondCount_sinceLastUpdate);
+	m_mainCamera.m_rigidBody.Update(i_elapsedSecondCount_sinceLastUpdate);
 }
 
 // Initialize / Clean Up
@@ -116,6 +140,10 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 	m_gameObject.m_geometry = geometryArray[2];
 	m_gameObject.m_effect = effectArray[0];
 	m_gameObject.m_rigidBody;
+
+	m_mainCamera.m_geometry = nullptr;
+	m_mainCamera.m_effect = nullptr;
+	m_mainCamera.m_rigidBody.position = {0,0,5};
 
 	eae6320::Logging::OutputMessage("Finished Initializing MyGame");
 	return result;

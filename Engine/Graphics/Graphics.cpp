@@ -9,7 +9,7 @@
 #include <Engine/Graphics/GraphicsHelper.h>
 #include <Engine/UserOutput/UserOutput.h>
 #include <Engine/Logging/Logging.h>
-
+#include <Engine/Math/Functions.h>
 
 namespace
 {
@@ -139,7 +139,6 @@ void eae6320::Graphics::RenderFrame()
 		s_dataBeingRenderedByRenderThread->geometryEffectPairList[i].geometry = nullptr;
 	}
 	s_dataBeingRenderedByRenderThread->geometryEffectPairsToRender = 0;
-	//s_dataBeingRenderedByRenderThread->constantData_drawCall.g_transform_localToWorld = eae6320::Math::cMatrix_transformation();
 }
 
 eae6320::cResult eae6320::Graphics::Initialize(const sInitializationParameters& i_initializationParameters)
@@ -284,5 +283,15 @@ void eae6320::Graphics::AddGeometryEffectPair(Geometry* i_geometry, Math::cMatri
 	else {
 		Logging::OutputError("Went over the mesh/effect limit - offending item was not submitted to be rendered\n");
 	}
+}
+
+void eae6320::Graphics::SetCamera(Math::cMatrix_transformation i_transform) {
+	s_dataBeingRenderedByRenderThread->constantData_frame.g_transform_worldToCamera = Math::cMatrix_transformation::CreateWorldToCameraTransform(i_transform);
+	s_dataBeingRenderedByRenderThread->constantData_frame.g_transform_cameraToProjected = Math::cMatrix_transformation::CreateCameraToProjectedTransform_perspective(
+		Math::ConvertDegreesToRadians(45.0f),
+		1.0f,
+		0.1f,
+		10.0f
+	);
 }
 

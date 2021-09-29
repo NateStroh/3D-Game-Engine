@@ -100,6 +100,7 @@ namespace eae6320
 		eae6320::Graphics::Effect* effectArray[30];
 
 		eae6320::Application::GameObject m_gameObject;
+		eae6320::Application::GameObject m_mainCamera;
 	};
 }
 

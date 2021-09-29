@@ -96,6 +96,7 @@ namespace eae6320
 		void SetBackGroundColor(sColor i_color);
 
 		void AddGeometryEffectPair(Geometry* i_geometry, Math::cMatrix_transformation i_transform, Effect* i_effect);
+		void SetCamera(Math::cMatrix_transformation i_transform);
 	}
 }
 
