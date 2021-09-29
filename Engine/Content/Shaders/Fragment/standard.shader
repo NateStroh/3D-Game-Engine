@@ -6,17 +6,6 @@
 
 #include <Shaders/shaders.inc>
 
-#if defined( EAE6320_PLATFORM_D3D )
-	#define mat4 float4x4
-	#define vec2 float2
-	#define vec4 float4
-#elif defined( EAE6320_PLATFORM_GL )
-	#define float4x4 mat4
-	#define float2 vec2
-	#define float4 vec4
-	out vec4 o_color;
-#endif
-
 // Constant Buffers
 //=================
 

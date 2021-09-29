@@ -60,7 +60,7 @@ void eae6320::cMyGame::UpdateBasedOnInput()
 		const auto result = Exit( EXIT_SUCCESS );
 		EAE6320_ASSERT( result );
 	}
-
+	
 	////pauses simulation
 	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Down))
 	//{

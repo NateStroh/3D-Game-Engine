@@ -10,23 +10,6 @@
 
 #include <Shaders/shaders.inc>
 
-#if defined( EAE6320_PLATFORM_D3D )
-	#define MULT(i_local, i_localToWorld) mul(i_local, i_localToWorld)
-	#define OUTPUT o_vertexPosition_projected
-	#define mat4 float4x4
-	#define vec2 float2
-	#define vec3 float3
-	#define vec4 float4
-#elif defined( EAE6320_PLATFORM_GL )
-	#define MULT(i_local, i_localToWorld) i_local * i_localToWorld
-	#define OUTPUT gl_Position
-	#define float4x4 mat4
-	#define float2 vec2
-	#define float3 vec3
-	#define float4 vec4
-	layout(location = 0) in vec3 i_vertexPosition_local;
-#endif
-
 // Constant Buffers
 //=================
 DeclareConstantBuffer(g_constantBuffer_frame, 0)
@@ -72,15 +55,14 @@ void main(
 	{
 		// This will be done in a future assignment.
 		// For now, however, local space is treated as if it is the same as world space.
-		float4 vertexPosition_local = float4( i_vertexPosition_local, 1.0 );
-		vertexPosition_world = MULT(vertexPosition_local, g_transform_localToWorld);
+		float4 vertexPosition_local = float4(i_vertexPosition_local, 1.0);
+		vertexPosition_world = MULT(g_transform_localToWorld, vertexPosition_local);
 	}
 	// Calculate the position of this vertex projected onto the display
 	{
 		// Transform the vertex from world space into camera space
-		float4 vertexPosition_camera = MULT( g_transform_worldToCamera, vertexPosition_world );
+		float4 vertexPosition_camera = MULT(g_transform_worldToCamera, vertexPosition_world);
 		// Project the vertex from camera space into projected space
-		OUTPUT = MULT( g_transform_cameraToProjected, vertexPosition_camera );
+		OUTPUT = MULT(g_transform_cameraToProjected, vertexPosition_camera);
 	}
 }
-
