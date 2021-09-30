@@ -242,43 +242,43 @@ eae6320::cResult eae6320::cMyGame::InitializeGeometry() {
 	eae6320::Graphics::VertexFormats::sVertex_mesh geometryVertexData3[10];
 	{
 		geometryVertexData3[0].x = 0.0f;
-		geometryVertexData3[0].y = -1.0f;
+		geometryVertexData3[0].y = 0.0f;
 		geometryVertexData3[0].z = 0.0f;
 
 		geometryVertexData3[1].x = 0.0f;
-		geometryVertexData3[1].y = 0.0f;
+		geometryVertexData3[1].y = 1.0f;
 		geometryVertexData3[1].z = 0.0f;
 						  
 		geometryVertexData3[2].x = 0.2f;
-		geometryVertexData3[2].y = 0.0f;
+		geometryVertexData3[2].y = 1.0f;
 		geometryVertexData3[2].z = 0.0f;
 						  
 		geometryVertexData3[3].x = 0.2f;
-		geometryVertexData3[3].y = -0.2f;
+		geometryVertexData3[3].y = 0.8f;
 		geometryVertexData3[3].z = 0.0f;
 						  
 		geometryVertexData3[4].x = 0.2f;
-		geometryVertexData3[4].y = -1.0f;
+		geometryVertexData3[4].y = 0.0f;
 		geometryVertexData3[4].z = 0.0f;
 						  
 		geometryVertexData3[5].x = 0.8f;
-		geometryVertexData3[5].y = -1.0f;
+		geometryVertexData3[5].y = 0.0f;
 		geometryVertexData3[5].z = 0.0f;
 						  
 		geometryVertexData3[6].x = 0.8f;
-		geometryVertexData3[6].y = -0.8f;
+		geometryVertexData3[6].y = 0.2f;
 		geometryVertexData3[6].z = 0.0f;
 						  
 		geometryVertexData3[7].x = 0.8f;
-		geometryVertexData3[7].y = 0.0f;
+		geometryVertexData3[7].y = 1.0f;
 		geometryVertexData3[7].z = 0.0f;
 						  
 		geometryVertexData3[8].x = 1.0f;
-		geometryVertexData3[8].y = 0.0f;
+		geometryVertexData3[8].y = 1.0f;
 		geometryVertexData3[8].z = 0.0f;
 						  
 		geometryVertexData3[9].x = 1.0f;
-		geometryVertexData3[9].y = -1.0f;
+		geometryVertexData3[9].y = 0.0f;
 		geometryVertexData3[9].z = 0.0f;
 	}
 	uint16_t indexData3[18] = { 0, 1, 2, 0, 2, 4,
