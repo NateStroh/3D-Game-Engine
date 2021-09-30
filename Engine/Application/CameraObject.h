@@ -26,6 +26,8 @@ namespace eae6320
 
 			CameraObject();
 
+			void SubmitToBeRendered(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate);
+			void UpdateRigidBody(const float i_elapsedSecondCount_sinceLastUpdate);
 		private:
 
 

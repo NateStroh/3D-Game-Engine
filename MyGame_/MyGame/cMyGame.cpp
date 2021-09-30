@@ -25,27 +25,10 @@ void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_s
 		m_gameObject.m_effect = effectArray[1];
 	}
 
-	auto predictedCameraTransform = m_mainCamera.m_rigidBody.PredictFutureTransform(i_elapsedSecondCount_sinceLastSimulationUpdate);
-	Graphics::SetCamera(predictedCameraTransform, m_mainCamera.m_cameraData);
+	m_mainCamera.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 
-	m_gameObject.m_geometry->IncrementReferenceCount();
-	m_gameObject.m_effect->IncrementReferenceCount();
-
-	auto predictedTransform = m_gameObject.m_rigidBody.PredictFutureTransform(i_elapsedSecondCount_sinceLastSimulationUpdate);
-	Graphics::AddGeometryEffectPair(m_gameObject.m_geometry, predictedTransform , m_gameObject.m_effect);
-
-	m_gameObject.m_geometry->DecrementReferenceCount();
-	m_gameObject.m_effect->DecrementReferenceCount();
-
-	m_gameObject2.m_geometry->IncrementReferenceCount();
-	m_gameObject2.m_effect->IncrementReferenceCount();
-
-	predictedTransform = m_gameObject2.m_rigidBody.PredictFutureTransform(i_elapsedSecondCount_sinceLastSimulationUpdate);
-	Graphics::AddGeometryEffectPair(m_gameObject2.m_geometry, predictedTransform, m_gameObject2.m_effect);
-
-	m_gameObject2.m_geometry->DecrementReferenceCount();
-	m_gameObject2.m_effect->DecrementReferenceCount();
-
+	m_gameObject.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
+	m_gameObject2.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 }
 
 void eae6320::cMyGame::UpdateBasedOnInput()
@@ -118,8 +101,8 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 }
 
 void eae6320::cMyGame::UpdateSimulationBasedOnTime(const float i_elapsedSecondCount_sinceLastUpdate) {
-	m_gameObject.m_rigidBody.Update(i_elapsedSecondCount_sinceLastUpdate);
-	m_mainCamera.m_rigidBody.Update(i_elapsedSecondCount_sinceLastUpdate);
+	m_gameObject.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
+	m_mainCamera.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
 }
 
 // Initialize / Clean Up

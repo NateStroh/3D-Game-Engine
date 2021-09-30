@@ -20,6 +20,8 @@ namespace eae6320
 			eae6320::Graphics::Effect* m_effect;
 			eae6320::Physics::sRigidBodyState m_rigidBody;
 
+			void SubmitToBeRendered(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate);
+			void UpdateRigidBody(const float i_elapsedSecondCount_sinceLastUpdate);
 		private:
 
 
