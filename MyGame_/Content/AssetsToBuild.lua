@@ -13,4 +13,8 @@ return
 
 		{ path = "Shaders/Vertex/vertexInputLayout_mesh.shader", arguments = { "vertex" } },
 	},
+	meshes = 
+	{
+		"Meshes/GeometryTest.lua",
+	},
 }
