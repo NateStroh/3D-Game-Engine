@@ -286,8 +286,8 @@ void eae6320::Graphics::AddGeometryEffectPair(Geometry* i_geometry, Math::cMatri
 }
 
 void eae6320::Graphics::SetCamera(Math::cMatrix_transformation i_transform, eae6320::Application::sCameraData i_cameraData) {
-	s_dataBeingRenderedByRenderThread->constantData_frame.g_transform_worldToCamera = Math::cMatrix_transformation::CreateWorldToCameraTransform(i_transform);
-	s_dataBeingRenderedByRenderThread->constantData_frame.g_transform_cameraToProjected = Math::cMatrix_transformation::CreateCameraToProjectedTransform_perspective(
+	s_dataBeingSubmittedByApplicationThread->constantData_frame.g_transform_worldToCamera = Math::cMatrix_transformation::CreateWorldToCameraTransform(i_transform);
+	s_dataBeingSubmittedByApplicationThread->constantData_frame.g_transform_cameraToProjected = Math::cMatrix_transformation::CreateCameraToProjectedTransform_perspective(
 		i_cameraData.verticalFieldOfView_inRadians,
 		i_cameraData.aspectRatio,
 		i_cameraData.z_nearPlane, 
