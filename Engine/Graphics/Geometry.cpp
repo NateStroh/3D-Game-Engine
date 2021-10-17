@@ -41,7 +41,7 @@ eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(std::string i_path, G
 	);
 	o_geometry = geometry;
 
-	//sGeometryData.CleanUp();
+	sGeometryData.CleanUp();
 
 	return result;
 }
@@ -91,25 +91,47 @@ namespace
 		if (lua_istable(&io_luaState, -1)) {
 			NumOfVertices = luaL_len(&io_luaState, -1);
 			i_geometryData->m_verticesCount = static_cast<unsigned int>(NumOfVertices);
+			i_geometryData->m_vertexData = new eae6320::Graphics::VertexFormats::sVertex_mesh[i_geometryData->m_verticesCount];
 
 			lua_pushnil(&io_luaState);
-			//looping through all vertices
+			unsigned int count = 0;
+			//looping through all data in vertices - position, color, normal
 			while (lua_next(&io_luaState, -2))
 			{
-				//looping through all data in vertices - position, color, normal
+				//getting position
 				constexpr auto* const key = "Position";
-				lua_pushstring(&io_luaState, key);
+				lua_pushstring(&io_luaState, key); 
 				lua_gettable(&io_luaState, -2);
-				eae6320::cScopeGuard scopeGuard_popParameters([&io_luaState]
+				eae6320::cScopeGuard scopeGuard_popPosition([&io_luaState]
 					{
 						lua_pop(&io_luaState, 1);
 					});
+			
+				//getting x value
+				lua_pushnumber(&io_luaState, 1);
+				lua_gettable(&io_luaState, -2);
+				i_geometryData->m_vertexData[count].x = static_cast<float>(lua_tonumber(&io_luaState, -1));
+				lua_pop(&io_luaState, 1);
 
+				//getting y value
+				lua_pushnumber(&io_luaState, 2);
+				lua_gettable(&io_luaState, -2);
+				i_geometryData->m_vertexData[count].y = static_cast<float>(lua_tonumber(&io_luaState, -1));
+				lua_pop(&io_luaState, 1);
 
+				//getting z value
+				lua_pushnumber(&io_luaState, 3);
+				lua_gettable(&io_luaState, -2);
+				i_geometryData->m_vertexData[count].z = static_cast<float>(lua_tonumber(&io_luaState, -1));
+				lua_pop(&io_luaState, 1);
+
+				//getting color
+
+				//gettign normal
 
 				lua_pop(&io_luaState, 1);
+				count++;
 			}
-
 		}
 		else
 		{

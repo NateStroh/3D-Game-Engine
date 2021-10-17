@@ -219,7 +219,7 @@ eae6320::cResult eae6320::cMyGame::InitializeGeometry() {
 	uint16_t indexData2[9] = { 0, 1, 3, 1, 2, 3, 0, 3, 4 };
 	//{0, 3, 1, 1, 3, 2, 0, 4, 3};
 
-	result = eae6320::Graphics::Geometry::MakeGeometry(geometryVertexData2, 5, indexData2, 9, geometryArray[1]);
+	//result = eae6320::Graphics::Geometry::MakeGeometry(geometryVertexData2, 5, indexData2, 9, geometryArray[1]);
 	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/geometrytest.lua", geometryArray[1]);
 
 	//third mesh
