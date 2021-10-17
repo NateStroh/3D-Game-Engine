@@ -1,4 +1,4 @@
-Geometry = {
+return {
 	Vertices = {
 		{
 			Position = {-1,-1,0},
@@ -30,7 +30,7 @@ Geometry = {
 			--},
 			--Normal = {0,0,0},
 		},
-					{
+		{
 			Position = {0,0,0},
 			--Color = {
 			--	Red = 0,

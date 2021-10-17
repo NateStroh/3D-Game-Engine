@@ -1,5 +1,20 @@
 #include "Geometry.h"
+
 #include <Engine/Results/Results.h>
+#include <External/Lua/Includes.h>
+#include <Engine/ScopeGuard/cScopeGuard.h>
+#include <Engine/Logging/Logging.h>
+
+namespace
+{
+	eae6320::cResult LoadTableValues(lua_State& io_luaState, eae6320::Graphics::GeometryMakeData* i_geometryData);
+
+	eae6320::cResult LoadTableValues_vertices(lua_State& io_luaState, eae6320::Graphics::GeometryMakeData* i_geometryData);
+
+	eae6320::cResult LoadTableValues_indices(lua_State& io_luaState, eae6320::Graphics::GeometryMakeData* i_geometryData);
+
+	eae6320::cResult LoadAsset(const char* const i_path, eae6320::Graphics::GeometryMakeData* i_geometryData);
+}
 
 eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(eae6320::Graphics::VertexFormats::sVertex_mesh i_vertexData[], const unsigned int i_vertexCount, uint16_t i_indexData[], const unsigned int i_indexCount, Geometry*& o_geometry)  {
 	auto result = eae6320::Results::Success;
@@ -11,6 +26,245 @@ eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(eae6320::Graphics::Ve
 	return result;
 }
 
+eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(std::string i_path, Geometry*& o_geometry) {
+	auto result = eae6320::Results::Success;
+	GeometryMakeData sGeometryData;
+
+	LoadAsset(i_path.c_str(), &sGeometryData);
+
+	Geometry* geometry = new Geometry();
+	result = geometry->Initialize(
+		sGeometryData.m_vertexData, 
+		sGeometryData.m_verticesCount,
+		sGeometryData.m_indexData,
+		sGeometryData.m_indicesCount
+	);
+	o_geometry = geometry;
+
+	//sGeometryData.CleanUp();
+
+	return result;
+}
+
+
 eae6320::Graphics::Geometry::~Geometry() {
 	CleanUp();
 }
+
+
+// Helper Function Definitions
+//============================
+
+namespace
+{
+	eae6320::cResult LoadTableValues(lua_State& io_luaState, eae6320::Graphics::GeometryMakeData* i_geometryData)
+	{
+		auto result = eae6320::Results::Success;
+
+		if (!(result = LoadTableValues_vertices(io_luaState, i_geometryData)))
+		{
+			return result;
+		}
+		if (!(result = LoadTableValues_indices(io_luaState, i_geometryData)))
+		{
+			return result;
+		}
+
+		return result;
+	}
+
+	eae6320::cResult LoadTableValues_vertices(lua_State& io_luaState, eae6320::Graphics::GeometryMakeData* i_geometryData) {
+		auto result = eae6320::Results::Success;
+		size_t NumOfVertices;
+
+		// Right now the asset table is at -1.
+		// After the following table operation it will be at -2
+		// and the "parameters" table will be at -1:
+		constexpr auto* const key = "Vertices";
+		lua_pushstring(&io_luaState, key);
+		lua_gettable(&io_luaState, -2);
+		eae6320::cScopeGuard scopeGuard_popParameters([&io_luaState]
+			{
+				lua_pop(&io_luaState, 1);
+			});
+
+		if (lua_istable(&io_luaState, -1)) {
+			NumOfVertices = luaL_len(&io_luaState, -1);
+			i_geometryData->m_verticesCount = static_cast<unsigned int>(NumOfVertices);
+
+			lua_pushnil(&io_luaState);
+			//looping through all vertices
+			while (lua_next(&io_luaState, -2))
+			{
+				//looping through all data in vertices - position, color, normal
+				constexpr auto* const key = "Position";
+				lua_pushstring(&io_luaState, key);
+				lua_gettable(&io_luaState, -2);
+				eae6320::cScopeGuard scopeGuard_popParameters([&io_luaState]
+					{
+						lua_pop(&io_luaState, 1);
+					});
+
+
+
+				lua_pop(&io_luaState, 1);
+			}
+
+		}
+		else
+		{
+			result = eae6320::Results::InvalidFile;
+			eae6320::Logging::OutputError(luaL_typename(&io_luaState, -1));
+			return result;
+		}
+
+		return result;
+	}
+
+	eae6320::cResult LoadTableValues_indices(lua_State& io_luaState, eae6320::Graphics::GeometryMakeData* i_geometryData) {
+		auto result = eae6320::Results::Success;
+		size_t NumOfIndices;
+
+		// Right now the asset table is at -1.
+		// After the following table operation it will be at -2
+		// and the "parameters" table will be at -1:
+		constexpr auto* const key = "Indices";
+		lua_pushstring(&io_luaState, key);
+		lua_gettable(&io_luaState, -2);
+		eae6320::cScopeGuard scopeGuard_popParameters([&io_luaState]
+			{
+				lua_pop(&io_luaState, 1);
+			});
+
+		if (lua_istable(&io_luaState, -1)) {
+			NumOfIndices = luaL_len(&io_luaState, -1);
+			i_geometryData->m_indicesCount = static_cast<unsigned int>(NumOfIndices);
+			i_geometryData->m_indexData = new uint16_t[i_geometryData->m_indicesCount];
+
+			lua_pushnil(&io_luaState);
+			unsigned int count = 0;
+			//looping through indices
+			while (lua_next(&io_luaState, -2))
+			{
+				i_geometryData->m_indexData[count] = static_cast<uint16_t>(lua_tointeger(&io_luaState, -1));
+				lua_pop(&io_luaState, 1);
+				count++;
+			}
+
+		}
+		else
+		{
+			result = eae6320::Results::InvalidFile;
+			eae6320::Logging::OutputError(luaL_typename(&io_luaState, -1));
+			return result;
+		}
+
+		return result;
+	}
+
+	eae6320::cResult LoadAsset(const char* const i_path, eae6320::Graphics::GeometryMakeData* i_geometryData)
+	{
+		auto result = eae6320::Results::Success;
+
+		// Create a new Lua state
+		lua_State* luaState = nullptr;
+		eae6320::cScopeGuard scopeGuard_onExit([&luaState]
+			{
+				if (luaState)
+				{
+					// If I haven't made any mistakes
+					// there shouldn't be anything on the stack
+					// regardless of any errors
+					EAE6320_ASSERT(lua_gettop(luaState) == 0);
+
+					lua_close(luaState);
+					luaState = nullptr;
+				}
+			});
+		{
+			luaState = luaL_newstate();
+			if (!luaState)
+			{
+				result = eae6320::Results::OutOfMemory;
+				eae6320::Logging::OutputError("Failed to create a new Lua state\n");
+				return result;
+			}
+		}
+
+		// Load the asset file as a "chunk",
+		// meaning there will be a callable function at the top of the stack
+		const auto stackTopBeforeLoad = lua_gettop(luaState);
+		{
+			const auto luaResult = luaL_loadfile(luaState, i_path);
+			if (luaResult != LUA_OK)
+			{
+				result = eae6320::Results::Failure;
+				eae6320::Logging::OutputError(lua_tostring(luaState, -1));
+				// Pop the error message
+				lua_pop(luaState, 1);
+				return result;
+			}
+		}
+		// Execute the "chunk", which should load the asset
+		// into a table at the top of the stack
+		{
+			constexpr int argumentCount = 0;
+			constexpr int returnValueCount = LUA_MULTRET;	// Return _everything_ that the file returns
+			constexpr int noMessageHandler = 0;
+			const auto luaResult = lua_pcall(luaState, argumentCount, returnValueCount, noMessageHandler);
+			if (luaResult == LUA_OK)
+			{
+				// A well-behaved asset file will only return a single value
+				const auto returnedValueCount = lua_gettop(luaState) - stackTopBeforeLoad;
+				if (returnedValueCount == 1)
+				{
+					// A correct asset file _must_ return a table
+					if (!lua_istable(luaState, -1))
+					{
+						result = eae6320::Results::InvalidFile;
+						std::string errormessage = "Asset files must return a table (instead of a ";
+						errormessage += luaL_typename(luaState, -1);
+						errormessage += ")\n";
+						eae6320::Logging::OutputError(errormessage.c_str());
+						// Pop the returned non-table value
+						lua_pop(luaState, 1);
+						return result;
+					}
+				}
+				else
+				{
+					result = eae6320::Results::InvalidFile;
+					std::string errormessage = "Asset files must return a single table (instead of ";
+					errormessage += returnedValueCount;
+					errormessage += " values)\n";
+					eae6320::Logging::OutputError(errormessage.c_str());
+
+					// Pop every value that was returned
+					lua_pop(luaState, returnedValueCount);
+					return result;
+				}
+			}
+			else
+			{
+				result = eae6320::Results::InvalidFile;
+				eae6320::Logging::OutputError(lua_tostring(luaState, -1));
+
+				// Pop the error message
+				lua_pop(luaState, 1);
+				return result;
+			}
+		}
+
+		// If this code is reached the asset file was loaded successfully,
+		// and its table is now at index -1
+		eae6320::cScopeGuard scopeGuard_popAssetTable([luaState]
+			{
+				lua_pop(luaState, 1);
+			});
+		result = LoadTableValues(*luaState, i_geometryData);
+
+		return result;
+	}
+}
+
+

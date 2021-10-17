@@ -27,13 +27,26 @@ namespace eae6320
 			float z = 0;
 		};
 
+		struct GeometryMakeData{
+			unsigned int m_indicesCount = 0;
+			unsigned int m_verticesCount = 0;
+			eae6320::Graphics::VertexFormats::sVertex_mesh* m_vertexData = nullptr;
+			uint16_t* m_indexData = nullptr;
+
+			void CleanUp() {
+				delete[] m_vertexData;
+				delete[] m_indexData;
+			}
+		};
+
 		class Geometry
 		{
 		public:
 			void Draw(); 
 
 			static cResult MakeGeometry(eae6320::Graphics::VertexFormats::sVertex_mesh i_vertexData[], const unsigned int i_vertexCount, uint16_t i_indexData[], const unsigned int i_indexCount, Geometry*& o_geometry);
-			
+			static cResult MakeGeometry(std::string i_path, Geometry*& o_geometry);
+
 			EAE6320_ASSETS_DECLAREREFERENCECOUNTINGFUNCTIONS();
 
 		private:
