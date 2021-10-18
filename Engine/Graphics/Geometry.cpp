@@ -75,7 +75,7 @@ namespace
 
 	eae6320::cResult LoadTableValues_vertices(lua_State& io_luaState, eae6320::Graphics::GeometryMakeData* i_geometryData) {
 		auto result = eae6320::Results::Success;
-		size_t NumOfVertices;
+		unsigned int NumOfVertices;
 
 		// Right now the asset table is at -1.
 		// After the following table operation it will be at -2
@@ -89,8 +89,8 @@ namespace
 			});
 
 		if (lua_istable(&io_luaState, -1)) {
-			NumOfVertices = luaL_len(&io_luaState, -1);
-			i_geometryData->m_verticesCount = static_cast<unsigned int>(NumOfVertices);
+			NumOfVertices = static_cast<unsigned int>(luaL_len(&io_luaState, -1));
+			i_geometryData->m_verticesCount = NumOfVertices;
 			i_geometryData->m_vertexData = new eae6320::Graphics::VertexFormats::sVertex_mesh[i_geometryData->m_verticesCount];
 
 			lua_pushnil(&io_luaState);
@@ -145,7 +145,7 @@ namespace
 
 	eae6320::cResult LoadTableValues_indices(lua_State& io_luaState, eae6320::Graphics::GeometryMakeData* i_geometryData) {
 		auto result = eae6320::Results::Success;
-		size_t NumOfIndices;
+		unsigned int NumOfIndices;
 
 		// Right now the asset table is at -1.
 		// After the following table operation it will be at -2
@@ -159,8 +159,8 @@ namespace
 			});
 
 		if (lua_istable(&io_luaState, -1)) {
-			NumOfIndices = luaL_len(&io_luaState, -1);
-			i_geometryData->m_indicesCount = static_cast<unsigned int>(NumOfIndices);
+			NumOfIndices = static_cast<unsigned int>(luaL_len(&io_luaState, -1));
+			i_geometryData->m_indicesCount = NumOfIndices;
 			i_geometryData->m_indexData = new uint16_t[i_geometryData->m_indicesCount];
 
 			lua_pushnil(&io_luaState);
