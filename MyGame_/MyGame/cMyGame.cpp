@@ -98,6 +98,15 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 		m_mainCamera.m_rigidBody.velocity += { 0.0f, 0.0f, -1.0f };
 	}
 
+	if (UserInput::IsKeyPressed('Q')) {
+		m_mainCamera.m_rigidBody.angularSpeed = 1.0f;
+	}
+	else if (UserInput::IsKeyPressed('E')) {
+		m_mainCamera.m_rigidBody.angularSpeed = -1.0f;
+	}
+	else {
+		m_mainCamera.m_rigidBody.angularSpeed = 0.0f;
+	}
 }
 
 void eae6320::cMyGame::UpdateSimulationBasedOnTime(const float i_elapsedSecondCount_sinceLastUpdate) {
