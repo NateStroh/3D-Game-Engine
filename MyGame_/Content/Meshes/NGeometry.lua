@@ -2,102 +2,102 @@ return {
 	Vertices = {
 		{
 			Position = {0,0,0},
-			--Color = {
-			--	Red = 0,
-			--	Blue = 1,
-			--	Green = 0,
-			--	Alpha = 1,
-			--},
+			Color = {
+				Red = 0,
+				Blue = 1,
+				Green = 0,
+				Alpha = 1,
+			},
 			--Normal = {0,0,0},
 		},
 		{
 			Position = {0,1,0},
-			--Color = {
-			--	Red = 0,
-			--	Blue = 1,
-			--	Green = 0,
-			--	Alpha = 1,
-			--},
+			Color = {
+				Red = 0,
+				Blue = 1,
+				Green = 0,
+				Alpha = 1,
+			},
 			--Normal = {0,0,0},
 		},
 		{
 			Position = {0.2,1,0},
-			--Color = {
-			--	Red = 0,
-			--	Blue = 1,
-			--	Green = 0,
-			--	Alpha = 1,
-			--},
+			Color = {
+				Red = 0,
+				Blue = 1,
+				Green = 0,
+				Alpha = 1,
+			},
 			--Normal = {0,0,0},
 		},
 		{
 			Position = {0.2,0.8,0},
-			--Color = {
-			--	Red = 0,
-			--	Blue = 1,
-			--	Green = 0,
-			--	Alpha = 1,
-			--},
+			Color = {
+				Red = 0,
+				Blue = 1,
+				Green = 0,
+				Alpha = 1,
+			},
 			--Normal = {0,0,0},
 		},
 		{
 			Position = {0.2,0,0},
-			--Color = {
-			--	Red = 0,
-			--	Blue = 1,
-			--	Green = 0,
-			--	Alpha = 1,
-			--},
+			Color = {
+				Red = 0,
+				Blue = 1,
+				Green = 0,
+				Alpha = 1,
+			},
 			--Normal = {0,0,0},
 		},
 		{
 			Position = {0.8,0,0},
-			--Color = {
-			--	Red = 0,
-			--	Blue = 1,
-			--	Green = 0,
-			--	Alpha = 1,
-			--},
+			Color = {
+				Red = 0,
+				Blue = 1,
+				Green = 0,
+				Alpha = 1,
+			},
 			--Normal = {0,0,0},
 		},
 		{
 			Position = {0.8,0.2,0},
-			--Color = {
-			--	Red = 0,
-			--	Blue = 1,
-			--	Green = 0,
-			--	Alpha = 1,
-			--},
+			Color = {
+				Red = 0,
+				Blue = 1,
+				Green = 0,
+				Alpha = 1,
+			},
 			--Normal = {0,0,0},
 		},
 		{
 			Position = {0.8,1,0},
-			--Color = {
-			--	Red = 0,
-			--	Blue = 1,
-			--	Green = 0,
-			--	Alpha = 1,
-			--},
+			Color = {
+				Red = 0,
+				Blue = 1,
+				Green = 0,
+				Alpha = 1,
+			},
 			--Normal = {0,0,0},
 		},
 		{
 			Position = {1,1,0},
-			--Color = {
-			--	Red = 0,
-			--	Blue = 1,
-			--	Green = 0,
-			--	Alpha = 1,
-			--},
+			Color = {
+				Red = 0,
+				Blue = 1,
+				Green = 0,
+				Alpha = 1,
+			},
 			--Normal = {0,0,0},
 		},
 		{
 			Position = {1,0,0},
-			--Color = {
-			--	Red = 0,
-			--	Blue = 1,
-			--	Green = 0,
-			--	Alpha = 1,
-			--},
+			Color = {
+				Red = 0,
+				Blue = 1,
+				Green = 0,
+				Alpha = 1,
+			},
 			--Normal = {0,0,0},
 		},
 	},

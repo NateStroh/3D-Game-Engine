@@ -14,6 +14,8 @@ namespace
 	eae6320::cResult LoadTableValues_indices(lua_State& io_luaState, eae6320::Graphics::GeometryMakeData* i_geometryData);
 
 	eae6320::cResult LoadAsset(const char* const i_path, eae6320::Graphics::GeometryMakeData* i_geometryData);
+
+	float GetFloatField(lua_State* i_luaState, const char* i_key);
 }
 
 eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(eae6320::Graphics::VertexFormats::sVertex_mesh i_vertexData[], const unsigned int i_vertexCount, uint16_t i_indexData[], const unsigned int i_indexCount, Geometry*& o_geometry)  {
@@ -34,7 +36,7 @@ eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(std::string i_path, G
 
 	Geometry* geometry = new Geometry();
 	result = geometry->Initialize(
-		sGeometryData.m_vertexData, 
+		sGeometryData.m_vertexPositionData, 
 		sGeometryData.m_verticesCount,
 		sGeometryData.m_indexData,
 		sGeometryData.m_indicesCount
@@ -91,14 +93,15 @@ namespace
 		if (lua_istable(&io_luaState, -1)) {
 			NumOfVertices = static_cast<unsigned int>(luaL_len(&io_luaState, -1));
 			i_geometryData->m_verticesCount = NumOfVertices;
-			i_geometryData->m_vertexData = new eae6320::Graphics::VertexFormats::sVertex_mesh[i_geometryData->m_verticesCount];
+			i_geometryData->m_vertexPositionData = new eae6320::Graphics::VertexFormats::sVertex_mesh[i_geometryData->m_verticesCount];
+			i_geometryData->m_vertexColorData = new eae6320::Graphics::sColor[i_geometryData->m_verticesCount];
 
 			lua_pushnil(&io_luaState);
 			unsigned int count = 0;
 			//looping through all data in vertices - position, color, normal
 			while (lua_next(&io_luaState, -2))
 			{
-				//getting position
+				//------getting position
 				constexpr auto* const key = "Position";
 				lua_pushstring(&io_luaState, key); 
 				lua_gettable(&io_luaState, -2);
@@ -110,24 +113,35 @@ namespace
 				//getting x value
 				lua_pushnumber(&io_luaState, 1);
 				lua_gettable(&io_luaState, -2);
-				i_geometryData->m_vertexData[count].x = static_cast<float>(lua_tonumber(&io_luaState, -1));
+				i_geometryData->m_vertexPositionData[count].x = static_cast<float>(lua_tonumber(&io_luaState, -1));
 				lua_pop(&io_luaState, 1);
 
 				//getting y value
 				lua_pushnumber(&io_luaState, 2);
 				lua_gettable(&io_luaState, -2);
-				i_geometryData->m_vertexData[count].y = static_cast<float>(lua_tonumber(&io_luaState, -1));
+				i_geometryData->m_vertexPositionData[count].y = static_cast<float>(lua_tonumber(&io_luaState, -1));
 				lua_pop(&io_luaState, 1);
 
 				//getting z value
 				lua_pushnumber(&io_luaState, 3);
 				lua_gettable(&io_luaState, -2);
-				i_geometryData->m_vertexData[count].z = static_cast<float>(lua_tonumber(&io_luaState, -1));
+				i_geometryData->m_vertexPositionData[count].z = static_cast<float>(lua_tonumber(&io_luaState, -1));
 				lua_pop(&io_luaState, 1);
 
-				//getting color
+				//------getting color
+				lua_pushstring(&io_luaState, "Color");
+				lua_gettable(&io_luaState, -3);
+				eae6320::cScopeGuard scopeGuard_popColor([&io_luaState]
+					{
+						lua_pop(&io_luaState, 1);
+					});
 
-				//gettign normal
+				i_geometryData->m_vertexColorData[count].Red = GetFloatField(&io_luaState, "Red");
+				i_geometryData->m_vertexColorData[count].Green = GetFloatField(&io_luaState, "Green");
+				i_geometryData->m_vertexColorData[count].Blue = GetFloatField(&io_luaState, "Blue");
+				i_geometryData->m_vertexColorData[count].Opacity = GetFloatField(&io_luaState, "Alpha");
+
+				//------getting normal
 
 				lua_pop(&io_luaState, 1);
 				count++;
@@ -140,6 +154,15 @@ namespace
 			return result;
 		}
 
+		return result;
+	}
+
+	float GetFloatField(lua_State* i_luaState, const char* i_key) {
+		lua_pushstring(i_luaState, i_key);
+		lua_gettable(i_luaState, -2);
+
+		float result = static_cast<float>(lua_tonumber(i_luaState, -1));
+		lua_pop(i_luaState, 1);
 		return result;
 	}
 

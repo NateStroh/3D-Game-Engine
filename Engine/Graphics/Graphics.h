@@ -30,19 +30,7 @@ namespace eae6320
 	{
 		// Submission
 		//-----------
-		struct sColor {
-			float Red;
-			float Green;
-			float Blue;
-			float Opacity;
 
-			sColor(float i_redVal = 0.0f, float i_greenVal = 0.0f, float i_blueVal = 0.0f, float i_opacity = 1.0f) :
-				Red(i_redVal),
-				Green(i_greenVal),
-				Blue(i_blueVal),
-				Opacity(i_opacity)
-			{ };
-		};
 
 		struct sGeometryEffectPair {
 			Geometry* geometry = nullptr;

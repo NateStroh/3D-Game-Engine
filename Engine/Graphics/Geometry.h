@@ -27,14 +27,35 @@ namespace eae6320
 			float z = 0;
 		};
 
+		struct sColor {
+			float Red;
+			float Green;
+			float Blue;
+			float Opacity;
+
+			sColor(float i_redVal = 0.0f, float i_greenVal = 0.0f, float i_blueVal = 0.0f, float i_opacity = 1.0f) :
+				Red(i_redVal),
+				Green(i_greenVal),
+				Blue(i_blueVal),
+				Opacity(i_opacity)
+			{ };
+		};
+
+		struct sVertexInfo {
+			
+			sColor m_color;
+		};
+
 		struct GeometryMakeData{
 			unsigned int m_indicesCount = 0;
 			unsigned int m_verticesCount = 0;
-			eae6320::Graphics::VertexFormats::sVertex_mesh* m_vertexData = nullptr;
+			eae6320::Graphics::VertexFormats::sVertex_mesh* m_vertexPositionData = nullptr;
+			sColor* m_vertexColorData = nullptr;
 			uint16_t* m_indexData = nullptr;
 
 			void CleanUp() {
-				delete[] m_vertexData;
+				delete[] m_vertexPositionData;
+				delete[] m_vertexColorData;
 				delete[] m_indexData;
 			}
 		};
