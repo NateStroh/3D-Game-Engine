@@ -66,7 +66,7 @@ namespace eae6320
 			void Draw(); 
 
 			static cResult MakeGeometry(eae6320::Graphics::VertexFormats::sVertex_mesh i_vertexData[], const unsigned int i_vertexCount, uint16_t i_indexData[], const unsigned int i_indexCount, Geometry*& o_geometry);
-			static cResult MakeGeometry(std::string i_path, Geometry*& o_geometry);
+			static cResult MakeGeometry(const char* i_path, Geometry*& o_geometry);
 
 			EAE6320_ASSETS_DECLAREREFERENCECOUNTINGFUNCTIONS();
 

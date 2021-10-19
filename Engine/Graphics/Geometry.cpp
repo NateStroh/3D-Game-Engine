@@ -28,11 +28,11 @@ eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(eae6320::Graphics::Ve
 	return result;
 }
 
-eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(std::string i_path, Geometry*& o_geometry) {
+eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(const char* i_path, Geometry*& o_geometry) {
 	auto result = eae6320::Results::Success;
 	GeometryMakeData sGeometryData;
 
-	LoadAsset(i_path.c_str(), &sGeometryData);
+	LoadAsset(i_path, &sGeometryData);
 
 	Geometry* geometry = new Geometry();
 	result = geometry->Initialize(
@@ -267,10 +267,7 @@ namespace
 					if (!lua_istable(luaState, -1))
 					{
 						result = eae6320::Results::InvalidFile;
-						std::string errormessage = "Asset files must return a table (instead of a ";
-						errormessage += luaL_typename(luaState, -1);
-						errormessage += ")\n";
-						eae6320::Logging::OutputError(errormessage.c_str());
+						eae6320::Logging::OutputError(luaL_typename(luaState, -1));
 						// Pop the returned non-table value
 						lua_pop(luaState, 1);
 						return result;
@@ -279,10 +276,7 @@ namespace
 				else
 				{
 					result = eae6320::Results::InvalidFile;
-					std::string errormessage = "Asset files must return a single table (instead of ";
-					errormessage += returnedValueCount;
-					errormessage += " values)\n";
-					eae6320::Logging::OutputError(errormessage.c_str());
+					eae6320::Logging::OutputError("invalid file");
 
 					// Pop every value that was returned
 					lua_pop(luaState, returnedValueCount);
