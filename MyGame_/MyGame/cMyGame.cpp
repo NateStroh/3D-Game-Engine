@@ -176,12 +176,9 @@ eae6320::cResult eae6320::cMyGame::CleanUp()
 }
 
 eae6320::cResult eae6320::cMyGame::InitializeGeometry() {
-	auto result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/plane.mesh", geometryArray[0]);
-	//auto result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/SquareGeometry.lua", geometryArray[0]);
-	//result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/HouseGeometry.lua", geometryArray[1]);
-	//result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/NGeometry.lua", geometryArray[2]);
-	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/plane.mesh", geometryArray[1]);
-	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/plane.mesh", geometryArray[2]);
+	auto result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/Sphere.mesh", geometryArray[0]);
+	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/Plane.mesh", geometryArray[1]);
+	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/BlueDonut.mesh", geometryArray[2]);
 
 	return result;
 }

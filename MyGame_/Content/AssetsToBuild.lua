@@ -19,5 +19,7 @@ return
 		--"Meshes/SquareGeometry.lua",
 		--"Meshes/NGeometry.lua",
 		"Meshes/plane.mesh",
+		"Meshes/BlueDonut.mesh",
+		"Meshes/Sphere.mesh",
 	},
 }
