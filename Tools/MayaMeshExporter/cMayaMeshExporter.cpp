@@ -795,7 +795,51 @@ namespace
 			fout << "return" "\n"
 				"{" "\n";
 			{
-				EAE6320_TODO
+				fout << "Vertices = {\n"
+					"{" "\n";
+
+				for each (sVertexInfo vertexInfo in i_vertexArray) {
+					fout << "{" "\n";
+					
+					fout << "Position = { ";
+					fout << vertexInfo.vertex.x;
+					fout << vertexInfo.vertex.y;
+					fout << vertexInfo.vertex.z;
+					fout << "}," "\n";
+
+					fout << "Color = {" "\n";
+					fout << "Red = ";
+					fout << vertexInfo.vertex.r;
+					fout << "," "\n";
+					fout << "Blue = ";
+					fout << vertexInfo.vertex.b;
+					fout << "," "\n";
+					fout << "Green = ";
+					fout << vertexInfo.vertex.g;
+					fout << "," "\n";
+					fout << "Alpha = ";
+					fout << vertexInfo.vertex.a;
+					fout << "," "\n";
+					fout << "}," "\n";
+
+					fout << "}," "\n";
+				}
+
+				fout << "}," "\n";
+
+				fout << "Indices = {\n"
+					"{" "\n";
+					
+				for (int i = 0; i < i_indexArray.size(); i++) {
+					fout << i_indexArray[i];
+					fout << ",";
+
+					if (i%3 == 0) {
+						fout << "\n";
+					}
+				}
+
+				fout << "}," "\n";
 			}
 			// Close table
 			fout << "}" "\n";

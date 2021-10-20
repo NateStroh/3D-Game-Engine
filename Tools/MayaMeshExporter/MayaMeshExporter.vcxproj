@@ -18,6 +18,11 @@
     <ClInclude Include="cMayaMeshExporter.h" />
     <ClInclude Include="Windows\ExternalLibraries.win.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Engine\Windows\Windows.vcxproj">
+      <Project>{6ff846d1-2377-4601-b2f6-83e31748cb16}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -58,12 +63,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.mll</TargetExt>
-    <TargetName>eae6320_OWNBY_JOHN-PAUL_mesh_DEBUG</TargetName>
+    <TargetName>eae6320_$(SolutionName)_mesh$(Configuration)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <TargetExt>.mll</TargetExt>
-    <TargetName>eae6320_OWNBY_JOHN-PAUL_mesh</TargetName>
+    <TargetName>eae6320_$(SolutionName)_mesh$(Configuration)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
