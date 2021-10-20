@@ -79,10 +79,10 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 		m_gameObject.m_rigidBody.velocity += { -1.0f, 0.0f, 0.0f };
 	}
 
-	if (UserInput::IsKeyPressed('W')) {
+	if (UserInput::IsKeyPressed('Z')) {
 		m_mainCamera.m_rigidBody.velocity += { 0.0f, 1.0f, 0.0f };
 	}
-	if (UserInput::IsKeyPressed('S')) {
+	if (UserInput::IsKeyPressed('X')) {
 		m_mainCamera.m_rigidBody.velocity += { 0.0f, -1.0f, 0.0f };
 	}
 	if (UserInput::IsKeyPressed('D')) {
@@ -91,10 +91,10 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 	if (UserInput::IsKeyPressed('A')) {
 		m_mainCamera.m_rigidBody.velocity += { -1.0f, 0.0f, 0.0f };
 	}
-	if (UserInput::IsKeyPressed('X')) {
+	if (UserInput::IsKeyPressed('S')) {
 		m_mainCamera.m_rigidBody.velocity += { 0.0f, 0.0f, 1.0f };
 	}
-	if (UserInput::IsKeyPressed('Z')) {
+	if (UserInput::IsKeyPressed('W')) {
 		m_mainCamera.m_rigidBody.velocity += { 0.0f, 0.0f, -1.0f };
 	}
 
@@ -147,7 +147,7 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 	m_gameObject2.m_effect = effectArray[1];
 	m_gameObject2.m_rigidBody;
 
-	m_mainCamera.m_rigidBody.position = {0,0,5};
+	m_mainCamera.m_rigidBody.position = {0,1,5};
 
 	eae6320::Logging::OutputMessage("Finished Initializing MyGame");
 	return result;
