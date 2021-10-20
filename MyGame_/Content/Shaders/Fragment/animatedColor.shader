@@ -28,7 +28,7 @@ void main(
 	//======
 
 	in const float4 i_fragmentPosition : SV_POSITION,
-
+	in const float4 i_color : COLOR,
 	// Output
 	//=======
 
@@ -39,13 +39,14 @@ void main(
 )
 {
 	// Output solid white
-	o_color = float4(
+	float4 animatedColor = float4(
 		// RGB (color)
 		1.0, 1.0, 1.0,
 		// Alpha (opacity)
 		1.0 );
-	
-	o_color.r = sin(g_elapsedSecondCount_simulationTime);
-	o_color.g = cos(g_elapsedSecondCount_simulationTime);
-	o_color.b = tanh(g_elapsedSecondCount_simulationTime/2);
+	animatedColor.r = sin(g_elapsedSecondCount_simulationTime);
+	animatedColor.g = cos(g_elapsedSecondCount_simulationTime);
+	animatedColor.b = tanh(g_elapsedSecondCount_simulationTime/2);
+
+	o_color = animatedColor * i_color;
 }

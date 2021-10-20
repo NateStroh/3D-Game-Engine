@@ -50,12 +50,10 @@ namespace eae6320
 			unsigned int m_indicesCount = 0;
 			unsigned int m_verticesCount = 0;
 			eae6320::Graphics::VertexFormats::sVertex_mesh* m_vertexPositionData = nullptr;
-			sColor* m_vertexColorData = nullptr;
 			uint16_t* m_indexData = nullptr;
 
 			void CleanUp() {
 				delete[] m_vertexPositionData;
-				delete[] m_vertexColorData;
 				delete[] m_indexData;
 			}
 		};

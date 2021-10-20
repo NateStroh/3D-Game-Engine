@@ -16,6 +16,8 @@ namespace
 	eae6320::cResult LoadAsset(const char* const i_path, eae6320::Graphics::GeometryMakeData* i_geometryData);
 
 	float GetFloatField(lua_State* i_luaState, const char* i_key);
+
+	uint8_t ConvertColorToByte(float i_colorVal);
 }
 
 eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(eae6320::Graphics::VertexFormats::sVertex_mesh i_vertexData[], const unsigned int i_vertexCount, uint16_t i_indexData[], const unsigned int i_indexCount, Geometry*& o_geometry)  {
@@ -99,7 +101,6 @@ namespace
 			NumOfVertices = static_cast<unsigned int>(luaL_len(&io_luaState, -1));
 			i_geometryData->m_verticesCount = NumOfVertices;
 			i_geometryData->m_vertexPositionData = new eae6320::Graphics::VertexFormats::sVertex_mesh[i_geometryData->m_verticesCount];
-			i_geometryData->m_vertexColorData = new eae6320::Graphics::sColor[i_geometryData->m_verticesCount];
 
 			lua_pushnil(&io_luaState);
 			unsigned int count = 0;
@@ -141,10 +142,10 @@ namespace
 						lua_pop(&io_luaState, 1);
 					});
 
-				i_geometryData->m_vertexColorData[count].Red = GetFloatField(&io_luaState, "Red");
-				i_geometryData->m_vertexColorData[count].Green = GetFloatField(&io_luaState, "Green");
-				i_geometryData->m_vertexColorData[count].Blue = GetFloatField(&io_luaState, "Blue");
-				i_geometryData->m_vertexColorData[count].Opacity = GetFloatField(&io_luaState, "Alpha");
+				i_geometryData->m_vertexPositionData[count].r= ConvertColorToByte(GetFloatField(&io_luaState, "Red"));
+				i_geometryData->m_vertexPositionData[count].g = ConvertColorToByte(GetFloatField(&io_luaState, "Green"));
+				i_geometryData->m_vertexPositionData[count].b = ConvertColorToByte(GetFloatField(&io_luaState, "Blue"));
+				i_geometryData->m_vertexPositionData[count].a = ConvertColorToByte(GetFloatField(&io_luaState, "Alpha"));
 
 				//------getting normal
 
@@ -160,6 +161,10 @@ namespace
 		}
 
 		return result;
+	}
+
+	uint8_t ConvertColorToByte(float i_colorVal) {
+		return (i_colorVal >= 1.0 ? 255 : (i_colorVal <= 0.0 ? 0 : (int)floor(i_colorVal * 256.0)));
 	}
 
 	float GetFloatField(lua_State* i_luaState, const char* i_key) {
