@@ -15,8 +15,9 @@ return
 	},
 	meshes = 
 	{
-		"Meshes/HouseGeometry.lua",
-		"Meshes/SquareGeometry.lua",
-		"Meshes/NGeometry.lua",
+		--"Meshes/HouseGeometry.lua",
+		--"Meshes/SquareGeometry.lua",
+		--"Meshes/NGeometry.lua",
+		"Meshes/plane.mesh",
 	},
 }

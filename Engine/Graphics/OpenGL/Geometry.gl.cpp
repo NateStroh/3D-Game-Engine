@@ -121,7 +121,7 @@ eae6320::cResult eae6320::Graphics::Geometry::Initialize(eae6320::Graphics::Vert
 			m_indexData[i] = i_indexData[i];
 		}
 
-		ReorderIndices(m_indexData, m_indexCount);
+		//ReorderIndices(m_indexData, m_indexCount);
 
 		const GLsizeiptr bufferSize = sizeof(m_indexData[0]) * i_indexCount;
 		EAE6320_ASSERT(bufferSize <= std::numeric_limits<GLsizeiptr>::max());

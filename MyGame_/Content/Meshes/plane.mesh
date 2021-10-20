@@ -1,0 +1,44 @@
+return {
+	Vertices = {
+		{
+			Position = {-5,0,5},
+			Color = {
+				Red = 0.0103,
+				Blue = 0.0389,
+				Green = 0.1069,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {5,0,5},
+			Color = {
+				Red = 0.0103,
+				Blue = 0.0389,
+				Green = 0.1069,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-5,0,-5},
+			Color = {
+				Red = 0.0103,
+				Blue = 0.0389,
+				Green = 0.1069,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {5,0,-5},
+			Color = {
+				Red = 0.0103,
+				Blue = 0.0389,
+				Green = 0.1069,
+				Alpha = 1,
+			},
+		},
+	},
+	Indices = {
+		0,1,2,
+		2,1,3,
+	},
+}

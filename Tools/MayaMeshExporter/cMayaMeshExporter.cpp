@@ -792,54 +792,36 @@ namespace
 
 			// Open table
 			// (If you want to use JSON instead of Lua you will have to change this slightly)
-			fout << "return" "\n"
-				"{" "\n";
+			fout << "return {\n";
 			{
-				fout << "Vertices = {\n"
-					"{" "\n";
-
+				fout << "\tVertices = {\n";
 				for each (sVertexInfo vertexInfo in i_vertexArray) {
-					fout << "{" "\n";
+					fout << "\t\t{" "\n";
 					
-					fout << "Position = { ";
-					fout << vertexInfo.vertex.x;
-					fout << vertexInfo.vertex.y;
-					fout << vertexInfo.vertex.z;
-					fout << "}," "\n";
+					fout << "\t\t\tPosition = {" << vertexInfo.vertex.x << "," << vertexInfo.vertex.y << "," << vertexInfo.vertex.z << "}," "\n";
+					fout << "\t\t\tColor = {" "\n";
+					fout << "\t\t\t\tRed = " << vertexInfo.vertex.r << "," "\n";
+					fout << "\t\t\t\tBlue = " << vertexInfo.vertex.b << "," "\n";
+					fout << "\t\t\t\tGreen = " << vertexInfo.vertex.g << "," "\n";
+					fout << "\t\t\t\tAlpha = " << vertexInfo.vertex.a << "," "\n";
+					fout << "\t\t\t}," "\n";
 
-					fout << "Color = {" "\n";
-					fout << "Red = ";
-					fout << vertexInfo.vertex.r;
-					fout << "," "\n";
-					fout << "Blue = ";
-					fout << vertexInfo.vertex.b;
-					fout << "," "\n";
-					fout << "Green = ";
-					fout << vertexInfo.vertex.g;
-					fout << "," "\n";
-					fout << "Alpha = ";
-					fout << vertexInfo.vertex.a;
-					fout << "," "\n";
-					fout << "}," "\n";
-
-					fout << "}," "\n";
+					fout << "\t\t}," "\n";
 				}
+				fout << "\t}," "\n";
 
-				fout << "}," "\n";
-
-				fout << "Indices = {\n"
-					"{" "\n";
-					
+				fout << "\tIndices = {\n";
 				for (int i = 0; i < i_indexArray.size(); i++) {
-					fout << i_indexArray[i];
-					fout << ",";
-
 					if (i%3 == 0) {
+						fout << "\t\t";
+					}
+					fout << i_indexArray[i] << ",";
+					if ((i+1)%3 == 0) {
 						fout << "\n";
 					}
 				}
 
-				fout << "}," "\n";
+				fout << "\t}," "\n";
 			}
 			// Close table
 			fout << "}" "\n";
