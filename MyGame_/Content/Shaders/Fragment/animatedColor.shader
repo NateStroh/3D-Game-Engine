@@ -32,7 +32,7 @@ void main(
 	//======
 
 	in const float4 i_fragmentPosition : SV_POSITION,
-	in const float4 i_color : COLOR,
+	in const float4 vertexColor : COLOR,
 	// Output
 	//=======
 

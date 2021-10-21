@@ -29,6 +29,7 @@ void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_s
 
 	m_gameObject.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 	m_gameObject2.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
+	m_gameObject3.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 }
 
 void eae6320::cMyGame::UpdateBasedOnInput()
@@ -111,6 +112,8 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 
 void eae6320::cMyGame::UpdateSimulationBasedOnTime(const float i_elapsedSecondCount_sinceLastUpdate) {
 	m_gameObject.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
+	m_gameObject2.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
+	m_gameObject3.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
 	m_mainCamera.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
 }
 
@@ -146,6 +149,10 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 	m_gameObject2.m_geometry = geometryArray[1];
 	m_gameObject2.m_effect = effectArray[1];
 	m_gameObject2.m_rigidBody;
+
+	m_gameObject3.m_geometry = geometryArray[2];
+	m_gameObject3.m_effect = effectArray[0];
+	m_gameObject3.m_rigidBody;
 
 	m_mainCamera.m_rigidBody.position = {0,1,5};
 

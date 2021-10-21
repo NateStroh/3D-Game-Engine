@@ -26,14 +26,14 @@ void main(
 	// An SV_POSITION value must always be output from every vertex shader
 	// so that the GPU can figure out which fragments need to be shaded
 	out float4 o_position : SV_POSITION,
-	out float4 o_color : COLOR
+	out float4 vertexColor : COLOR
 
 )
 {
 	// The shader program is only used to generate a vertex input layout object;
 	// the actual shading code is never used
 	o_position = float4( i_position, 1.0 );
-	o_color = i_color;
+	vertexColor = i_color;
 }
 
 #elif defined( EAE6320_PLATFORM_GL )

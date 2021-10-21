@@ -53,7 +53,7 @@ void main(
 	// An SV_POSITION value must always be output from every vertex shader
 	// so that the GPU can figure out which fragments need to be shaded
 	out float4 o_vertexPosition_projected : SV_POSITION,
-	out float4 o_color : COLOR
+	out float4 vertexColor : COLOR
 #endif
 )
 {
