@@ -36,9 +36,12 @@ eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(const char* i_path, G
 
 	LoadAsset(i_path, &sGeometryData);
 
-	if (sGeometryData.m_indicesCount > UINT16_MAX) {
+	if (sGeometryData.m_verticesCount > UINT16_MAX) {
 		Logging::OutputError("Too many indices are present in following file: ");
 		Logging::OutputError(i_path);
+
+		sGeometryData.CleanUp();
+		return Results::Failure;
 	}
 
 	Geometry* geometry = new Geometry();
