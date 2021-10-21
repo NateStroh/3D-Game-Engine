@@ -28,6 +28,11 @@ DeclareConstantBuffer(g_constantBuffer_drawCall, 2)
 	float4x4 g_transform_localToWorld;
 };
 
+#if defined( EAE6320_PLATFORM_GL )
+	layout(location = 1) in float4 i_color;
+	layout(location = 1) out float4 vertexColor;
+#endif
+
 // Entry Point
 //============
 void main(
@@ -67,5 +72,5 @@ void main(
 		// Project the vertex from camera space into projected space
 		OUTPUT = MULT(g_transform_cameraToProjected, vertexPosition_camera);
 	}
-	o_color = i_color;
+	vertexColor = i_color;
 }

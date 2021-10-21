@@ -20,6 +20,10 @@ DeclareConstantBuffer(g_constantBuffer_frame, 0)
 	float2 g_padding;
 };
 
+#if defined( EAE6320_PLATFORM_GL )
+	layout(location = 1) in float4 vertexColor;
+#endif
+
 // Entry Point
 //============
 void main(
@@ -48,5 +52,5 @@ void main(
 	animatedColor.g = cos(g_elapsedSecondCount_simulationTime);
 	animatedColor.b = tanh(g_elapsedSecondCount_simulationTime/2);
 
-	o_color = animatedColor * i_color;
+	o_color = animatedColor * vertexColor;
 }

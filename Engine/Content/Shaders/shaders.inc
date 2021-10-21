@@ -32,5 +32,5 @@
 	#define float3 vec3
 	#define float4 vec4
 	layout(location = 0) in vec3 i_vertexPosition_local;
-	out vec4 o_color;
+	layout(location = 0) out vec4 o_color;
 #endif

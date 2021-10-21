@@ -20,6 +20,10 @@ DeclareConstantBuffer(g_constantBuffer_frame, 0)
 	float2 g_padding;
 };
 
+#if defined( EAE6320_PLATFORM_GL )
+	layout(location = 1) in float4 vertexColor;
+#endif
+
 // Entry Point
 //============
 void main(
@@ -38,5 +42,5 @@ void main(
 #endif
 ) {
 	// Output solid white
-	o_color = i_color;
+	o_color = vertexColor;
 }
