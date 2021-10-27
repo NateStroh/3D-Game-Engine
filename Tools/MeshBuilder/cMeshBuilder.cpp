@@ -34,7 +34,6 @@ eae6320::cResult eae6320::Assets::cMeshBuilder::Build(const std::vector<std::str
 		return Results::Failure;
 	}
 
-
 	fclose(oFile);
 
 	makeData.CleanUp();

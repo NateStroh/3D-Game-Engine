@@ -44,15 +44,16 @@ eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(const char* i_path, G
 
 	uint16_t vertexCount = *reinterpret_cast<uint16_t*>(currentOffset);
 	currentOffset += sizeof(vertexCount);
+
 	uint16_t indexCount = *reinterpret_cast<uint16_t*>(currentOffset);
-
 	currentOffset += sizeof(indexCount);
-	VertexFormats::sVertex_mesh* const vertexArray = reinterpret_cast<VertexFormats::sVertex_mesh*>(currentOffset);
 
+	VertexFormats::sVertex_mesh* vertexArray = reinterpret_cast<VertexFormats::sVertex_mesh*>(currentOffset);
 	currentOffset += (vertexCount * sizeof(VertexFormats::sVertex_mesh));
-	uint16_t* const indexArray = reinterpret_cast<uint16_t*>(currentOffset);
-	
+
+	uint16_t* indexArray = reinterpret_cast<uint16_t*>(currentOffset);
 	currentOffset += (indexCount * sizeof(uint16_t));
+	
 	EAE6320_ASSERTF(currentOffset == finalOffset, "Filesize didn't line up.");
 
 	Geometry* geometry = new Geometry();
