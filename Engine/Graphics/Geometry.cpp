@@ -55,12 +55,6 @@ eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(const char* i_path, G
 	currentOffset += (indexCount * sizeof(uint16_t));
 	EAE6320_ASSERTF(currentOffset == finalOffset, "Filesize didn't line up.");
 
-	if (vertexCount > UINT16_MAX) {
-		Logging::OutputError("Too many indices are present in following file: ");
-		Logging::OutputError(i_path);
-		return Results::Failure;
-	}
-
 	Geometry* geometry = new Geometry();
 	result = geometry->Initialize(
 		vertexArray,

@@ -18,8 +18,10 @@ return
 		--"Meshes/HouseGeometry.lua",
 		--"Meshes/SquareGeometry.lua",
 		--"Meshes/NGeometry.lua",
+		"Meshes/greensphere.mesh",
+		"Meshes/newsphere.mesh",
 		"Meshes/plane.mesh",
-		"Meshes/BlueDonut.mesh",
-		"Meshes/Sphere.mesh",
+		"Meshes/bluedonut.mesh",
+		"Meshes/sphere.mesh",
 	},
 }

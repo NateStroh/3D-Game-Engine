@@ -183,7 +183,7 @@ eae6320::cResult eae6320::cMyGame::CleanUp()
 }
 
 eae6320::cResult eae6320::cMyGame::InitializeGeometry() {
-	auto result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/Sphere.mesh", geometryArray[0]);
+	auto result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/GreenSphere.mesh", geometryArray[0]);
 	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/Plane.mesh", geometryArray[1]);
 	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/BlueDonut.mesh", geometryArray[2]);
 
