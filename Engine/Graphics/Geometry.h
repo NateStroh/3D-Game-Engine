@@ -47,8 +47,8 @@ namespace eae6320
 		};
 
 		struct GeometryMakeData{
-			unsigned int m_indicesCount = 0;
-			unsigned int m_verticesCount = 0;
+			uint16_t m_indicesCount = 0;
+			uint16_t m_verticesCount = 0;
 			eae6320::Graphics::VertexFormats::sVertex_mesh* m_vertexPositionData = nullptr;
 			uint16_t* m_indexData = nullptr;
 
