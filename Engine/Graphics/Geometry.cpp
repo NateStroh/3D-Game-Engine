@@ -20,7 +20,7 @@ eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(eae6320::Graphics::Ve
 eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(const char* i_path, Geometry*& o_geometry) {
 	auto result = eae6320::Results::Success;
 
-	FILE* inFile = fopen(i_path, "r");
+	FILE* inFile = fopen(i_path, "rb");
 	if (inFile == 0) {
 		eae6320::Logging::OutputError("Invalid File - Couldn't open File: ");
 		eae6320::Logging::OutputError(i_path);
