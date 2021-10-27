@@ -18,6 +18,7 @@ return
 		--"Meshes/HouseGeometry.lua",
 		--"Meshes/SquareGeometry.lua",
 		--"Meshes/NGeometry.lua",
+		"Meshes/coloredcube.mesh",
 		"Meshes/greensphere.mesh",
 		"Meshes/newsphere.mesh",
 		"Meshes/plane.mesh",

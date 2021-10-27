@@ -30,6 +30,7 @@ void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_s
 	m_gameObject.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 	m_gameObject2.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 	m_gameObject3.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
+	
 }
 
 void eae6320::cMyGame::UpdateBasedOnInput()
@@ -183,10 +184,10 @@ eae6320::cResult eae6320::cMyGame::CleanUp()
 }
 
 eae6320::cResult eae6320::cMyGame::InitializeGeometry() {
-	auto result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/GreenSphere.mesh", geometryArray[0]);
+	auto result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/Sphere.mesh", geometryArray[0]);
 	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/Plane.mesh", geometryArray[1]);
-	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/BlueDonut.mesh", geometryArray[2]);
-
+	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/ColoredCube.mesh", geometryArray[2]);
+	//result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/ColoredCube.mesh", geometryArray[3]);
 	return result;
 }
 
