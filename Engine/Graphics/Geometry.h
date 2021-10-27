@@ -46,18 +46,6 @@ namespace eae6320
 			sColor m_color;
 		};
 
-		struct GeometryMakeData{
-			uint16_t m_indicesCount = 0;
-			uint16_t m_verticesCount = 0;
-			eae6320::Graphics::VertexFormats::sVertex_mesh* m_vertexPositionData = nullptr;
-			uint16_t* m_indexData = nullptr;
-
-			void CleanUp() {
-				delete[] m_vertexPositionData;
-				delete[] m_indexData;
-			}
-		};
-
 		class Geometry
 		{
 		public:

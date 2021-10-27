@@ -6,10 +6,6 @@
 #include <Engine/Logging/Logging.h>
 #include <Engine/Asserts/Asserts.h>
 
-namespace
-{
-	eae6320::cResult LoadFromBinary(const char* i_path, eae6320::Graphics::GeometryMakeData* o_makeData);
-}
 
 eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(eae6320::Graphics::VertexFormats::sVertex_mesh i_vertexData[], const unsigned int i_vertexCount, uint16_t i_indexData[], const unsigned int i_indexCount, Geometry*& o_geometry)  {
 	auto result = eae6320::Results::Success;
@@ -36,7 +32,12 @@ eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(const char* i_path, G
 	rewind(inFile);
 
 	char* buffer = (char*)malloc(size);
-	fread(buffer, sizeof(char), size, inFile);
+	size_t numRead = fread(buffer, sizeof(char), size, inFile);
+	if (numRead == 0) {
+		eae6320::Logging::OutputError("Didn't read anything: ");
+		eae6320::Logging::OutputError(i_path);
+		return eae6320::Results::Failure;
+	}
 
 	auto currentOffset = reinterpret_cast<uintptr_t>(buffer);
 	const auto finalOffset = currentOffset + size;
@@ -79,43 +80,4 @@ eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(const char* i_path, G
 eae6320::Graphics::Geometry::~Geometry() {
 	CleanUp();
 }
-
-
-namespace
-{
-	eae6320::cResult LoadFromBinary(const char* i_path, eae6320::Graphics::GeometryMakeData* o_makeData) {
-		auto result = eae6320::Results::Success;
-
-		FILE* inFile = fopen(i_path, "r");
-		if (inFile == 0) {
-			eae6320::Logging::OutputError("Invalid File - Couldn't open File: ");
-			eae6320::Logging::OutputError(i_path);
-			return eae6320::Results::Failure;
-		}
-
-		auto currentOffset = reinterpret_cast<uintptr_t>(inFile);
-		fseek(inFile, 0L, SEEK_END);
-		const auto finalOffset = ftell(inFile);
-		fseek(inFile, 0L, SEEK_SET);
-
-		const auto vertexCount = *reinterpret_cast<uint16_t*>(currentOffset);
-		currentOffset += sizeof(vertexCount);
-		const auto indexCount = *reinterpret_cast<uint16_t*>(currentOffset);
-
-		currentOffset += sizeof(indexCount);
-		auto* const vertexArray = reinterpret_cast<eae6320::Graphics::VertexFormats::sVertex_mesh*>(currentOffset);
-
-		currentOffset += (vertexCount * sizeof(eae6320::Graphics::VertexFormats::sVertex_mesh));
-		auto* const indexArray = reinterpret_cast<uint16_t*>(currentOffset);
-
-
-		o_makeData->m_verticesCount = vertexCount;
-		o_makeData->m_indicesCount = indexCount;
-		o_makeData->m_vertexPositionData = vertexArray;
-		o_makeData->m_indexData = indexArray;
-
-		return result;
-	}
-}
-
 

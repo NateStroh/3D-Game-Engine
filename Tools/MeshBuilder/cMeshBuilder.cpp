@@ -9,8 +9,13 @@
 eae6320::cResult eae6320::Assets::cMeshBuilder::Build(const std::vector<std::string>& i_arguments) {
 	eae6320::cResult result = Results::Success;
 	
-	eae6320::Graphics::GeometryMakeData makeData;
+	GeometryMakeData makeData;
 	LoadAsset(m_path_source, &makeData);
+
+	if (makeData.m_verticesCount > INT16_MAX) {
+		eae6320::Assets::OutputErrorMessageWithFileInfo(m_path_source, "Too many vertices are in the file!\n");
+		return Results::Failure;
+	}
 
 	FILE* oFile;
 	oFile = fopen(m_path_target, "wb");
@@ -19,8 +24,8 @@ eae6320::cResult eae6320::Assets::cMeshBuilder::Build(const std::vector<std::str
 		return Results::Failure;
 	}
 	
-	fwrite(&makeData.m_verticesCount, sizeof(makeData.m_verticesCount), 1, oFile);
-	fwrite(&makeData.m_indicesCount, sizeof(makeData.m_indicesCount), 1, oFile);
+	fwrite(&makeData.m_verticesCount, sizeof(uint16_t), 1, oFile);
+	fwrite(&makeData.m_indicesCount, sizeof(uint16_t), 1, oFile);
 	fwrite(makeData.m_vertexPositionData, sizeof(eae6320::Graphics::VertexFormats::sVertex_mesh), makeData.m_verticesCount, oFile);
 	fwrite(makeData.m_indexData, sizeof(uint16_t), makeData.m_indicesCount, oFile);
 
@@ -36,7 +41,7 @@ eae6320::cResult eae6320::Assets::cMeshBuilder::Build(const std::vector<std::str
 }
 
 
-eae6320::cResult eae6320::Assets::cMeshBuilder::LoadTableValues(lua_State& io_luaState, eae6320::Graphics::GeometryMakeData* i_geometryData)
+eae6320::cResult eae6320::Assets::cMeshBuilder::LoadTableValues(lua_State& io_luaState, GeometryMakeData* i_geometryData)
 {
 	auto result = eae6320::Results::Success;
 
@@ -52,7 +57,7 @@ eae6320::cResult eae6320::Assets::cMeshBuilder::LoadTableValues(lua_State& io_lu
 	return result;
 }
 
-eae6320::cResult eae6320::Assets::cMeshBuilder::LoadTableValues_vertices(lua_State& io_luaState, eae6320::Graphics::GeometryMakeData* i_geometryData) {
+eae6320::cResult eae6320::Assets::cMeshBuilder::LoadTableValues_vertices(lua_State& io_luaState, GeometryMakeData* i_geometryData) {
 	auto result = eae6320::Results::Success;
 	unsigned int NumOfVertices;
 
@@ -146,7 +151,7 @@ float eae6320::Assets::cMeshBuilder::GetFloatField(lua_State* i_luaState, const 
 	return result;
 }
 
-eae6320::cResult eae6320::Assets::cMeshBuilder::LoadTableValues_indices(lua_State& io_luaState, eae6320::Graphics::GeometryMakeData* i_geometryData) {
+eae6320::cResult eae6320::Assets::cMeshBuilder::LoadTableValues_indices(lua_State& io_luaState, GeometryMakeData* i_geometryData) {
 	auto result = eae6320::Results::Success;
 	unsigned int NumOfIndices;
 
@@ -187,7 +192,7 @@ eae6320::cResult eae6320::Assets::cMeshBuilder::LoadTableValues_indices(lua_Stat
 	return result;
 }
 
-eae6320::cResult eae6320::Assets::cMeshBuilder::LoadAsset(const char* const i_path, eae6320::Graphics::GeometryMakeData* i_geometryData)
+eae6320::cResult eae6320::Assets::cMeshBuilder::LoadAsset(const char* const i_path, GeometryMakeData* i_geometryData)
 {
 	auto result = eae6320::Results::Success;
 
