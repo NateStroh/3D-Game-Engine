@@ -5,7 +5,7 @@
 #include <Engine/ScopeGuard/cScopeGuard.h>
 #include <Engine/Logging/Logging.h>
 #include <Engine/Asserts/Asserts.h>
-
+#include <Engine/Platform/Platform.h>
 
 eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(eae6320::Graphics::VertexFormats::sVertex_mesh i_vertexData[], const unsigned int i_vertexCount, uint16_t i_indexData[], const unsigned int i_indexCount, Geometry*& o_geometry)  {
 	auto result = eae6320::Results::Success;
@@ -20,27 +20,16 @@ eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(eae6320::Graphics::Ve
 eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(const char* i_path, Geometry*& o_geometry) {
 	auto result = eae6320::Results::Success;
 
-	FILE* inFile = fopen(i_path, "rb");
-	if (inFile == 0) {
-		eae6320::Logging::OutputError("Invalid File - Couldn't open File: ");
-		eae6320::Logging::OutputError(i_path);
+	Platform::sDataFromFile fileData;
+	std::string errorMessage;
+	result = Platform::LoadBinaryFile(i_path, fileData, &errorMessage);
+	if (!result) {
+		eae6320::Logging::OutputError(errorMessage.c_str());
 		return eae6320::Results::Failure;
 	}
 
-	fseek(inFile, 0, SEEK_END);
-	long size = ftell(inFile);
-	rewind(inFile);
-
-	char* buffer = (char*)malloc(size);
-	size_t numRead = fread(buffer, sizeof(char), size, inFile);
-	if (numRead == 0) {
-		eae6320::Logging::OutputError("Didn't read anything: ");
-		eae6320::Logging::OutputError(i_path);
-		return eae6320::Results::Failure;
-	}
-
-	auto currentOffset = reinterpret_cast<uintptr_t>(buffer);
-	const auto finalOffset = currentOffset + size;
+	auto currentOffset = reinterpret_cast<uintptr_t>(fileData.data);
+	const auto finalOffset = currentOffset + fileData.size;
 
 	uint16_t vertexCount = *reinterpret_cast<uint16_t*>(currentOffset);
 	currentOffset += sizeof(vertexCount);
@@ -66,11 +55,8 @@ eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(const char* i_path, G
 
 	o_geometry = geometry;
 
-	free(buffer);
-
 	return result;
 }
-
 
 eae6320::Graphics::Geometry::~Geometry() {
 	CleanUp();
