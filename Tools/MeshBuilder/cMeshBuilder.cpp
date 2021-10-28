@@ -10,9 +10,10 @@ eae6320::cResult eae6320::Assets::cMeshBuilder::Build(const std::vector<std::str
 	eae6320::cResult result = Results::Success;
 	
 	GeometryMakeData makeData;
+
 	LoadAsset(m_path_source, &makeData);
 
-	if (makeData.m_verticesCount > UINT16_MAX) {
+	if (makeData.m_verticesCount > UINT16_MAX || makeData.m_indicesCount > UINT16_MAX) {
 		eae6320::Assets::OutputErrorMessageWithFileInfo(m_path_source, "Too many vertices are in the file!\n");
 		return Results::Failure;
 	}

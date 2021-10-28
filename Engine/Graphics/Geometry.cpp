@@ -22,6 +22,7 @@ eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(const char* i_path, G
 
 	Platform::sDataFromFile fileData;
 	std::string errorMessage;
+
 	result = Platform::LoadBinaryFile(i_path, fileData, &errorMessage);
 	if (!result) {
 		eae6320::Logging::OutputError(errorMessage.c_str());
@@ -42,7 +43,7 @@ eae6320::cResult eae6320::Graphics::Geometry::MakeGeometry(const char* i_path, G
 
 	uint16_t* indexArray = reinterpret_cast<uint16_t*>(currentOffset);
 	currentOffset += (indexCount * sizeof(uint16_t));
-	
+
 	EAE6320_ASSERTF(currentOffset == finalOffset, "Filesize didn't line up.");
 
 	Geometry* geometry = new Geometry();
