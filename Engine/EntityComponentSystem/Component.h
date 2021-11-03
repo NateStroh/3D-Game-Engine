@@ -1,0 +1,5 @@
+#ifndef EAE6320_COMPONENT_H
+#define EAE6320_COMPONENT_H
+
+
+#endif
