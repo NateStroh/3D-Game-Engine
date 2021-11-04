@@ -3,7 +3,7 @@
 
 #include <Engine/Results/Results.h>
 
-#include "Component.h"
+#include "ComponentSystem.h"
 
 namespace eae6320
 {
@@ -11,14 +11,16 @@ namespace eae6320
 		class EntityComponentSystem
 		{
 		private:
-			//Component m_allComponents[];
+			ComponentSystem* m_allComponentSystems;
+			unsigned int MAX_COMPONENTS = 500;
+
 		public:
 			cResult Initialization(const unsigned int i_maxComponents);
 			void Update(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate);
 			cResult CleanUp();
-			cResult AddComponent();
-			cResult RemoveComponent();
-			Component* GetComponents(unsigned int i_ID);
+			cResult AddComponentSystem();
+			cResult RemoveComponentSystem();
+			ComponentSystem* GetComponents(unsigned int i_ID);
 		};
 	}
 }

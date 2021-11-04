@@ -5,7 +5,7 @@
 namespace eae6320
 {
 	namespace ECS {
-		class Component
+		class ComponentSystem
 		{
 		private:
 

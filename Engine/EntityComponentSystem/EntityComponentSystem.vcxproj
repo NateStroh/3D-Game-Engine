@@ -151,12 +151,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Component.h" />
+    <ClInclude Include="ComponentSystem.h" />
+    <ClInclude Include="ECSTestSystem.h" />
     <ClInclude Include="EntityComponentSystem.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="ComponentSystem.cpp" />
+    <ClCompile Include="ECSTestSystem.cpp" />
     <ClCompile Include="EntityComponentSystem.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Asserts\Asserts.vcxproj">
+      <Project>{464a6551-fca9-4027-bd9e-2b26914782ab}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
