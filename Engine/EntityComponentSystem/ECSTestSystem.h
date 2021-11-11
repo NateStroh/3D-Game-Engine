@@ -10,8 +10,15 @@ namespace eae6320
 {
 	namespace ECS {
 		struct TestComponent {
-			unsigned int id;
 			std::string m_test;
+
+			TestComponent() : 
+				m_test("Default")
+			{ }
+
+			TestComponent(const TestComponent &other) : 
+				m_test(other.m_test)
+			{ }
 		};
 
 		class ECSTestSystem {
@@ -24,7 +31,11 @@ namespace eae6320
 
 			cResult Print(TestComponent i_component, const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate);
 
-			cResult CreateTestComponent(std::string i_stringInput, unsigned int i_ID);
+			cResult CreateTestComponent(std::string i_stringInput, SmartPointer<ECSEntity> i_entity);
+
+			cResult RemoveTestComponent(SmartPointer<ECSEntity> i_entity);
+
+			TestComponent* GetTestComponent(SmartPointer<ECSEntity> i_entity);
 
 			cResult CleanUp();
 		};

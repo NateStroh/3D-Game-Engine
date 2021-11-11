@@ -152,11 +152,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ComponentSystem.h" />
+    <ClInclude Include="ECSEntity.h" />
     <ClInclude Include="ECSTestSystem.h" />
     <ClInclude Include="EntityComponentSystem.h" />
+    <ClInclude Include="SmartPointer.h" />
+    <ClInclude Include="WeakPointer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ComponentSystem.cpp" />
+    <ClCompile Include="ECSEntity.cpp" />
     <ClCompile Include="ECSTestSystem.cpp" />
     <ClCompile Include="EntityComponentSystem.cpp" />
   </ItemGroup>

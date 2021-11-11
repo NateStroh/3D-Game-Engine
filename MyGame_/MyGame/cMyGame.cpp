@@ -7,6 +7,8 @@
 #include <Engine/UserInput/UserInput.h>
 #include <Engine/Math/cMatrix_transformation.h>
 #include <Engine/EntityComponentSystem/ECSTestSystem.h>
+#include <Engine/EntityComponentSystem/ECSEntity.h>
+#include <Engine/EntityComponentSystem/SmartPointer.h>
 
 // Inherited Implementation
 //=========================
@@ -130,11 +132,22 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 	ECS::ECSTestSystem ECSTest;
 	ECSTest.Init();
 
-	//ECSTest.AddComponent("test", 0);
+	SmartPointer<ECS::ECSEntity> entity = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity());
+	SmartPointer<ECS::ECSEntity> entity2 = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity());
 
-	//ECSTest.Update(1, 1);
+	ECSTest.CreateTestComponent("test", entity);
+	ECSTest.CreateTestComponent("asdfasdfasdf", entity2);
 
-	// Initialize the shading data
+	ECSTest.Update(1,1);
+
+	ECSTest.RemoveTestComponent(entity2);
+
+	ECSTest.Update(1, 1);
+
+	auto test = ECSTest.GetTestComponent(entity);
+
+	auto test2 = ECSTest.GetTestComponent(entity2);
+
 	{
 		if (!(result = InitializeShadingData()))
 		{

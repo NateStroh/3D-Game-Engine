@@ -4,10 +4,14 @@
     <ClInclude Include="EntityComponentSystem.h" />
     <ClInclude Include="ComponentSystem.h" />
     <ClInclude Include="ECSTestSystem.h" />
+    <ClInclude Include="SmartPointer.h" />
+    <ClInclude Include="WeakPointer.h" />
+    <ClInclude Include="ECSEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityComponentSystem.cpp" />
     <ClCompile Include="ComponentSystem.cpp" />
     <ClCompile Include="ECSTestSystem.cpp" />
+    <ClCompile Include="ECSEntity.cpp" />
   </ItemGroup>
 </Project>
