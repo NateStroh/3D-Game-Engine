@@ -1,7 +1,7 @@
 #ifndef EAE6320_CAMERAOBJECT_H
 #define EAE6320_CAMERAOBJECT_H
 
-#include <Engine/Physics/sRigidBodyState.h>
+#include <Engine/Application/Entity.h>
 
 #include <Engine/Math/Functions.h>
 #if defined( EAE6320_PLATFORM_WINDOWS )
@@ -19,9 +19,8 @@ namespace eae6320
 			float z_farPlane;
 		};
 
-		class CameraObject {
-		public:
-			eae6320::Physics::sRigidBodyState m_rigidBody;
+		class CameraObject : public Entity {
+		public: 
 			sCameraData m_cameraData;
 
 			CameraObject();

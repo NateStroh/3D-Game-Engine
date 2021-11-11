@@ -14,6 +14,7 @@
     <ClInclude Include="Windows\iApplication.win.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="CameraObject.h" />
+    <ClInclude Include="Entity.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Windows">

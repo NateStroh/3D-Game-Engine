@@ -1,4 +1,4 @@
-// Includes
+ // Includes
 //=========
 
 #include "cMyGame.h"
@@ -6,6 +6,7 @@
 #include <Engine/Asserts/Asserts.h>
 #include <Engine/UserInput/UserInput.h>
 #include <Engine/Math/cMatrix_transformation.h>
+#include <Engine/EntityComponentSystem/ECSTestSystem.h>
 
 // Inherited Implementation
 //=========================
@@ -125,6 +126,13 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 {
 	eae6320::Logging::OutputMessage("Initializing MyGame");
 	auto result = Results::Success;
+
+	ECS::ECSTestSystem ECSTest;
+	ECSTest.Init();
+
+	//ECSTest.AddComponent("test", 0);
+
+	//ECSTest.Update(1, 1);
 
 	// Initialize the shading data
 	{

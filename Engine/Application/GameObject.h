@@ -4,7 +4,7 @@
 #include <Engine/Graphics/Graphics.h>
 #include <Engine/Graphics/Effect.h>
 #include <Engine/Graphics/Geometry.h>
-#include <Engine/Physics/sRigidBodyState.h>
+#include <Engine/Application/Entity.h>
 
 #if defined( EAE6320_PLATFORM_WINDOWS )
 #include <Engine/Windows/Includes.h>
@@ -14,11 +14,10 @@ namespace eae6320
 {
 	namespace Application
 	{
-		class GameObject {
+		class GameObject : public Entity {
 		public:
 			eae6320::Graphics::Geometry* m_geometry;
 			eae6320::Graphics::Effect* m_effect;
-			eae6320::Physics::sRigidBodyState m_rigidBody;
 
 			void SubmitToBeRendered(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate);
 			void UpdateRigidBody(const float i_elapsedSecondCount_sinceLastUpdate);

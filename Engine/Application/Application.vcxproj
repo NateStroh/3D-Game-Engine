@@ -26,6 +26,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraObject.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="iApplication.h" />
     <ClInclude Include="Windows\iApplication.win.h" />
