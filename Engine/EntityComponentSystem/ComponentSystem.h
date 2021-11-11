@@ -34,11 +34,10 @@ namespace eae6320
 		class ComponentSystem
 		{
 		private:
-			unsigned int m_componentID = 0;
-			unsigned int componentNum = 0;
+			//unsigned int m_componentID = 0;
+			//unsigned int componentNum = 0;
 		public:
 			std::vector<SmartPointer<ComponentData<T>>> m_componentList;
-			//void Update(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate);
 			cResult AddComponentToList(T i_component, SmartPointer<ECSEntity> i_entity);
 			cResult RemoveComponentFromList(SmartPointer<ECSEntity> i_entity);
 			T* GetComponent(SmartPointer<ECSEntity> i_entity);
