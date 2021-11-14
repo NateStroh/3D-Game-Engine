@@ -141,10 +141,15 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 	ECSTest.Update(1,1);
 
 	ECSTest.RemoveTestComponent(entity2);
+	ECSTest.RemoveTestComponent(entity2);
+
+	ECSTest.RemoveTestComponent(entity);
+	entity.~SmartPointer();
+	
 
 	ECSTest.Update(1, 1);
 
-	auto test = ECSTest.GetTestComponent(entity);
+	//auto test = ECSTest.GetTestComponent(entity);
 
 	auto test2 = ECSTest.GetTestComponent(entity2);
 

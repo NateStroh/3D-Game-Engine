@@ -55,8 +55,8 @@ eae6320::cResult eae6320::ECS::ComponentSystem<T>::AddComponentToList(T i_compon
 template<typename T>
 eae6320::cResult eae6320::ECS::ComponentSystem<T>::RemoveComponentFromList(SmartPointer<ECSEntity> i_entity) {
 	for (int i = 0; i < m_componentList.size(); i++) {
-		ComponentData<T> test = *m_componentList[i];
-		if ((*(test.m_entity.CreateSmartPointer())) == (*i_entity)) {
+		SmartPointer<ECSEntity> newSmartPointer = (((*m_componentList[i]).m_entity.CreateSmartPointer()));
+		if ((&(*newSmartPointer)) == &(*i_entity)) {
 			m_componentList.erase(m_componentList.begin()+i);
 			return eae6320::Results::Success;
 		}
@@ -67,8 +67,8 @@ eae6320::cResult eae6320::ECS::ComponentSystem<T>::RemoveComponentFromList(Smart
 template<typename T>
 T* eae6320::ECS::ComponentSystem<T>::GetComponent(SmartPointer<ECSEntity> i_entity) {
 	for(SmartPointer<ComponentData<T>> component : m_componentList) {
-		ComponentData<T> test = *component;
-		if ((*(test.m_entity.CreateSmartPointer())) == (*i_entity)) {
+		SmartPointer<ECSEntity> newSmartPointer = (((*component).m_entity.CreateSmartPointer()));
+		if (&(*newSmartPointer) == &(*i_entity)) {
 			return &((*component).m_componentData);
 		}
 	}

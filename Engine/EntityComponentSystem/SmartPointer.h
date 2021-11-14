@@ -114,7 +114,7 @@ T* SmartPointer<T>::operator->() {
 
 template <typename T>
 T& SmartPointer<T>::operator*() {
-	assert(m_ptr);
+	//assert(m_ptr);
 	return *m_ptr;
 }
 
