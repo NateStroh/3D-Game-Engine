@@ -7,11 +7,13 @@
     <ClInclude Include="SmartPointer.h" />
     <ClInclude Include="WeakPointer.h" />
     <ClInclude Include="ECSEntity.h" />
+    <ClInclude Include="RenderComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityComponentSystem.cpp" />
     <ClCompile Include="ComponentSystem.cpp" />
     <ClCompile Include="ECSTestSystem.cpp" />
     <ClCompile Include="ECSEntity.cpp" />
+    <ClCompile Include="RenderComponent.cpp" />
   </ItemGroup>
 </Project>

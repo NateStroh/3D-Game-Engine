@@ -7,7 +7,6 @@
 #include <Engine/UserInput/UserInput.h>
 #include <Engine/Math/cMatrix_transformation.h>
 #include <Engine/EntityComponentSystem/ECSTestSystem.h>
-#include <Engine/EntityComponentSystem/ECSEntity.h>
 #include <Engine/EntityComponentSystem/SmartPointer.h>
 
 // Inherited Implementation
@@ -33,7 +32,9 @@ void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_s
 	m_gameObject.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 	m_gameObject2.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 	m_gameObject3.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
-	
+
+	renderComponent.Update(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
+
 }
 
 void eae6320::cMyGame::UpdateBasedOnInput()
@@ -129,30 +130,6 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 	eae6320::Logging::OutputMessage("Initializing MyGame");
 	auto result = Results::Success;
 
-	ECS::ECSTestSystem ECSTest;
-	ECSTest.Init();
-
-	SmartPointer<ECS::ECSEntity> entity = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity());
-	SmartPointer<ECS::ECSEntity> entity2 = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity());
-
-	ECSTest.CreateTestComponent("test", entity);
-	ECSTest.CreateTestComponent("asdfasdfasdf", entity2);
-
-	ECSTest.Update(1,1);
-
-	ECSTest.RemoveTestComponent(entity2);
-	ECSTest.RemoveTestComponent(entity2);
-
-	ECSTest.RemoveTestComponent(entity);
-	entity.~SmartPointer();
-	
-
-	ECSTest.Update(1, 1);
-
-	//auto test = ECSTest.GetTestComponent(entity);
-
-	auto test2 = ECSTest.GetTestComponent(entity2);
-
 	{
 		if (!(result = InitializeShadingData()))
 		{
@@ -168,6 +145,30 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 			return result;
 		}
 	}
+
+	ECS::ECSTestSystem ECSTest;
+	ECSTest.Init();
+
+	renderComponent.Init();
+
+	renderComponent.CreateRenderComponent(geometryArray[3], effectArray[0], &(*entity2).m_rigidBody, entity2);
+	ECSTest.CreateTestComponent("test", entity);
+	ECSTest.CreateTestComponent("asdfasdfasdf", entity2);
+
+	ECSTest.Update(1, 1);
+	renderComponent.Update(0, 0);
+
+	ECSTest.RemoveTestComponent(entity2);
+	ECSTest.RemoveTestComponent(entity2);
+
+	ECSTest.RemoveTestComponent(entity);
+	entity.~SmartPointer();
+
+	ECSTest.Update(1, 1);
+
+	//auto test = ECSTest.GetTestComponent(entity);
+
+	auto test2 = ECSTest.GetTestComponent(entity2);
 
 	m_gameObject.m_geometry = geometryArray[2];
 	m_gameObject.m_effect = effectArray[0];
@@ -195,9 +196,11 @@ eae6320::cResult eae6320::cMyGame::CleanUp()
 	geometryArray[0]->DecrementReferenceCount();
 	geometryArray[1]->DecrementReferenceCount();
 	geometryArray[2]->DecrementReferenceCount();
+	geometryArray[3]->DecrementReferenceCount();
 	geometryArray[0] = nullptr;
 	geometryArray[1] = nullptr;
 	geometryArray[2] = nullptr;
+	geometryArray[3] = nullptr;
 
 	//shader cleanup
 	effectArray[0]->DecrementReferenceCount();
@@ -213,7 +216,7 @@ eae6320::cResult eae6320::cMyGame::InitializeGeometry() {
 	auto result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/Sphere.mesh", geometryArray[0]);
 	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/Plane.mesh", geometryArray[1]);
 	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/ColoredCube.mesh", geometryArray[2]);
-	//result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/ColoredCube.mesh", geometryArray[3]);
+	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/BlueDonut.mesh", geometryArray[3]);
 	return result;
 }
 

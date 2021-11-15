@@ -16,6 +16,8 @@
 #include <Engine/Graphics/Geometry.h>
 #include <Engine/Application/GameObject.h>
 #include <Engine/Application/CameraObject.h>
+#include <Engine/EntityComponentSystem/ECSEntity.h>
+#include <Engine/EntityComponentSystem/RenderComponent.h>
 
 #if defined( EAE6320_PLATFORM_WINDOWS )
 	#include "Resource Files/Resource.h"
@@ -104,6 +106,9 @@ namespace eae6320
 		eae6320::Application::GameObject m_gameObject2;
 		eae6320::Application::GameObject m_gameObject3;
 		eae6320::Application::CameraObject m_mainCamera;
+		SmartPointer<ECS::ECSEntity> entity = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity());
+		SmartPointer<ECS::ECSEntity> entity2 = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity());
+		ECS::RenderComponent renderComponent;
 	};
 }
 
