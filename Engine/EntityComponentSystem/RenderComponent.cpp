@@ -2,6 +2,8 @@
 
 #include <Engine/Graphics/Graphics.h>
 
+eae6320::ECS::ComponentSystem<eae6320::ECS::SRenderComponent> eae6320::ECS::RenderComponent::m_renderComponentList = *new eae6320::ECS::ComponentSystem<eae6320::ECS::SRenderComponent>();
+
 eae6320::cResult eae6320::ECS::RenderComponent::Init()
 {
 	return cResult();

@@ -109,8 +109,6 @@ namespace eae6320
 		eae6320::Application::CameraObject m_mainCamera;
 		SmartPointer<ECS::ECSEntity> entity = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity());
 		SmartPointer<ECS::ECSEntity> entity2 = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity());
-		ECS::RenderComponent renderComponent;
-		ECS::PhysicsSystem physicsSystem;
 	};
 }
 

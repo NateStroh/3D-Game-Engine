@@ -126,6 +126,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -151,26 +152,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ECSCameraObject.h" />
     <ClInclude Include="ComponentSystem.h" />
     <ClInclude Include="ECSEntity.h" />
     <ClInclude Include="ECSTestSystem.h" />
     <ClInclude Include="EntityComponentSystem.h" />
+    <ClInclude Include="ECSGameObject.h" />
     <ClInclude Include="PhysicsSystem.h" />
     <ClInclude Include="RenderComponent.h" />
     <ClInclude Include="SmartPointer.h" />
     <ClInclude Include="WeakPointer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ECSCameraObject.cpp" />
     <ClCompile Include="ComponentSystem.cpp" />
     <ClCompile Include="ECSEntity.cpp" />
     <ClCompile Include="ECSTestSystem.cpp" />
     <ClCompile Include="EntityComponentSystem.cpp" />
+    <ClCompile Include="ECSGameObject.cpp" />
     <ClCompile Include="PhysicsSystem.cpp" />
     <ClCompile Include="RenderComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Asserts\Asserts.vcxproj">
       <Project>{464a6551-fca9-4027-bd9e-2b26914782ab}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Graphics\Graphics.vcxproj">
+      <Project>{fb81ba11-6314-4348-b4ed-6bdba30c18ed}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Physics\Physics.vcxproj">
+      <Project>{30e6bb9f-138d-4b44-9733-869263f7bad5}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

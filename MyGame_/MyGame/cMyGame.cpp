@@ -33,7 +33,7 @@ void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_s
 	m_gameObject2.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 	m_gameObject3.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 
-	renderComponent.Update(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
+	eae6320::ECS::RenderComponent::Update(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 
 }
 
@@ -122,7 +122,7 @@ void eae6320::cMyGame::UpdateSimulationBasedOnTime(const float i_elapsedSecondCo
 	m_gameObject2.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
 	m_gameObject3.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
 	m_mainCamera.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
-	physicsSystem.Update(i_elapsedSecondCount_sinceLastUpdate);
+	eae6320::ECS::PhysicsSystem::Update(i_elapsedSecondCount_sinceLastUpdate);
 }
 
 // Initialize / Clean Up
@@ -151,18 +151,18 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 
 	ECS::ECSTestSystem ECSTest;
 	ECSTest.Init();
-	renderComponent.Init();
-	physicsSystem.Init();
 
-	physicsSystem.CreatePhysicsComponent((*entity2).m_rigidBody, entity2);
+	eae6320::ECS::RenderComponent::Init();
+	eae6320::ECS::PhysicsSystem::Init();
 
-	renderComponent.CreateRenderComponent(geometryArray[3], effectArray[0], (*entity2).m_rigidBody, entity2);
+	eae6320::ECS::PhysicsSystem::CreatePhysicsComponent((*entity2).m_rigidBody, entity2);
+
+	eae6320::ECS::RenderComponent::CreateRenderComponent(geometryArray[3], effectArray[0], (*entity2).m_rigidBody, entity2);
 	ECSTest.CreateTestComponent("test", entity);
 	ECSTest.CreateTestComponent("asdfasdfasdf", entity2);
 
 	ECSTest.Update(1, 1);
-	renderComponent.Update(0, 0);
-
+	
 	ECSTest.RemoveTestComponent(entity2);
 	ECSTest.RemoveTestComponent(entity2);
 
@@ -196,6 +196,9 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 eae6320::cResult eae6320::cMyGame::CleanUp()
 {
 	eae6320::Logging::OutputMessage("Cleaning Up MyGame");
+
+	eae6320::ECS::RenderComponent::CleanUp();
+	eae6320::ECS::PhysicsSystem::CleanUp();
 
 	//geometry cleanup
 	geometryArray[0]->DecrementReferenceCount();

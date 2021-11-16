@@ -24,11 +24,11 @@ namespace eae6320
 			{ }
 		};
 
-		class PhysicsSystem {
-			ComponentSystem<SPhysicsComponent> m_PhysicsSystemComponentList;
+		namespace PhysicsSystem {
+			extern ComponentSystem<SPhysicsComponent> m_PhysicsSystemComponentList;
 
 			cResult Tick(SPhysicsComponent i_component, const float i_elapsedSecondCount_sinceLastSimulationUpdate);
-		public:
+
 			cResult Init();
 
 			cResult Update(const float i_sinceLastSimulationUpdate);

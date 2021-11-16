@@ -1,5 +1,7 @@
 #include "PhysicsSystem.h"
 
+eae6320::ECS::ComponentSystem<eae6320::ECS::SPhysicsComponent> eae6320::ECS::PhysicsSystem::m_PhysicsSystemComponentList = *new eae6320::ECS::ComponentSystem<eae6320::ECS::SPhysicsComponent>();
+
 eae6320::cResult eae6320::ECS::PhysicsSystem::Tick(SPhysicsComponent i_component, const float i_elapsedSecondCount_sinceLastSimulationUpdate)
 {
 	cResult result = Results::Success;

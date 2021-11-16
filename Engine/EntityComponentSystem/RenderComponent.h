@@ -33,9 +33,9 @@ namespace eae6320
 			{ }
 		};
 
-		class RenderComponent {
-			ComponentSystem<SRenderComponent> m_renderComponentList;
-		public:
+		namespace  RenderComponent {
+			extern ComponentSystem<SRenderComponent> m_renderComponentList;
+
 			cResult Init();
 
 			cResult Update(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate);

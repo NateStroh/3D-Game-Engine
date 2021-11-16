@@ -24,10 +24,10 @@ namespace eae6320
 
 			bool friend operator==(const ECSEntity& lhs, const ECSEntity& rhs);
 
-		private:
 			cResult Initialize();
 			cResult CleanUp();
-
+		private:
+			
 		};
 	}
 }
