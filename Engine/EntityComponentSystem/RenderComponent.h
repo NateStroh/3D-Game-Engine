@@ -12,7 +12,7 @@ namespace eae6320
 		struct SRenderComponent {
 			eae6320::Graphics::Geometry* m_geometry;
 			eae6320::Graphics::Effect* m_effect;
-			eae6320::Physics::sRigidBodyState* m_rigidBody;
+			WeakPointer<eae6320::Physics::sRigidBodyState> m_rigidBody;
 
 			SRenderComponent() :
 				m_geometry(nullptr),
@@ -26,7 +26,7 @@ namespace eae6320
 				m_rigidBody(other.m_rigidBody)
 			{ }
 
-			SRenderComponent(eae6320::Graphics::Geometry* i_geometry, eae6320::Graphics::Effect* i_effect, eae6320::Physics::sRigidBodyState* i_rigidBody) :
+			SRenderComponent(eae6320::Graphics::Geometry* i_geometry, eae6320::Graphics::Effect* i_effect, SmartPointer<eae6320::Physics::sRigidBodyState> i_rigidBody) :
 				m_geometry(i_geometry),
 				m_effect(i_effect),
 				m_rigidBody(i_rigidBody)
@@ -42,7 +42,7 @@ namespace eae6320
 
 			cResult Render(SRenderComponent i_component, const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate);
 
-			cResult CreateRenderComponent(eae6320::Graphics::Geometry* i_geometry, eae6320::Graphics::Effect* i_effect, eae6320::Physics::sRigidBodyState* i_rigidBody, SmartPointer<ECSEntity> i_entity);
+			cResult CreateRenderComponent(eae6320::Graphics::Geometry* i_geometry, eae6320::Graphics::Effect* i_effect, SmartPointer<eae6320::Physics::sRigidBodyState> i_rigidBody, SmartPointer<ECSEntity> i_entity);
 
 			cResult RemoveRenderComponent(SmartPointer<ECSEntity> i_entity);
 

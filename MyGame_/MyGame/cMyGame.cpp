@@ -106,6 +106,8 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 
 	if (UserInput::IsKeyPressed('Q')) {
 		m_mainCamera.m_rigidBody.angularSpeed = 1.0f;
+		SmartPointer<eae6320::Physics::sRigidBodyState> rigidBody = (*entity2).m_rigidBody;
+		(*rigidBody).angularSpeed = 1.0f;
 	}
 	else if (UserInput::IsKeyPressed('E')) {
 		m_mainCamera.m_rigidBody.angularSpeed = -1.0f;
@@ -120,6 +122,7 @@ void eae6320::cMyGame::UpdateSimulationBasedOnTime(const float i_elapsedSecondCo
 	m_gameObject2.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
 	m_gameObject3.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
 	m_mainCamera.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
+	physicsSystem.Update(i_elapsedSecondCount_sinceLastUpdate);
 }
 
 // Initialize / Clean Up
@@ -148,10 +151,12 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 
 	ECS::ECSTestSystem ECSTest;
 	ECSTest.Init();
-
 	renderComponent.Init();
+	physicsSystem.Init();
 
-	renderComponent.CreateRenderComponent(geometryArray[3], effectArray[0], &(*entity2).m_rigidBody, entity2);
+	physicsSystem.CreatePhysicsComponent((*entity2).m_rigidBody, entity2);
+
+	renderComponent.CreateRenderComponent(geometryArray[3], effectArray[0], (*entity2).m_rigidBody, entity2);
 	ECSTest.CreateTestComponent("test", entity);
 	ECSTest.CreateTestComponent("asdfasdfasdf", entity2);
 

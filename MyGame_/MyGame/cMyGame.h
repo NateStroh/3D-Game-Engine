@@ -18,6 +18,7 @@
 #include <Engine/Application/CameraObject.h>
 #include <Engine/EntityComponentSystem/ECSEntity.h>
 #include <Engine/EntityComponentSystem/RenderComponent.h>
+#include <Engine/EntityComponentSystem/PhysicsSystem.h>
 
 #if defined( EAE6320_PLATFORM_WINDOWS )
 	#include "Resource Files/Resource.h"
@@ -109,6 +110,7 @@ namespace eae6320
 		SmartPointer<ECS::ECSEntity> entity = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity());
 		SmartPointer<ECS::ECSEntity> entity2 = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity());
 		ECS::RenderComponent renderComponent;
+		ECS::PhysicsSystem physicsSystem;
 	};
 }
 

@@ -25,7 +25,8 @@ eae6320::cResult eae6320::ECS::RenderComponent::Render(SRenderComponent i_compon
 	i_component.m_geometry->IncrementReferenceCount();
 	i_component.m_effect->IncrementReferenceCount();
 
-	auto predictedTransform = i_component.m_rigidBody->PredictFutureTransform(i_elapsedSecondCount_sinceLastSimulationUpdate);
+	SmartPointer<eae6320::Physics::sRigidBodyState> physicsComponent = i_component.m_rigidBody.CreateSmartPointer();
+	auto predictedTransform = (*physicsComponent).PredictFutureTransform(i_elapsedSecondCount_sinceLastSimulationUpdate);
 	eae6320::Graphics::AddGeometryEffectPair(i_component.m_geometry, predictedTransform, i_component.m_effect);
 
 	i_component.m_geometry->DecrementReferenceCount();
@@ -33,7 +34,7 @@ eae6320::cResult eae6320::ECS::RenderComponent::Render(SRenderComponent i_compon
 	return result;
 }
 
-eae6320::cResult eae6320::ECS::RenderComponent::CreateRenderComponent(eae6320::Graphics::Geometry* i_geometry, eae6320::Graphics::Effect* i_effect, eae6320::Physics::sRigidBodyState* i_rigidBody, SmartPointer<ECSEntity> i_entity)
+eae6320::cResult eae6320::ECS::RenderComponent::CreateRenderComponent(eae6320::Graphics::Geometry* i_geometry, eae6320::Graphics::Effect* i_effect, SmartPointer<eae6320::Physics::sRigidBodyState> i_rigidBody, SmartPointer<ECSEntity> i_entity)
 {
 	cResult result = Results::Success;
 	SRenderComponent renderComponent(i_geometry, i_effect, i_rigidBody);

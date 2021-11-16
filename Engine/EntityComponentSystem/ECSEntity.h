@@ -3,6 +3,7 @@
 
 #include <Engine/Physics/sRigidBodyState.h>
 #include <Engine/Results/Results.h>
+#include <Engine/EntityComponentSystem/SmartPointer.h>
 
 #if defined( EAE6320_PLATFORM_WINDOWS )
 #include <Engine/Windows/Includes.h>
@@ -14,7 +15,7 @@ namespace eae6320
 	{
 		class ECSEntity {
 		public:
-			eae6320::Physics::sRigidBodyState m_rigidBody;
+			SmartPointer<eae6320::Physics::sRigidBodyState> m_rigidBody;
 
 			static cResult MakeEntity(ECSEntity*& o_entity);
 

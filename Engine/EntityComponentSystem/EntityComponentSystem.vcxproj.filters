@@ -8,6 +8,7 @@
     <ClInclude Include="WeakPointer.h" />
     <ClInclude Include="ECSEntity.h" />
     <ClInclude Include="RenderComponent.h" />
+    <ClInclude Include="PhysicsSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityComponentSystem.cpp" />
@@ -15,5 +16,6 @@
     <ClCompile Include="ECSTestSystem.cpp" />
     <ClCompile Include="ECSEntity.cpp" />
     <ClCompile Include="RenderComponent.cpp" />
+    <ClCompile Include="PhysicsSystem.cpp" />
   </ItemGroup>
 </Project>
