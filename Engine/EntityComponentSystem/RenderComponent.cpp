@@ -2,7 +2,7 @@
 
 #include <Engine/Graphics/Graphics.h>
 
-eae6320::ECS::ComponentSystem<eae6320::ECS::SRenderComponent> eae6320::ECS::RenderComponent::m_renderComponentList = *new eae6320::ECS::ComponentSystem<eae6320::ECS::SRenderComponent>();
+eae6320::ECS::ComponentSystem<eae6320::ECS::SRenderComponent> &eae6320::ECS::RenderComponent::m_renderComponentList = *(new eae6320::ECS::ComponentSystem<eae6320::ECS::SRenderComponent>());
 
 eae6320::cResult eae6320::ECS::RenderComponent::Init()
 {
@@ -58,5 +58,6 @@ eae6320::cResult eae6320::ECS::RenderComponent::CleanUp()
 {
 	cResult result = Results::Success;
 	m_renderComponentList.m_componentList.clear();
+	delete &eae6320::ECS::RenderComponent::m_renderComponentList;
 	return result;
 }

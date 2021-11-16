@@ -2,17 +2,22 @@
 #include <Engine/Math/Functions.h>
 #include <Engine/Graphics/Graphics.h>
 
+#include <Engine/EntityComponentSystem/PhysicsSystem.h>
+
 eae6320::ECS::ECSCameraObject::ECSCameraObject() {
 	m_rigidBody = SmartPointer<eae6320::Physics::sRigidBodyState>(new eae6320::Physics::sRigidBodyState());
 	m_cameraData.verticalFieldOfView_inRadians = Math::ConvertDegreesToRadians(45.0f);
 	m_cameraData.aspectRatio = 1.0f;
 	m_cameraData.z_nearPlane = 0.1f;
 	m_cameraData.z_farPlane = 50.0f;
+	m_pointer = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity(*this));
+
+	eae6320::ECS::PhysicsSystem::CreatePhysicsComponent(m_rigidBody, m_pointer);
 }
 
 eae6320::ECS::ECSCameraObject::~ECSCameraObject()
 {
-
+	eae6320::ECS::PhysicsSystem::RemovePhysicsComponent(m_pointer);
 }
 
 void eae6320::ECS::ECSCameraObject::SubmitToBeRendered(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate) {

@@ -8,6 +8,8 @@
 #include <Engine/Math/cMatrix_transformation.h>
 #include <Engine/EntityComponentSystem/ECSTestSystem.h>
 #include <Engine/EntityComponentSystem/SmartPointer.h>
+#include <Engine/EntityComponentSystem/ECSCameraObject.h>
+#include <Engine/EntityComponentSystem/ECSGameObject.h>
 
 // Inherited Implementation
 //=========================
@@ -148,6 +150,8 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 			return result;
 		}
 	}
+	
+	ECS::ECSCameraObject camera;
 
 	ECS::ECSTestSystem ECSTest;
 	ECSTest.Init();

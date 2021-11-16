@@ -34,7 +34,7 @@ namespace eae6320
 		};
 
 		namespace  RenderComponent {
-			extern ComponentSystem<SRenderComponent> m_renderComponentList;
+			extern ComponentSystem<SRenderComponent>& m_renderComponentList;
 
 			cResult Init();
 

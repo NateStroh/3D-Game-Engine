@@ -17,7 +17,7 @@ namespace eae6320
 
 		class ECSCameraObject : public ECSEntity {
 		private:
-
+			SmartPointer<ECS::ECSEntity> m_pointer;
 		public:
 			eae6320::Application::sCameraData m_cameraData;
 			ECSCameraObject();
