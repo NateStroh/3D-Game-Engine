@@ -54,7 +54,7 @@ eae6320::cResult eae6320::ECS::ComponentSystem<T>::AddComponentToList(T i_compon
 
 template<typename T>
 eae6320::cResult eae6320::ECS::ComponentSystem<T>::RemoveComponentFromList(SmartPointer<ECSEntity> i_entity) {
-	for (int i = 0; i < m_componentList.size(); i++) {
+	for (unsigned int i = 0; i < m_componentList.size(); i++) {
 		SmartPointer<ECSEntity> newSmartPointer = (((*m_componentList[i]).m_entity.CreateSmartPointer()));
 		if ((&(*newSmartPointer)) == &(*i_entity)) {
 			m_componentList.erase(m_componentList.begin()+i);

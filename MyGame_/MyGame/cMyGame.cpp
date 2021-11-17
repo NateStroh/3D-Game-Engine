@@ -8,8 +8,6 @@
 #include <Engine/Math/cMatrix_transformation.h>
 #include <Engine/EntityComponentSystem/ECSTestSystem.h>
 #include <Engine/EntityComponentSystem/SmartPointer.h>
-#include <Engine/EntityComponentSystem/ECSCameraObject.h>
-#include <Engine/EntityComponentSystem/ECSGameObject.h>
 
 // Inherited Implementation
 //=========================
@@ -29,7 +27,8 @@ void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_s
 		m_gameObject.m_effect = effectArray[1];
 	}
 
-	m_mainCamera.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
+	//m_mainCamera.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
+	camera.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 
 	m_gameObject.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 	m_gameObject2.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
@@ -88,34 +87,43 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 	}
 
 	if (UserInput::IsKeyPressed('Z')) {
-		m_mainCamera.m_rigidBody.velocity += { 0.0f, 1.0f, 0.0f };
+		//m_mainCamera.m_rigidBody.velocity += { 0.0f, 1.0f, 0.0f };
+		camera.m_rigidBody.operator*().velocity += { 0.0f, 1.0f, 0.0f };
 	}
 	if (UserInput::IsKeyPressed('X')) {
-		m_mainCamera.m_rigidBody.velocity += { 0.0f, -1.0f, 0.0f };
+		//m_mainCamera.m_rigidBody.velocity += { 0.0f, -1.0f, 0.0f };
+		camera.m_rigidBody.operator*().velocity += { 0.0f, -1.0f, 0.0f };
 	}
 	if (UserInput::IsKeyPressed('D')) {
-		m_mainCamera.m_rigidBody.velocity += { 1.0f, 0.0f, 0.0f };
+		//m_mainCamera.m_rigidBody.velocity += { 1.0f, 0.0f, 0.0f };
+		camera.m_rigidBody.operator*().velocity += { 1.0f, 0.0f, 0.0f };
 	}
 	if (UserInput::IsKeyPressed('A')) {
-		m_mainCamera.m_rigidBody.velocity += { -1.0f, 0.0f, 0.0f };
+		//m_mainCamera.m_rigidBody.velocity += { -1.0f, 0.0f, 0.0f };
+		camera.m_rigidBody.operator*().velocity += { -1.0f, 0.0f, 0.0f };
 	}
 	if (UserInput::IsKeyPressed('S')) {
-		m_mainCamera.m_rigidBody.velocity += { 0.0f, 0.0f, 1.0f };
+		//m_mainCamera.m_rigidBody.velocity += { 0.0f, 0.0f, 1.0f };
+		camera.m_rigidBody.operator*().velocity += { 0.0f, 0.0f, 1.0f };
 	}
 	if (UserInput::IsKeyPressed('W')) {
-		m_mainCamera.m_rigidBody.velocity += { 0.0f, 0.0f, -1.0f };
+		//m_mainCamera.m_rigidBody.velocity += { 0.0f, 0.0f, -1.0f };
+		camera.m_rigidBody.operator*().velocity += { 0.0f, 0.0f, -1.0f };
 	}
 
 	if (UserInput::IsKeyPressed('Q')) {
-		m_mainCamera.m_rigidBody.angularSpeed = 1.0f;
+		//m_mainCamera.m_rigidBody.angularSpeed = 1.0f;
+		camera.m_rigidBody.operator*().angularSpeed = 1.0f;
 		SmartPointer<eae6320::Physics::sRigidBodyState> rigidBody = (*entity2).m_rigidBody;
 		(*rigidBody).angularSpeed = 1.0f;
 	}
 	else if (UserInput::IsKeyPressed('E')) {
-		m_mainCamera.m_rigidBody.angularSpeed = -1.0f;
+		//m_mainCamera.m_rigidBody.angularSpeed = -1.0f;
+		camera.m_rigidBody.operator*().angularSpeed = -1.0f;
 	}
 	else {
-		m_mainCamera.m_rigidBody.angularSpeed = 0.0f;
+		//m_mainCamera.m_rigidBody.angularSpeed = 0.0f;
+		camera.m_rigidBody.operator*().angularSpeed = 0.0f;
 	}
 }
 
@@ -123,7 +131,7 @@ void eae6320::cMyGame::UpdateSimulationBasedOnTime(const float i_elapsedSecondCo
 	m_gameObject.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
 	m_gameObject2.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
 	m_gameObject3.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
-	m_mainCamera.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
+	//m_mainCamera.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
 	eae6320::ECS::PhysicsSystem::Update(i_elapsedSecondCount_sinceLastUpdate);
 }
 
@@ -151,7 +159,8 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 		}
 	}
 	
-	ECS::ECSCameraObject camera;
+	
+	//camera.~ECSCameraObject();
 
 	ECS::ECSTestSystem ECSTest;
 	ECSTest.Init();
@@ -191,7 +200,8 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 	m_gameObject3.m_effect = effectArray[0];
 	m_gameObject3.m_rigidBody;
 
-	m_mainCamera.m_rigidBody.position = {0,1,5};
+	camera.m_rigidBody.operator*().position = { 0,1,5 };
+	//m_mainCamera.m_rigidBody.position = {0,1,5};
 
 	eae6320::Logging::OutputMessage("Finished Initializing MyGame");
 	return result;
