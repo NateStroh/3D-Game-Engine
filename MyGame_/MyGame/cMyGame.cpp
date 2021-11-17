@@ -18,20 +18,16 @@
 void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate) {
 	Graphics::SetBackGroundColor(1.0f, 0.0f, 1.0f, 1.0f);
 
-	if(shiftpressed){
-		m_gameObject.m_geometry = geometryArray[2];
-		m_gameObject.m_effect = effectArray[0];
-	}
-	else {
-		m_gameObject.m_geometry = geometryArray[0];
-		m_gameObject.m_effect = effectArray[1];
-	}
-
+	//if(shiftpressed){
+	//	m_gameObject.m_geometry = geometryArray[2];
+	//	m_gameObject.m_effect = effectArray[0];
+	//}
+	//else {
+	//	m_gameObject.m_geometry = geometryArray[0];
+	//	m_gameObject.m_effect = effectArray[1];
+	//}
+	//
 	camera.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
-
-	m_gameObject.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
-	m_gameObject2.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
-	m_gameObject3.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 
 	eae6320::ECS::RenderComponent::Update(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 
@@ -72,18 +68,18 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 		shiftpressed = false;
 	}
 
-	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Up)) {
-		m_gameObject.m_rigidBody.velocity += { 0.0f, 1.0f, 0.0f };
-	}
-	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Down)) {
-		m_gameObject.m_rigidBody.velocity += { 0.0f, -1.0f, 0.0f };
-	}
-	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Right)) {
-		m_gameObject.m_rigidBody.velocity += { 1.0f, 0.0f, 0.0f };
-	}
-	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Left)) {
-		m_gameObject.m_rigidBody.velocity += { -1.0f, 0.0f, 0.0f };
-	}
+	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Up)) {
+	//	m_gameObject.m_rigidBody.velocity += { 0.0f, 1.0f, 0.0f };
+	//}
+	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Down)) {
+	//	m_gameObject.m_rigidBody.velocity += { 0.0f, -1.0f, 0.0f };
+	//}
+	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Right)) {
+	//	m_gameObject.m_rigidBody.velocity += { 1.0f, 0.0f, 0.0f };
+	//}
+	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Left)) {
+	//	m_gameObject.m_rigidBody.velocity += { -1.0f, 0.0f, 0.0f };
+	//}
 
 	if (UserInput::IsKeyPressed('Z')) {
 		camera.m_rigidBody.operator*().velocity += { 0.0f, 1.0f, 0.0f };
@@ -118,9 +114,6 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 }
 
 void eae6320::cMyGame::UpdateSimulationBasedOnTime(const float i_elapsedSecondCount_sinceLastUpdate) {
-	m_gameObject.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
-	m_gameObject2.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
-	m_gameObject3.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
 	eae6320::ECS::PhysicsSystem::Update(i_elapsedSecondCount_sinceLastUpdate);
 }
 
@@ -147,9 +140,6 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 			return result;
 		}
 	}
-	
-	
-	//camera.~ECSCameraObject();
 
 	ECS::ECSTestSystem ECSTest;
 	ECSTest.Init();
@@ -157,37 +147,31 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 	eae6320::ECS::RenderComponent::Init();
 	eae6320::ECS::PhysicsSystem::Init();
 
-	eae6320::ECS::PhysicsSystem::CreatePhysicsComponent((*entity2).m_rigidBody, entity2);
+	//eae6320::ECS::PhysicsSystem::CreatePhysicsComponent((*entity2).m_rigidBody, entity2);
 
-	eae6320::ECS::RenderComponent::CreateRenderComponent(geometryArray[3], effectArray[0], (*entity2).m_rigidBody, entity2);
-	ECSTest.CreateTestComponent("test", entity);
-	ECSTest.CreateTestComponent("asdfasdfasdf", entity2);
+	//eae6320::ECS::RenderComponent::CreateRenderComponent(geometryArray[3], effectArray[0], (*entity2).m_rigidBody, entity2);
+	//ECSTest.CreateTestComponent("test", entity);
+	//ECSTest.CreateTestComponent("asdfasdfasdf", entity2);
 
-	ECSTest.Update(1, 1);
+	//ECSTest.Update(1, 1);
 	
-	ECSTest.RemoveTestComponent(entity2);
-	ECSTest.RemoveTestComponent(entity2);
+	//ECSTest.RemoveTestComponent(entity2);
+	//ECSTest.RemoveTestComponent(entity2);
 
-	ECSTest.RemoveTestComponent(entity);
-	entity.~SmartPointer();
+	//ECSTest.RemoveTestComponent(entity);
+	//entity.~SmartPointer();
 
-	ECSTest.Update(1, 1);
+	//ECSTest.Update(1, 1);
 
 	//auto test = ECSTest.GetTestComponent(entity);
 
-	auto test2 = ECSTest.GetTestComponent(entity2);
+	//auto test2 = ECSTest.GetTestComponent(entity2);
 
-	m_gameObject.m_geometry = geometryArray[2];
-	m_gameObject.m_effect = effectArray[0];
-	m_gameObject.m_rigidBody;
+	gameObject = new eae6320::ECS::ECSGameObject(geometryArray[2], effectArray[0]);
 
-	m_gameObject2.m_geometry = geometryArray[1];
-	m_gameObject2.m_effect = effectArray[1];
-	m_gameObject2.m_rigidBody;
+	gameObject2 = new eae6320::ECS::ECSGameObject(geometryArray[1], effectArray[1]);
 
-	m_gameObject3.m_geometry = geometryArray[2];
-	m_gameObject3.m_effect = effectArray[0];
-	m_gameObject3.m_rigidBody;
+	gameObject3 = new eae6320::ECS::ECSGameObject(geometryArray[3], effectArray[0]);
 
 	camera.m_rigidBody.operator*().position = { 0,1,5 };
 
@@ -217,6 +201,10 @@ eae6320::cResult eae6320::cMyGame::CleanUp()
 	effectArray[1]->DecrementReferenceCount();
 	effectArray[0] = nullptr;
 	effectArray[1] = nullptr;
+
+	delete gameObject;
+	delete gameObject2;
+	delete gameObject3;
 
 	eae6320::Logging::OutputMessage("Finished Cleaning Up MyGame");
 	return Results::Success;

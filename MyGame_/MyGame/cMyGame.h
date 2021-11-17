@@ -105,11 +105,14 @@ namespace eae6320
 		//-------------
 		eae6320::Graphics::Effect* effectArray[30];
 
-		eae6320::Application::GameObject m_gameObject;
-		eae6320::Application::GameObject m_gameObject2;
-		eae6320::Application::GameObject m_gameObject3;
+		//eae6320::Application::GameObject m_gameObject;
+		//eae6320::Application::GameObject m_gameObject2;
+		//eae6320::Application::GameObject m_gameObject3;
 		//eae6320::Application::CameraObject m_mainCamera;
 		ECS::ECSCameraObject camera;
+		eae6320::ECS::ECSGameObject* gameObject;
+		eae6320::ECS::ECSGameObject* gameObject2;
+		eae6320::ECS::ECSGameObject* gameObject3;
 		SmartPointer<ECS::ECSEntity> entity = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity());
 		SmartPointer<ECS::ECSEntity> entity2 = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity());
 	};

@@ -3,15 +3,19 @@
 
 #include "ECSEntity.h"
 
+#include <Engine/Graphics/Geometry.h>
+#include <Engine/Graphics/Effect.h>
+
 namespace eae6320
 {
 	namespace ECS
 	{
 		class ECSGameObject : public ECSEntity {
 		private:
-
+			SmartPointer<ECS::ECSEntity> m_pointer;
 		public:
 			ECSGameObject();
+			ECSGameObject(eae6320::Graphics::Geometry* i_geometry, eae6320::Graphics::Effect* i_effect);
 			~ECSGameObject();
 		};
 	}
