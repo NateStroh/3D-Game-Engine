@@ -32,10 +32,16 @@ eae6320::cResult eae6320::ECS::ECSTestSystem::Init()
 
 eae6320::cResult eae6320::ECS::ECSTestSystem::Update(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate)
 {
-	for (SmartPointer<ECS::ComponentData<TestComponent>> component : m_testComponent.m_componentList) {
-		if((*component).m_entity.CreateSmartPointer())
-			Print((*component).m_componentData, i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
+	//for (SmartPointer<ECS::ComponentData<TestComponent>> component : m_testComponent.m_componentList) {
+	//	if((*component).m_entity.CreateSmartPointer())
+	//		Print((*component).m_componentData, i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
+	//}
+
+	for (unsigned int i = 0; i < m_testComponent.Size(); i++) {
+		if ((*m_testComponent.m_componentArray[i]).m_entity.CreateSmartPointer())
+			Print((*m_testComponent.m_componentArray[i]).m_componentData, i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 	}
+
 	return cResult();
 }
 

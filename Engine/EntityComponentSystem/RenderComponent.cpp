@@ -13,9 +13,14 @@ eae6320::cResult eae6320::ECS::RenderComponent::Update(const float i_elapsedSeco
 {
 	cResult result = Results::Success;
 	
-	for (SmartPointer<ECS::ComponentData<SRenderComponent>> component : m_renderComponentList.m_componentList) {
-		if ((*component).m_entity.CreateSmartPointer())
-			Render((*component).m_componentData, i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
+	//for (SmartPointer<ECS::ComponentData<SRenderComponent>> component : m_renderComponentList.m_componentList) {
+	//	if ((*component).m_entity.CreateSmartPointer())
+	//		Render((*component).m_componentData, i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
+	//}
+
+	for (unsigned int i = 0; i < m_renderComponentList.Size(); i++) {
+		if ((*m_renderComponentList.m_componentArray[i]).m_entity.CreateSmartPointer())
+			Render((*m_renderComponentList.m_componentArray[i]).m_componentData, i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 	}
 	
 	return result;
@@ -68,7 +73,7 @@ eae6320::ECS::SRenderComponent* eae6320::ECS::RenderComponent::GetRenderComponen
 eae6320::cResult eae6320::ECS::RenderComponent::CleanUp()
 {
 	cResult result = Results::Success;
-	m_renderComponentList.m_componentList.clear();
+	//m_renderComponentList.m_componentList.clear();
 	delete &eae6320::ECS::RenderComponent::m_renderComponentList;
 	return result;
 }

@@ -25,7 +25,7 @@ void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_s
 		eae6320::ECS::RenderComponent::ChangeGeometry(geometryArray[2], effectArray[0], gameObject->m_pointer);
 	}
 	
-	camera.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
+	camera->SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 
 	eae6320::ECS::RenderComponent::Update(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 
@@ -80,34 +80,34 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 	}
 
 	if (UserInput::IsKeyPressed('Z')) {
-		camera.m_rigidBody.operator*().velocity += { 0.0f, 1.0f, 0.0f };
+		camera->m_rigidBody.operator*().velocity += { 0.0f, 1.0f, 0.0f };
 	}
 	if (UserInput::IsKeyPressed('X')) {
-		camera.m_rigidBody.operator*().velocity += { 0.0f, -1.0f, 0.0f };
+		camera->m_rigidBody.operator*().velocity += { 0.0f, -1.0f, 0.0f };
 	}
 	if (UserInput::IsKeyPressed('D')) {
-		camera.m_rigidBody.operator*().velocity += { 1.0f, 0.0f, 0.0f };
+		camera->m_rigidBody.operator*().velocity += { 1.0f, 0.0f, 0.0f };
 	}
 	if (UserInput::IsKeyPressed('A')) {
-		camera.m_rigidBody.operator*().velocity += { -1.0f, 0.0f, 0.0f };
+		camera->m_rigidBody.operator*().velocity += { -1.0f, 0.0f, 0.0f };
 	}
 	if (UserInput::IsKeyPressed('S')) {
-		camera.m_rigidBody.operator*().velocity += { 0.0f, 0.0f, 1.0f };
+		camera->m_rigidBody.operator*().velocity += { 0.0f, 0.0f, 1.0f };
 	}
 	if (UserInput::IsKeyPressed('W')) {
-		camera.m_rigidBody.operator*().velocity += { 0.0f, 0.0f, -1.0f };
+		camera->m_rigidBody.operator*().velocity += { 0.0f, 0.0f, -1.0f };
 	}
 
 	if (UserInput::IsKeyPressed('Q')) {
-		camera.m_rigidBody.operator*().angularSpeed = 1.0f;
+		camera->m_rigidBody.operator*().angularSpeed = 1.0f;
 		SmartPointer<eae6320::Physics::sRigidBodyState> rigidBody = (*entity2).m_rigidBody;
 		(*rigidBody).angularSpeed = 1.0f;
 	}
 	else if (UserInput::IsKeyPressed('E')) {
-		camera.m_rigidBody.operator*().angularSpeed = -1.0f;
+		camera->m_rigidBody.operator*().angularSpeed = -1.0f;
 	}
 	else {
-		camera.m_rigidBody.operator*().angularSpeed = 0.0f;
+		camera->m_rigidBody.operator*().angularSpeed = 0.0f;
 	}
 }
 
@@ -148,22 +148,22 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 	//eae6320::ECS::PhysicsSystem::CreatePhysicsComponent((*entity2).m_rigidBody, entity2);
 
 	//eae6320::ECS::RenderComponent::CreateRenderComponent(geometryArray[3], effectArray[0], (*entity2).m_rigidBody, entity2);
-	//ECSTest.CreateTestComponent("test", entity);
-	//ECSTest.CreateTestComponent("asdfasdfasdf", entity2);
+	ECSTest.CreateTestComponent("test", entity);
+	ECSTest.CreateTestComponent("asdfasdfasdf", entity2);
 
-	//ECSTest.Update(1, 1);
+	ECSTest.Update(1, 1);
 	
-	//ECSTest.RemoveTestComponent(entity2);
-	//ECSTest.RemoveTestComponent(entity2);
+	ECSTest.RemoveTestComponent(entity2);
+	ECSTest.RemoveTestComponent(entity2);
 
 	//ECSTest.RemoveTestComponent(entity);
 	//entity.~SmartPointer();
 
-	//ECSTest.Update(1, 1);
+	ECSTest.Update(1, 1);
 
-	//auto test = ECSTest.GetTestComponent(entity);
+	auto test = ECSTest.GetTestComponent(entity);
 
-	//auto test2 = ECSTest.GetTestComponent(entity2);
+	auto test2 = ECSTest.GetTestComponent(entity2);
 
 	gameObject = new eae6320::ECS::ECSGameObject(geometryArray[2], effectArray[0]);
 
@@ -171,7 +171,8 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 
 	gameObject3 = new eae6320::ECS::ECSGameObject(geometryArray[3], effectArray[0]);
 
-	camera.m_rigidBody.operator*().position = { 0,1,5 };
+	camera = new eae6320::ECS::ECSCameraObject();
+	camera->m_rigidBody.operator*().position = { 0,1,5 };
 
 	eae6320::Logging::OutputMessage("Finished Initializing MyGame");
 	return result;
@@ -180,6 +181,11 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 eae6320::cResult eae6320::cMyGame::CleanUp()
 {
 	eae6320::Logging::OutputMessage("Cleaning Up MyGame");
+
+	delete gameObject;
+	delete gameObject2;
+	delete gameObject3;
+	delete camera;
 
 	eae6320::ECS::RenderComponent::CleanUp();
 	eae6320::ECS::PhysicsSystem::CleanUp();
@@ -199,10 +205,6 @@ eae6320::cResult eae6320::cMyGame::CleanUp()
 	effectArray[1]->DecrementReferenceCount();
 	effectArray[0] = nullptr;
 	effectArray[1] = nullptr;
-
-	delete gameObject;
-	delete gameObject2;
-	delete gameObject3;
 
 	eae6320::Logging::OutputMessage("Finished Cleaning Up MyGame");
 	return Results::Success;

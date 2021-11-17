@@ -109,7 +109,7 @@ namespace eae6320
 		//eae6320::Application::GameObject m_gameObject2;
 		//eae6320::Application::GameObject m_gameObject3;
 		//eae6320::Application::CameraObject m_mainCamera;
-		ECS::ECSCameraObject camera;
+		ECS::ECSCameraObject* camera;
 		eae6320::ECS::ECSGameObject* gameObject;
 		eae6320::ECS::ECSGameObject* gameObject2;
 		eae6320::ECS::ECSGameObject* gameObject3;
