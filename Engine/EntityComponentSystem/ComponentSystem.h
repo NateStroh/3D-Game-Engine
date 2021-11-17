@@ -68,6 +68,7 @@ unsigned int eae6320::ECS::ComponentSystem<T>::Size() {
 
 template<typename T>
 void eae6320::ECS::ComponentSystem<T>::ShiftArrayDown(int i_index) {
+	//loops through the rest of the array starting at i_index and moves it down, effectively overwriting data at i_index
 	for (unsigned int i = i_index; i < componentNum-1; i++) {
 		m_componentArray[i] = m_componentArray[i++];
 	}
@@ -75,9 +76,11 @@ void eae6320::ECS::ComponentSystem<T>::ShiftArrayDown(int i_index) {
 
 template<typename T>
 eae6320::cResult eae6320::ECS::ComponentSystem<T>::AddComponentToList(T i_component, SmartPointer<ECSEntity> i_entity) {
+	//make sure the array has room
 	if (componentNum == MAX_COMPONENTS)
 		return Results::Failure;
 
+	//make the componentdata into a smart pointer and put it in the list
 	SmartPointer<ComponentData<T>> newComponent = SmartPointer<ComponentData<T>>(new ComponentData<T>(i_component, i_entity));
 	m_componentArray[componentNum] = newComponent;
 	componentNum++;
@@ -87,7 +90,9 @@ eae6320::cResult eae6320::ECS::ComponentSystem<T>::AddComponentToList(T i_compon
 template<typename T>
 eae6320::cResult eae6320::ECS::ComponentSystem<T>::RemoveComponentFromList(SmartPointer<ECSEntity> i_entity) {
 	for (unsigned int i = 0; i < componentNum; i++) {
+		//create a smart pointer of the entity pointer so we can compare it to the entity passed in
 		SmartPointer<ECSEntity> newSmartPointer = (((*m_componentArray[i]).m_entity.CreateSmartPointer()));
+		//if they match shift the array down (deleting the item and keeping array contiguous) and decrement component num
 		if (&(*newSmartPointer) == &(*i_entity)) {
 			ShiftArrayDown(i);
 			componentNum--;
@@ -95,16 +100,19 @@ eae6320::cResult eae6320::ECS::ComponentSystem<T>::RemoveComponentFromList(Smart
 		}
 	}
 
+	//if the entity wasn't found return failure
 	return eae6320::Results::Failure;
 }
 
 template<typename T>
 T* eae6320::ECS::ComponentSystem<T>::GetComponent(SmartPointer<ECSEntity> i_entity) {
 	for (unsigned int i = 0; i < componentNum; i++) {
+		//create a smart pointer of the entity pointer so we can compare it to the entity passed in
 		SmartPointer<ECSEntity> newSmartPointer = (((*m_componentArray[i]).m_entity.CreateSmartPointer()));
-			if (&(*newSmartPointer) == &(*i_entity)) {
-				return &((*m_componentArray[i]).m_componentData);
-			}
+		//if they match return the address of that component - allows them to make changes or copy it if they want
+		if (&(*newSmartPointer) == &(*i_entity)) {
+			return &((*m_componentArray[i]).m_componentData);
+		}
 	}
 
 	return nullptr;
