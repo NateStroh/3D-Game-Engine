@@ -21,11 +21,6 @@ eae6320::cResult eae6320::ECS::PhysicsSystem::Update(const float i_sinceLastSimu
 {
 	cResult result = Results::Success;
 
-	//for (SmartPointer<ECS::ComponentData<SPhysicsComponent>> component : m_PhysicsSystemComponentList.m_componentList) {
-	//	if ((*component).m_entity.CreateSmartPointer())
-	//		Tick((*component).m_componentData, i_sinceLastSimulationUpdate);
-	//}
-
 	for (unsigned int i = 0; i < m_PhysicsSystemComponentList.Size(); i++) {
 		if ((*m_PhysicsSystemComponentList.m_componentArray[i]).m_entity.CreateSmartPointer())
 			Tick((*m_PhysicsSystemComponentList.m_componentArray[i]).m_componentData, i_sinceLastSimulationUpdate);
@@ -57,7 +52,6 @@ eae6320::ECS::SPhysicsComponent* eae6320::ECS::PhysicsSystem::GetPhysicsComponen
 eae6320::cResult eae6320::ECS::PhysicsSystem::CleanUp()
 {
 	cResult result = Results::Success;
-	//m_PhysicsSystemComponentList.m_componentList.clear();
 	delete &m_PhysicsSystemComponentList;
 	return result;
 }
