@@ -12,8 +12,9 @@ namespace eae6320
 	{
 		class ECSGameObject : public ECSEntity {
 		private:
-			SmartPointer<ECS::ECSEntity> m_pointer;
+			
 		public:
+			SmartPointer<ECS::ECSEntity> m_pointer;
 			ECSGameObject();
 			ECSGameObject(eae6320::Graphics::Geometry* i_geometry, eae6320::Graphics::Effect* i_effect);
 			~ECSGameObject();

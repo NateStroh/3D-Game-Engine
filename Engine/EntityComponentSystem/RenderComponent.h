@@ -46,6 +46,8 @@ namespace eae6320
 
 			cResult RemoveRenderComponent(SmartPointer<ECSEntity> i_entity);
 
+			cResult ChangeGeometry(eae6320::Graphics::Geometry* i_geometry, eae6320::Graphics::Effect* i_effect, SmartPointer<ECSEntity> i_entity);
+
 			SRenderComponent* GetRenderComponent(SmartPointer<ECSEntity> i_entity);
 
 			cResult CleanUp();

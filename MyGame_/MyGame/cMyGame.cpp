@@ -18,15 +18,13 @@
 void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate) {
 	Graphics::SetBackGroundColor(1.0f, 0.0f, 1.0f, 1.0f);
 
-	//if(shiftpressed){
-	//	m_gameObject.m_geometry = geometryArray[2];
-	//	m_gameObject.m_effect = effectArray[0];
-	//}
-	//else {
-	//	m_gameObject.m_geometry = geometryArray[0];
-	//	m_gameObject.m_effect = effectArray[1];
-	//}
-	//
+	if(shiftpressed){
+		eae6320::ECS::RenderComponent::ChangeGeometry(geometryArray[0], effectArray[1], gameObject->m_pointer);
+	}
+	else {
+		eae6320::ECS::RenderComponent::ChangeGeometry(geometryArray[2], effectArray[0], gameObject->m_pointer);
+	}
+	
 	camera.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 
 	eae6320::ECS::RenderComponent::Update(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
@@ -68,18 +66,18 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 		shiftpressed = false;
 	}
 
-	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Up)) {
-	//	m_gameObject.m_rigidBody.velocity += { 0.0f, 1.0f, 0.0f };
-	//}
-	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Down)) {
-	//	m_gameObject.m_rigidBody.velocity += { 0.0f, -1.0f, 0.0f };
-	//}
-	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Right)) {
-	//	m_gameObject.m_rigidBody.velocity += { 1.0f, 0.0f, 0.0f };
-	//}
-	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Left)) {
-	//	m_gameObject.m_rigidBody.velocity += { -1.0f, 0.0f, 0.0f };
-	//}
+	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Up)) {
+		gameObject->m_rigidBody.operator*().velocity += { 0.0f, 1.0f, 0.0f };
+	}
+	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Down)) {
+		gameObject->m_rigidBody.operator*().velocity += { 0.0f, -1.0f, 0.0f };
+	}
+	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Right)) {
+		gameObject->m_rigidBody.operator*().velocity += { 1.0f, 0.0f, 0.0f };
+	}
+	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Left)) {
+		gameObject->m_rigidBody.operator*().velocity += { -1.0f, 0.0f, 0.0f };
+	}
 
 	if (UserInput::IsKeyPressed('Z')) {
 		camera.m_rigidBody.operator*().velocity += { 0.0f, 1.0f, 0.0f };

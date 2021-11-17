@@ -49,6 +49,17 @@ eae6320::cResult eae6320::ECS::RenderComponent::RemoveRenderComponent(SmartPoint
 	return m_renderComponentList.RemoveComponentFromList(i_entity);
 }
 
+eae6320::cResult eae6320::ECS::RenderComponent::ChangeGeometry(eae6320::Graphics::Geometry* i_geometry, eae6320::Graphics::Effect* i_effect, SmartPointer<ECSEntity> i_entity)
+{
+	cResult result = Results::Success;
+
+	SRenderComponent* renderComponent = m_renderComponentList.GetComponent(i_entity);
+	renderComponent->m_geometry = i_geometry;
+	renderComponent->m_effect = i_effect;
+
+	return result;
+}
+
 eae6320::ECS::SRenderComponent* eae6320::ECS::RenderComponent::GetRenderComponent(SmartPointer<ECSEntity> i_entity)
 {
 	return m_renderComponentList.GetComponent(i_entity);
