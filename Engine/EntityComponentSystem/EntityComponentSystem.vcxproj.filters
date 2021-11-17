@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="EntityComponentSystem.h" />
     <ClInclude Include="ComponentSystem.h" />
     <ClInclude Include="ECSTestSystem.h" />
     <ClInclude Include="SmartPointer.h" />
@@ -13,7 +12,6 @@
     <ClInclude Include="ECSGameObject.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="EntityComponentSystem.cpp" />
     <ClCompile Include="ComponentSystem.cpp" />
     <ClCompile Include="ECSTestSystem.cpp" />
     <ClCompile Include="ECSEntity.cpp" />

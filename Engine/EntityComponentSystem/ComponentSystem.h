@@ -14,6 +14,7 @@ namespace eae6320
 
 		template<typename T>
 		struct ComponentData {
+			//struct to hold the data of a component and a weak pointer to the entity it belongs to
 			T m_componentData;
 			WeakPointer<ECS::ECSEntity> m_entity;
 
@@ -34,15 +35,27 @@ namespace eae6320
 		class ComponentSystem
 		{
 		private:
+			//Max number of components a system can have
 			static const unsigned int MAX_COMPONENTS = 500;
+			//current number of components
 			unsigned int componentNum = 0;
+			//function for shifting elements of the array down - keeps the array packed on removal of item
 			void ShiftArrayDown(int i_index);
 		public:
-			//std::vector<SmartPointer<ComponentData<T>>> m_componentList;
+			//Componenet array
 			SmartPointer<ComponentData<T>> m_componentArray[MAX_COMPONENTS];
+
+			//function for adding a new component to the component array - puts the component at componentNum in the component array, increments componentNum
 			cResult AddComponentToList(T i_component, SmartPointer<ECSEntity> i_entity);
+			
+			//function for removing a component from the list - only removes an item if matches entities (returns failure if entity couldn't be found), 
+			//	decrements componentNum, shifts array down to keep all components contiguous
 			cResult RemoveComponentFromList(SmartPointer<ECSEntity> i_entity);
+			
+			//function for getting the component data of an system - returns nullptr if the entity doesn't have a component in the system
 			T* GetComponent(SmartPointer<ECSEntity> i_entity);
+			
+			//function for getting the current number of components - helpful for looping through all active components in a system
 			unsigned int Size();
 		};
 	}
@@ -60,14 +73,12 @@ void eae6320::ECS::ComponentSystem<T>::ShiftArrayDown(int i_index) {
 	}
 }
 
-
 template<typename T>
 eae6320::cResult eae6320::ECS::ComponentSystem<T>::AddComponentToList(T i_component, SmartPointer<ECSEntity> i_entity) {
 	if (componentNum == MAX_COMPONENTS)
 		return Results::Failure;
 
 	SmartPointer<ComponentData<T>> newComponent = SmartPointer<ComponentData<T>>(new ComponentData<T>(i_component, i_entity));
-	//m_componentList.push_back(newComponent);
 	m_componentArray[componentNum] = newComponent;
 	componentNum++;
 	return eae6320::cResult();
@@ -75,14 +86,6 @@ eae6320::cResult eae6320::ECS::ComponentSystem<T>::AddComponentToList(T i_compon
 
 template<typename T>
 eae6320::cResult eae6320::ECS::ComponentSystem<T>::RemoveComponentFromList(SmartPointer<ECSEntity> i_entity) {
-	//for (unsigned int i = 0; i < m_componentList.size(); i++) {
-	//	SmartPointer<ECSEntity> newSmartPointer = (((*m_componentList[i]).m_entity.CreateSmartPointer()));
-	//	if ((&(*newSmartPointer)) == &(*i_entity)) {
-	//		m_componentList.erase(m_componentList.begin()+i);
-	//		return eae6320::Results::Success;
-	//	}
-	//}
-
 	for (unsigned int i = 0; i < componentNum; i++) {
 		SmartPointer<ECSEntity> newSmartPointer = (((*m_componentArray[i]).m_entity.CreateSmartPointer()));
 		if (&(*newSmartPointer) == &(*i_entity)) {
@@ -97,13 +100,6 @@ eae6320::cResult eae6320::ECS::ComponentSystem<T>::RemoveComponentFromList(Smart
 
 template<typename T>
 T* eae6320::ECS::ComponentSystem<T>::GetComponent(SmartPointer<ECSEntity> i_entity) {
-	//for(SmartPointer<ComponentData<T>> component : m_componentList) {
-	//	SmartPointer<ECSEntity> newSmartPointer = (((*component).m_entity.CreateSmartPointer()));
-	//	if (&(*newSmartPointer) == &(*i_entity)) {
-	//		return &((*component).m_componentData);
-	//	}
-	//}
-
 	for (unsigned int i = 0; i < componentNum; i++) {
 		SmartPointer<ECSEntity> newSmartPointer = (((*m_componentArray[i]).m_entity.CreateSmartPointer()));
 			if (&(*newSmartPointer) == &(*i_entity)) {
