@@ -22,6 +22,8 @@ namespace eae6320
 			eae6320::Application::sCameraData m_cameraData;
 			ECSCameraObject();
 			~ECSCameraObject();
+			cResult Init();
+			cResult CleanUp();
 			void SubmitToBeRendered(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate);
 		};
 	}

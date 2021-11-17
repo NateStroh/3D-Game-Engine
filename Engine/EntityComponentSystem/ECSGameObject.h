@@ -18,6 +18,8 @@ namespace eae6320
 			ECSGameObject();
 			ECSGameObject(eae6320::Graphics::Geometry* i_geometry, eae6320::Graphics::Effect* i_effect);
 			~ECSGameObject();
+			cResult Init(eae6320::Graphics::Geometry* i_geometry, eae6320::Graphics::Effect* i_effect);
+			cResult CleanUp();
 		};
 	}
 }
