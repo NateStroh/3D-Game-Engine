@@ -23,7 +23,7 @@ namespace eae6320
 
 		class ECSTestSystem {
 		private:
-			ComponentSystem<TestComponent> m_testComponent;
+			ComponentSystem<TestComponent> m_testComponentList;
 		public:
 			cResult Init();
 

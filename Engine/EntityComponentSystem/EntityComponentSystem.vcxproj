@@ -178,6 +178,9 @@
     <ProjectReference Include="..\Graphics\Graphics.vcxproj">
       <Project>{fb81ba11-6314-4348-b4ed-6bdba30c18ed}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\Logging\Logging.vcxproj">
+      <Project>{a5c152ad-26a3-4835-bb10-ef292daf94ac}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Physics\Physics.vcxproj">
       <Project>{30e6bb9f-138d-4b44-9733-869263f7bad5}</Project>
     </ProjectReference>
