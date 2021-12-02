@@ -1,0 +1,566 @@
+return {
+	Vertices = {
+		{
+			Position = {-0.160551,-1.67058,-0.670121},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.160551,-1.67058,-0.670121},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.160551,-1.67058,-0.670121},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.160551,-1.67058,-0.670121},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.160551,-1.67058,-0.670121},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0306927,-1.27795,-0.523134},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0306927,-1.27795,-0.523134},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0306927,-1.27795,-0.523134},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0306927,-1.27795,-0.523134},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0306927,-1.27795,-0.523134},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0306927,-1.27795,-0.523134},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.295068,-1.28835,0.11653},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.295068,-1.28835,0.11653},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.295068,-1.28835,0.11653},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.295068,-1.28835,0.11653},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.295068,-1.28835,0.11653},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.295068,-1.28835,0.11653},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.50225,-1.65734,-0.171008},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.50225,-1.65734,-0.171008},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.50225,-1.65734,-0.171008},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.50225,-1.65734,-0.171008},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.50225,-1.65734,-0.171008},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.425952,-1.68049,-0.476508},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.425952,-1.68049,-0.476508},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.425952,-1.68049,-0.476508},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.425952,-1.68049,-0.476508},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.425952,-1.68049,-0.476508},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.393808,-1.65775,0.112245},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.393808,-1.65775,0.112245},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.393808,-1.65775,0.112245},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.393808,-1.65775,0.112245},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.393808,-1.65775,0.112245},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.113132,-1.3864,0.221917},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.113132,-1.3864,0.221917},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.113132,-1.3864,0.221917},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.246786,-1.27715,0.0871044},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.246786,-1.27715,0.0871044},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.246786,-1.27715,0.0871044},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.246786,-1.27715,0.0871044},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.246786,-1.27715,0.0871044},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.246786,-1.27715,0.0871044},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.487671,-1.41395,-0.198399},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.487671,-1.41395,-0.198399},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.487671,-1.41395,-0.198399},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.487671,-1.41395,-0.198399},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00232473,-1.74849,-0.179277},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00232473,-1.74849,-0.179277},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00232473,-1.74849,-0.179277},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00232473,-1.74849,-0.179277},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00232473,-1.74849,-0.179277},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.156179,-1.67862,0.321362},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.156179,-1.67862,0.321362},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.156179,-1.67862,0.321362},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.156179,-1.67862,0.321362},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.156179,-1.67862,0.321362},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.156179,-1.67862,0.321362},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.368304,-1.26693,-0.268031},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.368304,-1.26693,-0.268031},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.368304,-1.26693,-0.268031},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.368304,-1.26693,-0.268031},
+			Color = {
+				Red = 1,
+				Blue = 1,
+				Green = 1,
+				Alpha = 1,
+			},
+		},
+	},
+	Indices = {
+		0,57,6,
+		4,24,47,
+		10,15,39,
+		13,54,34,
+		14,9,59,
+		17,56,2,
+		21,1,45,
+		23,3,5,
+		26,29,49,
+		27,22,41,
+		28,53,48,
+		30,44,38,
+		32,52,36,
+		33,37,12,
+		35,43,8,
+		42,25,7,
+		50,18,46,
+		51,11,19,
+		55,31,40,
+		58,20,16,
+	},
+}

@@ -167,7 +167,7 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 
 	gameObject.Init(geometryArray[2], effectArray[0]);
 	gameObject2.Init(geometryArray[1], effectArray[1]);
-	gameObject3.Init(geometryArray[3], effectArray[0]);
+	gameObject3.Init(geometryArray[3], effectArray[1]);
 	camera.Init();
 	camera.m_rigidBody.operator*().position = { 0,1,5 };
 
@@ -211,7 +211,7 @@ eae6320::cResult eae6320::cMyGame::InitializeGeometry() {
 	auto result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/Sphere.mesh", geometryArray[0]);
 	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/Plane.mesh", geometryArray[1]);
 	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/ColoredCube.mesh", geometryArray[2]);
-	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/BlueDonut.mesh", geometryArray[3]);
+	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/Ship.mesh", geometryArray[3]);
 	return result;
 }
 

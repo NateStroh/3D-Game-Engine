@@ -25,5 +25,9 @@ return
 		"Meshes/plane.mesh",
 		"Meshes/bluedonut.mesh",
 		"Meshes/sphere.mesh",
+		"Meshes/ship.mesh",
+		"Meshes/AS.mesh",
+		"Meshes/AM.mesh",
+		"Meshes/AL.mesh",
 	},
 }
