@@ -1,0 +1,4560 @@
+return {
+	Vertices = {
+		{
+			Position = {0.226766,0.41074,-2.21518},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.226766,0.41074,-2.21518},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.226766,0.41074,-2.21518},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.226766,0.41074,-2.21518},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0254925,0.467892,-2.13793},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0254925,0.467892,-2.13793},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0254925,0.467892,-2.13793},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0254925,0.467892,-2.13793},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0254925,0.467892,-2.13793},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00224099,0.424799,-2.13793},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00224099,0.424799,-2.13793},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00224099,0.424799,-2.13793},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00224099,0.424799,-2.13793},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00224099,0.424799,-2.13793},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.313073,0.253839,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.313073,0.253839,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.313073,0.253839,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.313073,0.253839,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0382505,1.12496,-2.84416},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0382505,1.12496,-2.84416},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0382505,1.12496,-2.84416},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0109015,1.12603,-2.84416},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0109015,1.12603,-2.84416},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0109015,1.12603,-2.84416},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0141673,0.97668,-2.83396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0141673,0.97668,-2.83396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0141673,0.97668,-2.83396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0349847,0.975605,-2.83396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0349847,0.975605,-2.83396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0349847,0.975605,-2.83396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0114091,1.10283,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0114091,1.10283,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0114091,1.10283,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0114091,1.10283,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0377429,1.10175,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0377429,1.10175,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0377429,1.10175,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0377429,1.10175,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0234718,0.467164,-0.256186},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0234718,0.467164,-0.256186},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0234718,0.467164,-0.256186},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0234718,0.467164,-0.256186},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0234718,0.467164,-0.256186},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.184515,0.550317,-2.21536},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.184515,0.550317,-2.21536},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.184515,0.550317,-2.21536},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.184515,0.550317,-2.21536},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0316215,0.821818,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0316215,0.821818,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0316215,0.821818,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0316215,0.821818,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0234718,0.467164,-2.13793},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0234718,0.467164,-2.13793},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0234718,0.467164,-2.13793},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0234718,0.467164,-2.13793},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0234718,0.467164,-2.13793},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0175305,0.822893,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0175305,0.822893,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0175305,0.822893,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0175305,0.822893,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.561219,0.0830783,-2.84416},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.561219,0.0830783,-2.84416},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.561219,0.0830783,-2.84416},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.586726,0.125108,-2.84416},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.586726,0.125108,-2.84416},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.586726,0.125108,-2.84416},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.459015,0.202613,-2.83396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.459015,0.202613,-2.83396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.459015,0.202613,-2.83396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.433508,0.160583,-2.83396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.433508,0.160583,-2.83396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.433508,0.160583,-2.83396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.566883,0.13715,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.566883,0.13715,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.566883,0.13715,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.566883,0.13715,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.541376,0.09512,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.541376,0.09512,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.541376,0.09512,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.541376,0.09512,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.302006,0.24039,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.302006,0.24039,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.302006,0.24039,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.302006,0.24039,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.158868,0.535894,-2.37402},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.158868,0.535894,-2.37402},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.158868,0.535894,-2.37402},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.158868,0.535894,-2.37402},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.327512,0.282419,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.327512,0.282419,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.327512,0.282419,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.327512,0.282419,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.207468,0.401254,-2.21531},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.207468,0.401254,-2.21531},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.207468,0.401254,-2.21531},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.207468,0.401254,-2.21531},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.178828,0.406149,-2.37398},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.178828,0.406149,-2.37398},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.178828,0.406149,-2.37398},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.178828,0.406149,-2.37398},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.110722,0.29393,-2.37391},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.110722,0.29393,-2.37391},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.110722,0.29393,-2.37391},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.110722,0.29393,-2.37391},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.129234,0.272293,-2.21525},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.129234,0.272293,-2.21525},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.129234,0.272293,-2.21525},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.129234,0.272293,-2.21525},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0136084,0.223788,-2.21518},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0136084,0.223788,-2.21518},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0136084,0.223788,-2.21518},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0136084,0.223788,-2.21518},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0135814,0.251746,-2.37385},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0135814,0.251746,-2.37385},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0135814,0.251746,-2.37385},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0135814,0.251746,-2.37385},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.358484,0.393519,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.358484,0.393519,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.358484,0.393519,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.358484,0.393519,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.436507,0.383093,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.436507,0.383093,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.436507,0.383093,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.436507,0.383093,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.154217,0.278466,-2.21516},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.154217,0.278466,-2.21516},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.154217,0.278466,-2.21516},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.154217,0.278466,-2.21516},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.292575,0.120713,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.292575,0.120713,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.292575,0.120713,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.292575,0.120713,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.241057,0.179453,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.241057,0.179453,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.241057,0.179453,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.241057,0.179453,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.310839,0.632983,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.310839,0.632983,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.310839,0.632983,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.310839,0.632983,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.378109,0.676606,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.378109,0.676606,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.378109,0.676606,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.378109,0.676606,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.120417,0.785799,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.120417,0.785799,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.120417,0.785799,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.120417,0.785799,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.144707,0.863912,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.144707,0.863912,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.144707,0.863912,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.144707,0.863912,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.123683,0.78046,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.123683,0.78046,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.123683,0.78046,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.123683,0.78046,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.154486,0.857369,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.154486,0.857369,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.154486,0.857369,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.154486,0.857369,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.307243,0.619467,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.307243,0.619467,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.307243,0.619467,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.307243,0.619467,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.379477,0.660039,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.379477,0.660039,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.379477,0.660039,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.379477,0.660039,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.135919,0.299328,-2.37382},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.135919,0.299328,-2.37382},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.135919,0.299328,-2.37382},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.135919,0.299328,-2.37382},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.344374,0.378149,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.344374,0.378149,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.344374,0.378149,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.344374,0.378149,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.424988,0.364254,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.424988,0.364254,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.424988,0.364254,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.424988,0.364254,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.217701,0.169421,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.217701,0.169421,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.217701,0.169421,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.217701,0.169421,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.269725,0.108416,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.269725,0.108416,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.269725,0.108416,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.269725,0.108416,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.013503,0.0909494,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.013503,0.0909494,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.013503,0.0909494,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.013503,0.0909494,-1.34677},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0136627,0.0122338,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0136627,0.0122338,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0136627,0.0122338,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0136627,0.0122338,-0.323153},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.413773,0.386131,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.413773,0.386131,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.413773,0.386131,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.413773,0.386131,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.277565,0.137827,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.277565,0.137827,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.277565,0.137827,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.277565,0.137827,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.358509,0.663896,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.358509,0.663896,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.358509,0.663896,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.358509,0.663896,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.13763,0.841151,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.13763,0.841151,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.13763,0.841151,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.13763,0.841151,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.199051,0.414414,-2.37385},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.199051,0.414414,-2.37385},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.199051,0.414414,-2.37385},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.199051,0.414414,-2.37385},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.145511,0.83496,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.145511,0.83496,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.145511,0.83496,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.145511,0.83496,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.358431,0.648217,0.700469},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.358431,0.648217,0.700469},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.358431,0.648217,0.700469},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.358431,0.648217,0.700469},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.401499,0.368302,0.700468},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.401499,0.368302,0.700468},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.401499,0.368302,0.700468},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.401499,0.368302,0.700468},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.254566,0.126191,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.254566,0.126191,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.254566,0.126191,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.254566,0.126191,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0136165,0.0351688,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0136165,0.0351688,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0136165,0.0351688,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0136165,0.0351688,0.70047},
+			Color = {
+				Red = 0.2723,
+				Blue = 0.2456,
+				Green = 0.2456,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.290283,0.402632,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.290283,0.402632,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.290283,0.402632,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.290283,0.402632,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.196023,0.230799,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.196023,0.230799,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.196023,0.230799,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.196023,0.230799,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.252039,0.594851,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.252039,0.594851,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.252039,0.594851,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.252039,0.594851,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0991847,0.717518,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0991847,0.717518,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0991847,0.717518,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0991847,0.717518,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0967569,0.713233,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0967569,0.713233,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0967569,0.713233,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0967569,0.713233,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.197307,0.558689,-2.21525},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.197307,0.558689,-2.21525},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.197307,0.558689,-2.21525},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.197307,0.558689,-2.21525},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.244102,0.584002,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.244102,0.584002,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.244102,0.584002,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.244102,0.584002,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.273907,0.390294,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.273907,0.390294,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.273907,0.390294,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.273907,0.390294,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.172226,0.222746,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.172226,0.222746,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.172226,0.222746,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.172226,0.222746,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0133646,0.159756,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0133646,0.159756,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0133646,0.159756,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0133646,0.159756,1.72409},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0241736,0.439036,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0241736,0.439036,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0241736,0.439036,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0200225,0.431469,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0200225,0.431469,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0200225,0.431469,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0200225,0.431469,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0224898,0.4475,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0224898,0.4475,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0224898,0.4475,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0224898,0.4475,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0157588,0.452901,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0157588,0.452901,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0157588,0.452901,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00713066,0.452713,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00713066,0.452713,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00713066,0.452713,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00713066,0.452713,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.000642009,0.447022,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.000642009,0.447022,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.000642009,0.447022,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.173439,0.543157,-2.37391},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.173439,0.543157,-2.37391},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.173439,0.543157,-2.37391},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.173439,0.543157,-2.37391},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.000669826,0.438493,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.000669826,0.438493,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.000669826,0.438493,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.000669826,0.438493,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.000669826,0.438493,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.000669826,0.438493,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00380771,0.431115,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00380771,0.431115,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00380771,0.431115,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0119797,0.428341,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0119797,0.428341,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0119797,0.428341,2.83154},
+			Color = {
+				Red = 0.2375,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.141305,0.293187,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.141305,0.293187,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.141305,0.293187,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.141305,0.293187,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.207416,0.413704,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.207416,0.413704,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.207416,0.413704,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.207416,0.413704,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.180592,0.54852,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.180592,0.54852,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.180592,0.54852,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.180592,0.54852,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0733868,0.634554,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0733868,0.634554,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0733868,0.634554,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0733868,0.634554,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0640396,0.631548,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0640396,0.631548,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0640396,0.631548,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0640396,0.631548,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.167383,0.540911,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.167383,0.540911,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.167383,0.540911,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.167383,0.540911,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.188287,0.405051,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.188287,0.405051,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.188287,0.405051,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.188287,0.405051,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0796528,0.653075,-2.21531},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0796528,0.653075,-2.21531},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0796528,0.653075,-2.21531},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0796528,0.653075,-2.21531},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.116971,0.287538,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.116971,0.287538,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.116971,0.287538,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.116971,0.287538,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0131947,0.24336,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0131947,0.24336,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0131947,0.24336,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0131947,0.24336,-2.21174},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.105454,0.334064,-2.37385},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.105454,0.334064,-2.37385},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.105454,0.334064,-2.37385},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.105454,0.334064,-2.37385},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.153387,0.421441,-2.37386},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.153387,0.421441,-2.37386},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.153387,0.421441,-2.37386},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.153387,0.421441,-2.37386},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0125703,0.297937,-2.37386},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0125703,0.297937,-2.37386},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0125703,0.297937,-2.37386},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0125703,0.297937,-2.37386},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0818047,0.329965,-2.37391},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0818047,0.329965,-2.37391},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0818047,0.329965,-2.37391},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0818047,0.329965,-2.37391},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.133515,0.415166,-2.37396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.133515,0.415166,-2.37396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.133515,0.415166,-2.37396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.133515,0.415166,-2.37396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.118359,0.513673,-2.374},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.118359,0.513673,-2.374},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.118359,0.513673,-2.374},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.118359,0.513673,-2.374},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0434291,0.579391,-2.374},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0434291,0.579391,-2.374},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0434291,0.579391,-2.374},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0434291,0.579391,-2.374},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0562133,0.581569,-2.37396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0562133,0.581569,-2.37396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0562133,0.581569,-2.37396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0562133,0.581569,-2.37396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0710631,0.625319,-2.37398},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0710631,0.625319,-2.37398},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0710631,0.625319,-2.37398},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0710631,0.625319,-2.37398},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.133941,0.519188,-2.37391},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.133941,0.519188,-2.37391},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.133941,0.519188,-2.37391},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.133941,0.519188,-2.37391},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0559762,0.390476,-2.16383},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0559762,0.390476,-2.16383},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0559762,0.390476,-2.16383},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0559762,0.390476,-2.16383},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0792612,0.432921,-2.16384},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0792612,0.432921,-2.16384},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0792612,0.432921,-2.16384},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0792612,0.432921,-2.16384},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0108571,0.372927,-2.16384},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0108571,0.372927,-2.16384},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0108571,0.372927,-2.16384},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0108571,0.372927,-2.16384},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0349874,0.388485,-2.16387},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0349874,0.388485,-2.16387},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0349874,0.388485,-2.16387},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0349874,0.388485,-2.16387},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.060106,0.429873,-2.16389},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.060106,0.429873,-2.16389},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.060106,0.429873,-2.16389},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.060106,0.429873,-2.16389},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0527448,0.477724,-2.16391},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0527448,0.477724,-2.16391},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0527448,0.477724,-2.16391},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0527448,0.477724,-2.16391},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.016346,0.509648,-2.16391},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.016346,0.509648,-2.16391},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.016346,0.509648,-2.16391},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.016346,0.509648,-2.16391},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0320575,0.510706,-2.16389},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0320575,0.510706,-2.16389},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0320575,0.510706,-2.16389},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0320575,0.510706,-2.16389},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0698154,0.480403,-2.16387},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0698154,0.480403,-2.16387},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0698154,0.480403,-2.16387},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0698154,0.480403,-2.16387},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0711309,0.649762,-2.21536},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0711309,0.649762,-2.21536},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0711309,0.649762,-2.21536},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0711309,0.649762,-2.21536},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00930855,0.443686,-2.16387},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00930855,0.443686,-2.16387},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00930855,0.443686,-2.16387},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00930855,0.443686,-2.16387},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00930855,0.443686,-2.16387},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00930855,0.443686,-2.16387},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00930855,0.443686,-2.16387},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00930855,0.443686,-2.16387},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00930855,0.443686,-2.16387},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.602561,0.151114,-2.84416},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.602561,0.151114,-2.84416},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.602561,0.151114,-2.84416},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.578915,0.10801,-2.84416},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.578915,0.10801,-2.84416},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.578915,0.10801,-2.84416},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.447938,0.179858,-2.83396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.447938,0.179858,-2.83396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.447938,0.179858,-2.83396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.471583,0.222963,-2.83396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.471583,0.222963,-2.83396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.471583,0.222963,-2.83396},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00224099,0.424799,-0.256186},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00224099,0.424799,-0.256186},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00224099,0.424799,-0.256186},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00224099,0.424799,-0.256186},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.00224099,0.424799,-0.256186},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.558564,0.119173,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.558564,0.119173,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.558564,0.119173,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.558564,0.119173,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.58221,0.162278,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.58221,0.162278,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.58221,0.162278,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.58221,0.162278,-1.53185},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0254925,0.467892,-0.256186},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0254925,0.467892,-0.256186},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0254925,0.467892,-0.256186},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0254925,0.467892,-0.256186},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.0254925,0.467892,-0.256186},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.336718,0.296944,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.336718,0.296944,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.336718,0.296944,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {0.336718,0.296944,-2.23461},
+			Color = {
+				Red = 0,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0601762,0.622452,-2.37402},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0601762,0.622452,-2.37402},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0601762,0.622452,-2.37402},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+		{
+			Position = {-0.0601762,0.622452,-2.37402},
+			Color = {
+				Red = 0.2916,
+				Blue = 0,
+				Green = 0,
+				Alpha = 1,
+			},
+		},
+	},
+	Indices = {
+		0,124,214,
+		7,52,57,
+		13,55,8,
+		15,10,473,
+		16,447,462,
+		17,453,450,
+		18,21,27,
+		25,23,58,
+		27,21,24,
+		31,6,56,
+		32,22,37,
+		35,51,39,
+		36,19,49,
+		37,22,20,
+		38,30,34,
+		40,72,456,
+		41,53,73,
+		43,430,84,
+		44,85,92,
+		47,51,35,
+		49,19,28,
+		50,29,59,
+		57,52,48,
+		58,23,33,
+		59,29,26,
+		60,63,69,
+		67,65,90,
+		69,63,66,
+		73,53,88,
+		74,64,79,
+		77,11,457,
+		78,61,82,
+		79,64,62,
+		80,11,77,
+		81,54,12,
+		82,61,70,
+		83,71,91,
+		84,430,477,
+		86,373,99,
+		87,377,374,
+		89,54,81,
+		90,65,75,
+		91,71,68,
+		92,85,96,
+		97,369,102,
+		98,106,95,
+		99,373,370,
+		100,106,98,
+		101,365,113,
+		102,369,366,
+		107,103,110,
+		110,103,114,
+		111,115,127,
+		112,361,169,
+		113,365,362,
+		117,321,136,
+		118,120,134,
+		122,198,131,
+		123,206,199,
+		127,115,171,
+		128,200,193,
+		131,198,203,
+		132,317,116,
+		133,350,314,
+		134,120,129,
+		135,130,191,
+		137,325,144,
+		138,121,119,
+		140,121,138,
+		142,206,123,
+		143,210,207,
+		145,329,152,
+		146,141,139,
+		148,141,146,
+		150,210,143,
+		151,218,211,
+		153,330,160,
+		154,149,147,
+		155,164,157,
+		156,149,154,
+		158,218,151,
+		159,222,219,
+		160,330,333,
+		161,334,172,
+		162,164,155,
+		163,176,165,
+		166,222,159,
+		167,226,223,
+		168,353,212,
+		169,361,354,
+		172,334,337,
+		173,338,180,
+		174,176,163,
+		175,185,177,
+		178,226,167,
+		179,231,227,
+		180,338,345,
+		181,346,188,
+		182,185,175,
+		183,194,186,
+		184,232,228,
+		187,231,179,
+		188,346,349,
+		189,350,133,
+		190,194,183,
+		191,130,195,
+		192,232,184,
+		193,200,233,
+		196,236,201,
+		197,244,237,
+		201,236,240,
+		202,273,235,
+		204,244,197,
+		205,248,245,
+		208,248,205,
+		209,252,249,
+		212,353,357,
+		213,358,299,
+		214,124,170,
+		216,252,209,
+		217,260,253,
+		220,260,217,
+		224,261,221,
+		229,265,225,
+		234,269,230,
+		238,279,242,
+		241,273,202,
+		258,3,300,
+		264,261,224,
+		268,265,229,
+		272,269,234,
+		276,279,238,
+		277,239,246,
+		280,311,243,
+		281,278,303,
+		282,309,312,
+		283,277,246,
+		284,247,250,
+		285,303,278,
+		286,292,304,
+		287,284,250,
+		288,251,254,
+		289,292,286,
+		290,288,254,
+		291,255,262,
+		293,296,305,
+		294,291,262,
+		295,263,266,
+		298,389,388,
+		299,358,390,
+		300,3,215,
+		301,295,266,
+		302,267,270,
+		306,309,282,
+		307,302,270,
+		308,271,274,
+		310,308,274,
+		311,275,243,
+		313,317,132,
+		315,125,319,
+		316,108,126,
+		318,321,117,
+		319,125,1,
+		320,2,324,
+		322,325,137,
+		323,256,328,
+		324,2,257,
+		326,329,145,
+		327,342,332,
+		328,256,343,
+		331,431,336,
+		332,342,432,
+		335,45,340,
+		336,431,46,
+		339,93,348,
+		340,45,94,
+		344,259,385,
+		347,104,352,
+		348,93,105,
+		351,108,316,
+		352,104,109,
+		355,393,359,
+		356,401,394,
+		359,393,397,
+		360,398,392,
+		363,401,356,
+		364,405,402,
+		367,405,364,
+		368,409,406,
+		371,409,368,
+		372,413,410,
+		375,413,372,
+		376,417,414,
+		379,417,376,
+		380,421,418,
+		383,421,380,
+		384,425,422,
+		385,259,297,
+		387,381,479,
+		388,389,382,
+		391,425,384,
+		392,398,426,
+		396,403,434,
+		399,395,433,
+		404,407,435,
+		408,411,436,
+		412,415,437,
+		416,419,438,
+		420,423,439,
+		424,427,440,
+		428,400,441,
+		429,341,476,
+		442,445,451,
+		449,447,16,
+		451,445,448,
+		454,459,467,
+		455,9,460,
+		456,72,76,
+		460,9,14,
+		461,446,466,
+		464,4,468,
+		465,443,474,
+		466,446,444,
+		467,459,463,
+		469,30,38,
+		470,6,31,
+		471,42,458,
+		472,4,464,
+		473,10,5,
+		474,443,452,
+		475,453,17,
+		476,341,386,
+		478,377,87,
+		479,381,378,
+	},
+}

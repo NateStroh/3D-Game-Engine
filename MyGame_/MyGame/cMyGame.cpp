@@ -42,23 +42,32 @@ void eae6320::cMyGame::UpdateBasedOnInput()
 	}
 	
 	//pauses simulation
-	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Space)) {
-		eae6320::Application::iApplication::SetSimulationRate(0);
-	}
-	else {
-		eae6320::Application::iApplication::SetSimulationRate(1);
-	}
+	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Space)) {
+	//	eae6320::Application::iApplication::SetSimulationRate(0);
+	//}
+	//else {
+	//	eae6320::Application::iApplication::SetSimulationRate(1);
+	//}
 
 
 }
 
 void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
+	Math::sVector forward = camera.m_rigidBody.operator*().orientation.CalculateForwardDirection();
 	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Space)) {
 		spacepressed = true;
 	}
 	else {
+
+		if (spacepressed == true) {
+			testgameObject.Init(geometryArray[3], effectArray[1]);
+			testgameObject.m_rigidBody.operator*().position = Math::sVector(0, 2, 0);
+			testgameObject.m_rigidBody.operator*().orientation = camera.m_rigidBody.operator*().orientation;
+		}
 		spacepressed = false;
 	}
+	testgameObject.m_rigidBody.operator*().velocity += Math::sVector(forward * 2);
+
 	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Shift)) {
 		shiftpressed = true;
 	}
@@ -166,7 +175,7 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 	auto test2 = ECSTest.GetTestComponent(entity2);
 
 	gameObject.Init(geometryArray[2], effectArray[0]);
-	gameObject2.Init(geometryArray[1], effectArray[1]);
+	gameObject2.Init(geometryArray[1], effectArray[2]);
 	gameObject3.Init(geometryArray[3], effectArray[1]);
 	camera.Init();
 	camera.m_rigidBody.operator*().position = { 0,1,5 };
@@ -192,16 +201,26 @@ eae6320::cResult eae6320::cMyGame::CleanUp()
 	geometryArray[1]->DecrementReferenceCount();
 	geometryArray[2]->DecrementReferenceCount();
 	geometryArray[3]->DecrementReferenceCount();
+	geometryArray[4]->DecrementReferenceCount();
+	geometryArray[5]->DecrementReferenceCount();
+	geometryArray[6]->DecrementReferenceCount();
+	geometryArray[7]->DecrementReferenceCount();
 	geometryArray[0] = nullptr;
 	geometryArray[1] = nullptr;
 	geometryArray[2] = nullptr;
 	geometryArray[3] = nullptr;
+	geometryArray[4] = nullptr;
+	geometryArray[5] = nullptr;
+	geometryArray[6] = nullptr;
+	geometryArray[7] = nullptr;
 
 	//shader cleanup
 	effectArray[0]->DecrementReferenceCount();
 	effectArray[1]->DecrementReferenceCount();
+	effectArray[2]->DecrementReferenceCount();
 	effectArray[0] = nullptr;
 	effectArray[1] = nullptr;
+	effectArray[2] = nullptr;
 
 	eae6320::Logging::OutputMessage("Finished Cleaning Up MyGame");
 	return Results::Success;
@@ -211,7 +230,11 @@ eae6320::cResult eae6320::cMyGame::InitializeGeometry() {
 	auto result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/Sphere.mesh", geometryArray[0]);
 	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/Plane.mesh", geometryArray[1]);
 	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/ColoredCube.mesh", geometryArray[2]);
-	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/Ship.mesh", geometryArray[3]);
+	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/Rocket.mesh", geometryArray[3]);
+	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/Ship.mesh", geometryArray[4]);
+	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/AS.mesh", geometryArray[5]);
+	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/AM.mesh", geometryArray[6]);
+	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/AL.mesh", geometryArray[7]);
 	return result;
 }
 
@@ -221,6 +244,8 @@ eae6320::cResult eae6320::cMyGame::InitializeShadingData() {
 		return result;
 
 	result = eae6320::Graphics::Effect::MakeEffect("data/Shaders/Vertex/standard.shader", "data/Shaders/Fragment/standard.shader", effectArray[1]);
+	result = eae6320::Graphics::Effect::MakeEffect("data/Shaders/Vertex/standard.shader", "data/Shaders/Fragment/StarShader.shader", effectArray[2]);
+
 
 	return result;
 }

@@ -10,6 +10,7 @@ return
 		{ path = "Shaders/Fragment/standard.shader", arguments = { "fragment" } },
 
 		{ path = "Shaders/Fragment/animatedColor.shader", arguments = { "fragment" } },
+		{ path = "Shaders/Fragment/StarShader.shader", arguments = { "fragment" } },
 
 		{ path = "Shaders/Vertex/vertexInputLayout_mesh.shader", arguments = { "vertex" } },
 	},
@@ -29,5 +30,6 @@ return
 		"Meshes/AS.mesh",
 		"Meshes/AM.mesh",
 		"Meshes/AL.mesh",
+		"Meshes/Rocket.mesh",
 	},
 }
