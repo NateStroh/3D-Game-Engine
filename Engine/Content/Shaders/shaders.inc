@@ -23,6 +23,8 @@
 	#define vec2 float2
 	#define vec3 float3
 	#define vec4 float4
+	#define FragPos i_fragmentPosition
+	#define fract frac
 #elif defined( EAE6320_PLATFORM_GL )
 	#define DeclareConstantBuffer( i_name, i_id ) layout( std140, binding = i_id ) uniform i_name
 	#define MULT(i_local, i_localToWorld) i_local * i_localToWorld
@@ -31,6 +33,8 @@
 	#define float2 vec2
 	#define float3 vec3
 	#define float4 vec4
+	#define FragPos gl_FragCoord
+	#define frac fract
 	layout(location = 0) in vec3 i_vertexPosition_local;
 	layout(location = 0) out vec4 o_color;
 #endif

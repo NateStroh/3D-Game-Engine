@@ -22,6 +22,7 @@ DeclareConstantBuffer(g_constantBuffer_frame, 0)
 
 #if defined( EAE6320_PLATFORM_GL )
 	layout(location = 1) in float4 vertexColor;
+	//layout( location = 2 ) in vec3 i_position;
 #endif
 
 
@@ -47,25 +48,15 @@ void main(
 #endif
 )
 {
-	// Output solid white
-	//float4 animatedColor = float4(
-	//	// RGB (color)
-	//	1.0, 1.0, 1.0,
-	//	// Alpha (opacity)
-	//	1.0 );
-	//animatedColor.r = sin(g_elapsedSecondCount_simulationTime);
-	//animatedColor.g = cos(g_elapsedSecondCount_simulationTime);
-	//animatedColor.b = tanh(g_elapsedSecondCount_simulationTime/2);
-
 	vec3 color = vec3(0.1, 0.1, 0.15);
     
-    vec2 st = i_fragmentPosition.xy/512;
+    vec2 st = FragPos.xy/1024;
     st *= 250.0;
     vec2 ipos = floor(st);
 
     float strength = step(1.0, random(ipos));
-    vec3 starColor = vec3(1.0, 1.0, 1.0) * strength * 1.0;
-    color -= starColor;
+	vec3 starColor = vec3(1.0, 1.0, 1.0) * strength * .7;
+    color /= starColor;
     //color += vec3(random( ipos ));
     
     // Output to screen

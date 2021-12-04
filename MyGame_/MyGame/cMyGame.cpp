@@ -40,33 +40,39 @@ void eae6320::cMyGame::UpdateBasedOnInput()
 		const auto result = Exit( EXIT_SUCCESS );
 		EAE6320_ASSERT( result );
 	}
+}
+
+eae6320::cResult eae6320::cMyGame::SpawnMissile(eae6320::Math::sVector i_position, eae6320::Math::cQuaternion i_orientation, eae6320::Math::sVector i_velocity) {
+	if (missileCount >= maxMissiles) {
+		missleNeedsSetUp = false;
+		missileCount = 0;
+	}
+
+	if (missleNeedsSetUp) {
+		missileArray[missileCount].Init(geometryArray[3], effectArray[1]);
+	}
 	
-	//pauses simulation
-	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Space)) {
-	//	eae6320::Application::iApplication::SetSimulationRate(0);
-	//}
-	//else {
-	//	eae6320::Application::iApplication::SetSimulationRate(1);
-	//}
+	missileArray[missileCount].m_rigidBody.operator*().position = i_position;
+	missileArray[missileCount].m_rigidBody.operator*().velocity = i_velocity;
+	missileArray[missileCount].m_rigidBody.operator*().orientation = i_orientation;
+	missileCount++;
 
-
+	return Results::Success;
 }
 
 void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
-	Math::sVector forward = camera.m_rigidBody.operator*().orientation.CalculateForwardDirection();
+	Math::sVector forward = ship.m_rigidBody.operator*().orientation.CalculateForwardDirection();
 	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Space)) {
 		spacepressed = true;
 	}
 	else {
 
 		if (spacepressed == true) {
-			testgameObject.Init(geometryArray[3], effectArray[1]);
-			testgameObject.m_rigidBody.operator*().position = Math::sVector(0, 2, 0);
-			testgameObject.m_rigidBody.operator*().orientation = camera.m_rigidBody.operator*().orientation;
+			SpawnMissile((ship.m_rigidBody.operator*().position + forward * 2), ship.m_rigidBody.operator*().orientation, Math::sVector(forward * 500));
 		}
 		spacepressed = false;
 	}
-	testgameObject.m_rigidBody.operator*().velocity += Math::sVector(forward * 2);
+	//testRocket.m_rigidBody.operator*().velocity += Math::sVector(forward * 5);
 
 	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Shift)) {
 		shiftpressed = true;
@@ -75,18 +81,18 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 		shiftpressed = false;
 	}
 
-	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Up)) {
-		gameObject.m_rigidBody.operator*().velocity += { 0.0f, 1.0f, 0.0f };
-	}
-	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Down)) {
-		gameObject.m_rigidBody.operator*().velocity += { 0.0f, -1.0f, 0.0f };
-	}
-	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Right)) {
-		gameObject.m_rigidBody.operator*().velocity += { 1.0f, 0.0f, 0.0f };
-	}
-	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Left)) {
-		gameObject.m_rigidBody.operator*().velocity += { -1.0f, 0.0f, 0.0f };
-	}
+	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Up)) {
+	//	gameObject.m_rigidBody.operator*().velocity += { 0.0f, 1.0f, 0.0f };
+	//}
+	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Down)) {
+	//	gameObject.m_rigidBody.operator*().velocity += { 0.0f, -1.0f, 0.0f };
+	//}
+	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Right)) {
+	//	gameObject.m_rigidBody.operator*().velocity += { 1.0f, 0.0f, 0.0f };
+	//}
+	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Left)) {
+	//	gameObject.m_rigidBody.operator*().velocity += { -1.0f, 0.0f, 0.0f };
+	//}
 
 	if (UserInput::IsKeyPressed('Z')) {
 		camera.m_rigidBody.operator*().velocity += { 0.0f, 1.0f, 0.0f };
@@ -94,29 +100,29 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 	if (UserInput::IsKeyPressed('X')) {
 		camera.m_rigidBody.operator*().velocity += { 0.0f, -1.0f, 0.0f };
 	}
-	if (UserInput::IsKeyPressed('D')) {
-		camera.m_rigidBody.operator*().velocity += { 1.0f, 0.0f, 0.0f };
-	}
-	if (UserInput::IsKeyPressed('A')) {
-		camera.m_rigidBody.operator*().velocity += { -1.0f, 0.0f, 0.0f };
-	}
+	//if (UserInput::IsKeyPressed('D')) {
+	//	gameObject3.m_rigidBody.operator*().velocity += { 10.0f, 0.0f, 0.0f };
+	//}
+	//if (UserInput::IsKeyPressed('A')) {
+	//	gameObject3.m_rigidBody.operator*().velocity += { -10.0f, 0.0f, 0.0f };
+	//}
 	if (UserInput::IsKeyPressed('S')) {
-		camera.m_rigidBody.operator*().velocity += { 0.0f, 0.0f, 1.0f };
+		//gameObject3.m_rigidBody.operator*().velocity += { 0.0f, 0.0f, 10.0f };
+		ship.m_rigidBody.operator*().velocity -= forward*10;
 	}
 	if (UserInput::IsKeyPressed('W')) {
-		camera.m_rigidBody.operator*().velocity += { 0.0f, 0.0f, -1.0f };
+		//gameObject3.m_rigidBody.operator*().velocity += { 0.0f, 0.0f, -10.0f };
+		ship.m_rigidBody.operator*().velocity += forward * 10;
 	}
 
-	if (UserInput::IsKeyPressed('Q')) {
-		camera.m_rigidBody.operator*().angularSpeed = 1.0f;
-		SmartPointer<eae6320::Physics::sRigidBodyState> rigidBody = (*entity2).m_rigidBody;
-		(*rigidBody).angularSpeed = 1.0f;
+	if (UserInput::IsKeyPressed('A')) {
+		ship.m_rigidBody.operator*().angularSpeed = 5.0f;
 	}
-	else if (UserInput::IsKeyPressed('E')) {
-		camera.m_rigidBody.operator*().angularSpeed = -1.0f;
+	else if (UserInput::IsKeyPressed('D')) {
+		ship.m_rigidBody.operator*().angularSpeed = -5.0f;
 	}
 	else {
-		camera.m_rigidBody.operator*().angularSpeed = 0.0f;
+		ship.m_rigidBody.operator*().angularSpeed = 0.0f;
 	}
 }
 
@@ -148,37 +154,35 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 		}
 	}
 
-	ECS::ECSTestSystem ECSTest;
-	ECSTest.Init();
+	//ECS::ECSTestSystem ECSTest;
+	//ECSTest.Init();
 
 	eae6320::ECS::RenderComponent::Init();
 	eae6320::ECS::PhysicsSystem::Init();
 
-	//eae6320::ECS::PhysicsSystem::CreatePhysicsComponent((*entity2).m_rigidBody, entity2);
-
-	//eae6320::ECS::RenderComponent::CreateRenderComponent(geometryArray[3], effectArray[0], (*entity2).m_rigidBody, entity2);
-	ECSTest.CreateTestComponent("test", entity);
-	ECSTest.CreateTestComponent("asdfasdfasdf", entity2);
-
-	ECSTest.Update(1, 1);
-	
-	ECSTest.RemoveTestComponent(entity2);
-	ECSTest.RemoveTestComponent(entity2);
+	//ECSTest.CreateTestComponent("test", entity);
+	//ECSTest.CreateTestComponent("asdfasdfasdf", entity2);
+	//
+	//ECSTest.Update(1, 1);
+	//
+	//ECSTest.RemoveTestComponent(entity2);
+	//ECSTest.RemoveTestComponent(entity2);
 
 	//ECSTest.RemoveTestComponent(entity);
 	//entity.~SmartPointer();
 
-	ECSTest.Update(1, 1);
+	//ECSTest.Update(1, 1);
 
-	auto test = ECSTest.GetTestComponent(entity);
+	//auto test = ECSTest.GetTestComponent(entity);
 
-	auto test2 = ECSTest.GetTestComponent(entity2);
+	//auto test2 = ECSTest.GetTestComponent(entity2);
 
 	gameObject.Init(geometryArray[2], effectArray[0]);
-	gameObject2.Init(geometryArray[1], effectArray[2]);
-	gameObject3.Init(geometryArray[3], effectArray[1]);
+	spaceBackground.Init(geometryArray[1], effectArray[2]);
+	ship.Init(geometryArray[4], effectArray[1]);
 	camera.Init();
-	camera.m_rigidBody.operator*().position = { 0,1,5 };
+	camera.m_rigidBody.operator*().position = { 0, 150, 0 };
+	camera.m_rigidBody.operator*().orientation = Math::cQuaternion(1,-1,0,0);
 
 	eae6320::Logging::OutputMessage("Finished Initializing MyGame");
 	return result;
@@ -189,8 +193,9 @@ eae6320::cResult eae6320::cMyGame::CleanUp()
 	eae6320::Logging::OutputMessage("Cleaning Up MyGame");
 
 	gameObject.CleanUp();
-	gameObject2.CleanUp();
-	gameObject3.CleanUp();
+	spaceBackground.CleanUp();
+	ship.CleanUp();
+	testRocket.CleanUp();
 	camera.CleanUp();
 
 	eae6320::ECS::RenderComponent::CleanUp();

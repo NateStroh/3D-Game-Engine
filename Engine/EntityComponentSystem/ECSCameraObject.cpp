@@ -9,7 +9,7 @@ eae6320::ECS::ECSCameraObject::ECSCameraObject() {
 	m_cameraData.verticalFieldOfView_inRadians = Math::ConvertDegreesToRadians(45.0f);
 	m_cameraData.aspectRatio = 1.0f;
 	m_cameraData.z_nearPlane = 0.1f;
-	m_cameraData.z_farPlane = 50.0f;
+	m_cameraData.z_farPlane = 500.0f;
 	m_pointer = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity(*this));
 }
 

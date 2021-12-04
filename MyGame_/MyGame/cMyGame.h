@@ -85,6 +85,8 @@ namespace eae6320
 		void UpdateBasedOnInput() final;
 		void UpdateSimulationBasedOnInput() final;
 
+		eae6320::cResult SpawnMissile(eae6320::Math::sVector i_position, eae6320::Math::cQuaternion i_orientation, eae6320::Math::sVector i_velocity);
+
 		// Initialize / Clean Up
 		//----------------------
 
@@ -105,17 +107,19 @@ namespace eae6320
 		//-------------
 		eae6320::Graphics::Effect* effectArray[30];
 
-		//eae6320::Application::GameObject m_gameObject;
-		//eae6320::Application::GameObject m_gameObject2;
-		//eae6320::Application::GameObject m_gameObject3;
-		//eae6320::Application::CameraObject m_mainCamera;
 		ECS::ECSCameraObject camera;
-		eae6320::ECS::ECSGameObject testgameObject;
+		eae6320::ECS::ECSGameObject testRocket;
 		eae6320::ECS::ECSGameObject gameObject;
-		eae6320::ECS::ECSGameObject gameObject2;
-		eae6320::ECS::ECSGameObject gameObject3;
-		SmartPointer<ECS::ECSEntity> entity = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity());
-		SmartPointer<ECS::ECSEntity> entity2 = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity());
+		eae6320::ECS::ECSGameObject spaceBackground;
+		eae6320::ECS::ECSGameObject ship;
+
+		const static uint16_t maxMissiles = 50;
+		eae6320::ECS::ECSGameObject missileArray[maxMissiles];
+		bool missleNeedsSetUp = true;
+		uint16_t missileCount = 0;
+
+		//SmartPointer<ECS::ECSEntity> entity = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity());
+		//SmartPointer<ECS::ECSEntity> entity2 = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity());
 	};
 }
 
