@@ -86,6 +86,7 @@ namespace eae6320
 		void UpdateSimulationBasedOnInput() final;
 
 		eae6320::cResult SpawnMissile(eae6320::Math::sVector i_position, eae6320::Math::cQuaternion i_orientation, eae6320::Math::sVector i_velocity);
+		eae6320::cResult SpawnAsteroid();
 
 		// Initialize / Clean Up
 		//----------------------
@@ -113,10 +114,15 @@ namespace eae6320
 		eae6320::ECS::ECSGameObject spaceBackground;
 		eae6320::ECS::ECSGameObject ship;
 
-		const static uint16_t maxMissiles = 50;
+		const static uint16_t maxMissiles = 30;
 		eae6320::ECS::ECSGameObject missileArray[maxMissiles];
 		bool missleNeedsSetUp = true;
 		uint16_t missileCount = 0;
+
+		const static uint16_t maxAsteroids = 20;
+		eae6320::ECS::ECSGameObject asteroidArray[maxAsteroids];
+		bool asteroidsNeedsSetUp = true;
+		uint16_t asteroidCount = 0;
 
 		//SmartPointer<ECS::ECSEntity> entity = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity());
 		//SmartPointer<ECS::ECSEntity> entity2 = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity());

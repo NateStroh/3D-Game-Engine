@@ -8,6 +8,10 @@
 #include <Engine/Math/cMatrix_transformation.h>
 #include <Engine/EntityComponentSystem/ECSTestSystem.h>
 #include <Engine/EntityComponentSystem/SmartPointer.h>
+#include <Engine/Time/Time.h>
+
+#include <stdlib.h>
+#include <time.h>
 
 // Inherited Implementation
 //=========================
@@ -60,6 +64,45 @@ eae6320::cResult eae6320::cMyGame::SpawnMissile(eae6320::Math::sVector i_positio
 	return Results::Success;
 }
 
+eae6320::cResult eae6320::cMyGame::SpawnAsteroid()
+{
+	srand(static_cast<unsigned int>((Time::GetCurrentSystemTimeTickCount())));
+
+	if (asteroidCount >= maxAsteroids) {
+		asteroidsNeedsSetUp = false;
+		asteroidCount = 0;
+	}
+
+	int asteroidType = rand() % 3;
+
+	if (asteroidsNeedsSetUp) {
+		switch (asteroidType) {
+		case 0:
+			asteroidArray[asteroidCount].Init(geometryArray[5], effectArray[1]);
+			break;
+		case 1:
+			asteroidArray[asteroidCount].Init(geometryArray[6], effectArray[1]);
+			break;
+		case 2:
+			asteroidArray[asteroidCount].Init(geometryArray[7], effectArray[1]);
+			break;
+		default:
+			asteroidArray[asteroidCount].Init(geometryArray[5], effectArray[1]);
+			break;
+		}
+	}
+
+	float xVelocity = static_cast<float>(rand() % 400 -200);
+	float zVelocity = static_cast<float>(rand() % 400 -200);
+
+	asteroidArray[asteroidCount].m_rigidBody.operator*().position = { 5, 0, 5 };
+	asteroidArray[asteroidCount].m_rigidBody.operator*().velocity = { xVelocity, 0, zVelocity };
+	//asteroidArray[asteroidCount].m_rigidBody.operator*().orientation = Math::cQuaternion(1, 1, 0, 1);
+	asteroidCount++;
+
+	return Results::Success;
+}
+
 void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 	Math::sVector forward = ship.m_rigidBody.operator*().orientation.CalculateForwardDirection();
 	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Space)) {
@@ -72,27 +115,16 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 		}
 		spacepressed = false;
 	}
-	//testRocket.m_rigidBody.operator*().velocity += Math::sVector(forward * 5);
 
 	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Shift)) {
 		shiftpressed = true;
 	}
 	else {
+		if (shiftpressed == true) {
+			SpawnAsteroid();
+		}
 		shiftpressed = false;
 	}
-
-	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Up)) {
-	//	gameObject.m_rigidBody.operator*().velocity += { 0.0f, 1.0f, 0.0f };
-	//}
-	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Down)) {
-	//	gameObject.m_rigidBody.operator*().velocity += { 0.0f, -1.0f, 0.0f };
-	//}
-	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Right)) {
-	//	gameObject.m_rigidBody.operator*().velocity += { 1.0f, 0.0f, 0.0f };
-	//}
-	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Left)) {
-	//	gameObject.m_rigidBody.operator*().velocity += { -1.0f, 0.0f, 0.0f };
-	//}
 
 	if (UserInput::IsKeyPressed('Z')) {
 		camera.m_rigidBody.operator*().velocity += { 0.0f, 1.0f, 0.0f };
@@ -100,18 +132,10 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 	if (UserInput::IsKeyPressed('X')) {
 		camera.m_rigidBody.operator*().velocity += { 0.0f, -1.0f, 0.0f };
 	}
-	//if (UserInput::IsKeyPressed('D')) {
-	//	gameObject3.m_rigidBody.operator*().velocity += { 10.0f, 0.0f, 0.0f };
-	//}
-	//if (UserInput::IsKeyPressed('A')) {
-	//	gameObject3.m_rigidBody.operator*().velocity += { -10.0f, 0.0f, 0.0f };
-	//}
 	if (UserInput::IsKeyPressed('S')) {
-		//gameObject3.m_rigidBody.operator*().velocity += { 0.0f, 0.0f, 10.0f };
 		ship.m_rigidBody.operator*().velocity -= forward*10;
 	}
 	if (UserInput::IsKeyPressed('W')) {
-		//gameObject3.m_rigidBody.operator*().velocity += { 0.0f, 0.0f, -10.0f };
 		ship.m_rigidBody.operator*().velocity += forward * 10;
 	}
 
@@ -135,6 +159,9 @@ void eae6320::cMyGame::UpdateSimulationBasedOnTime(const float i_elapsedSecondCo
 
 eae6320::cResult eae6320::cMyGame::Initialize()
 {
+
+	Time::Initialize();
+
 	eae6320::Logging::OutputMessage("Initializing MyGame");
 	auto result = Results::Success;
 
@@ -154,34 +181,15 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 		}
 	}
 
-	//ECS::ECSTestSystem ECSTest;
-	//ECSTest.Init();
-
 	eae6320::ECS::RenderComponent::Init();
 	eae6320::ECS::PhysicsSystem::Init();
 
-	//ECSTest.CreateTestComponent("test", entity);
-	//ECSTest.CreateTestComponent("asdfasdfasdf", entity2);
-	//
-	//ECSTest.Update(1, 1);
-	//
-	//ECSTest.RemoveTestComponent(entity2);
-	//ECSTest.RemoveTestComponent(entity2);
-
-	//ECSTest.RemoveTestComponent(entity);
-	//entity.~SmartPointer();
-
-	//ECSTest.Update(1, 1);
-
-	//auto test = ECSTest.GetTestComponent(entity);
-
-	//auto test2 = ECSTest.GetTestComponent(entity2);
-
 	gameObject.Init(geometryArray[2], effectArray[0]);
+	gameObject.m_rigidBody.operator*().position = { 0,0,60 };
 	spaceBackground.Init(geometryArray[1], effectArray[2]);
 	ship.Init(geometryArray[4], effectArray[1]);
 	camera.Init();
-	camera.m_rigidBody.operator*().position = { 0, 150, 0 };
+	camera.m_rigidBody.operator*().position = { 0, 250, 0 };
 	camera.m_rigidBody.operator*().orientation = Math::cQuaternion(1,-1,0,0);
 
 	eae6320::Logging::OutputMessage("Finished Initializing MyGame");
@@ -226,6 +234,8 @@ eae6320::cResult eae6320::cMyGame::CleanUp()
 	effectArray[0] = nullptr;
 	effectArray[1] = nullptr;
 	effectArray[2] = nullptr;
+
+	Time::CleanUp();
 
 	eae6320::Logging::OutputMessage("Finished Cleaning Up MyGame");
 	return Results::Success;
