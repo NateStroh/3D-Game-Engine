@@ -91,13 +91,95 @@ eae6320::cResult eae6320::cMyGame::SpawnAsteroid()
 			break;
 		}
 	}
+	int asteroidLocation = rand() % 8;
 
-	float xVelocity = static_cast<float>(rand() % 400 -200);
-	float zVelocity = static_cast<float>(rand() % 400 -200);
 
-	asteroidArray[asteroidCount].m_rigidBody.operator*().position = { 5, 0, 5 };
-	asteroidArray[asteroidCount].m_rigidBody.operator*().velocity = { xVelocity, 0, zVelocity };
-	//asteroidArray[asteroidCount].m_rigidBody.operator*().orientation = Math::cQuaternion(1, 1, 0, 1);
+	float xVelocity;
+	float zVelocity;
+
+	switch (asteroidLocation) {
+	//bottom left
+	case 0:
+		xVelocity = static_cast<float>(rand() % 200 + 100);
+		zVelocity = static_cast<float>(rand() % 200 - 300);
+
+		asteroidArray[asteroidCount].m_rigidBody.operator*().position = { -150, 0, 150 };
+		asteroidArray[asteroidCount].m_rigidBody.operator*().velocity = { xVelocity, 0, zVelocity };
+
+		break;
+	//left
+	case 1:
+		xVelocity = static_cast<float>(rand() % 200 + 100);
+		zVelocity = static_cast<float>(rand() % 400 - 200);
+
+		asteroidArray[asteroidCount].m_rigidBody.operator*().position = { -150, 0, 0 };
+		asteroidArray[asteroidCount].m_rigidBody.operator*().velocity = { xVelocity, 0, zVelocity };
+
+		break;
+	//top left
+	case 2:
+		xVelocity = static_cast<float>(rand() % 200 + 100);
+		zVelocity = static_cast<float>(rand() % 200 + 100);
+
+		asteroidArray[asteroidCount].m_rigidBody.operator*().position = { -150, 0, -150 };
+		asteroidArray[asteroidCount].m_rigidBody.operator*().velocity = { xVelocity, 0, zVelocity };
+		break;
+	//top
+	case 3:
+		xVelocity = static_cast<float>(rand() % 400 - 200);
+		zVelocity = static_cast<float>(rand() % 200 + 100);
+
+		asteroidArray[asteroidCount].m_rigidBody.operator*().position = { 0, 0, -150 };
+		asteroidArray[asteroidCount].m_rigidBody.operator*().velocity = { xVelocity, 0, zVelocity };
+
+		break;
+	//top right
+	case 4:
+		xVelocity = static_cast<float>(rand() % 200 - 300);
+		zVelocity = static_cast<float>(rand() % 200 + 100);
+
+		asteroidArray[asteroidCount].m_rigidBody.operator*().position = { 150, 0, -150 };
+		asteroidArray[asteroidCount].m_rigidBody.operator*().velocity = { xVelocity, 0, zVelocity };
+
+		break;
+	//right
+	case 5:
+		xVelocity = static_cast<float>(rand() % 200 - 300);
+		zVelocity = static_cast<float>(rand() % 400 - 200);
+
+		asteroidArray[asteroidCount].m_rigidBody.operator*().position = { 150, 0, 0 };
+		asteroidArray[asteroidCount].m_rigidBody.operator*().velocity = { xVelocity, 0, zVelocity };
+
+		break;
+	//bottom right
+	case 6:
+		xVelocity = static_cast<float>(rand() % 200 - 300);
+		zVelocity = static_cast<float>(rand() % 200 - 300);
+
+		asteroidArray[asteroidCount].m_rigidBody.operator*().position = { 150, 0, 150 };
+		asteroidArray[asteroidCount].m_rigidBody.operator*().velocity = { xVelocity, 0, zVelocity };
+
+		break;
+	//bottom
+	case 7:
+		xVelocity = static_cast<float>(rand() % 400 - 200);
+		zVelocity = static_cast<float>(rand() % 200 - 300);
+
+		asteroidArray[asteroidCount].m_rigidBody.operator*().position = { 0, 0, 150 };
+		asteroidArray[asteroidCount].m_rigidBody.operator*().velocity = { xVelocity, 0, zVelocity };
+
+		break;
+	default:
+		xVelocity = static_cast<float>(rand() % 200 + 100);
+		zVelocity = static_cast<float>(rand() % 200 + 100);
+
+		asteroidArray[asteroidCount].m_rigidBody.operator*().position = { -150, 0, 150 };
+		asteroidArray[asteroidCount].m_rigidBody.operator*().velocity = { xVelocity, 0, zVelocity };
+
+		break;
+	
+	}
+
 	asteroidCount++;
 
 	return Results::Success;
@@ -120,9 +202,9 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 		shiftpressed = true;
 	}
 	else {
-		if (shiftpressed == true) {
-			SpawnAsteroid();
-		}
+		//if (shiftpressed == true) {
+		//	SpawnAsteroid();
+		//}
 		shiftpressed = false;
 	}
 
@@ -150,8 +232,31 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 	}
 }
 
+bool InRange(double i_low, double i_high, double i_number) {
+	return (i_number <= i_high && i_number >= i_low);
+}
+
 void eae6320::cMyGame::UpdateSimulationBasedOnTime(const float i_elapsedSecondCount_sinceLastUpdate) {
 	eae6320::ECS::PhysicsSystem::Update(i_elapsedSecondCount_sinceLastUpdate);
+
+	if (ship.m_rigidBody.operator*().position.z >= 110) {
+		ship.m_rigidBody.operator*().position.z = -110;
+	}
+	else if (ship.m_rigidBody.operator*().position.z <= -110) {
+		ship.m_rigidBody.operator*().position.z = 110;
+	}
+	else if (ship.m_rigidBody.operator*().position.x >= 110) {
+		ship.m_rigidBody.operator*().position.x = -110;
+	}
+	else if (ship.m_rigidBody.operator*().position.x <= -110) {
+		ship.m_rigidBody.operator*().position.x = 110;
+	}
+
+	auto currTime = (Time::ConvertTicksToSeconds(Time::GetCurrentSystemTimeTickCount()));
+	if (InRange(0,0.06,fmod(currTime, 1.0))) {
+		SpawnAsteroid();
+	}
+
 }
 
 // Initialize / Clean Up
@@ -185,7 +290,7 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 	eae6320::ECS::PhysicsSystem::Init();
 
 	gameObject.Init(geometryArray[2], effectArray[0]);
-	gameObject.m_rigidBody.operator*().position = { 0,0,60 };
+	gameObject.m_rigidBody.operator*().position = { 0,0,0 };
 	spaceBackground.Init(geometryArray[1], effectArray[2]);
 	ship.Init(geometryArray[4], effectArray[1]);
 	camera.Init();
