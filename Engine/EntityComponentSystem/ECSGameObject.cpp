@@ -21,9 +21,13 @@ eae6320::ECS::ECSGameObject::~ECSGameObject()
 	
 }
 
-eae6320::cResult eae6320::ECS::ECSGameObject::Init(eae6320::Graphics::Geometry* i_geometry, eae6320::Graphics::Effect* i_effect)
+eae6320::cResult eae6320::ECS::ECSGameObject::Init(eae6320::Graphics::Geometry* i_geometry, eae6320::Graphics::Effect* i_effect, float i_drag, float i_maxSpeed)
 {
 	cResult result = Results::Success;
+
+	m_rigidBody.operator*().drag = i_drag;
+	m_rigidBody.operator*().maxSpeed = i_maxSpeed;
+
 	eae6320::ECS::PhysicsSystem::CreatePhysicsComponent(m_rigidBody, m_pointer);
 	eae6320::ECS::RenderComponent::CreateRenderComponent(i_geometry, i_effect, m_rigidBody, m_pointer);
 	return result;

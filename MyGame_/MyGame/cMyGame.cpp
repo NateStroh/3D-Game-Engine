@@ -53,7 +53,7 @@ eae6320::cResult eae6320::cMyGame::SpawnMissile(eae6320::Math::sVector i_positio
 	}
 
 	if (missleNeedsSetUp) {
-		missileArray[missileCount].Init(geometryArray[3], effectArray[1]);
+		missileArray[missileCount].Init(geometryArray[3], effectArray[1], 0);
 	}
 	
 	missileArray[missileCount].m_rigidBody.operator*().position = i_position;
@@ -78,16 +78,16 @@ eae6320::cResult eae6320::cMyGame::SpawnAsteroid()
 	if (asteroidsNeedsSetUp) {
 		switch (asteroidType) {
 		case 0:
-			asteroidArray[asteroidCount].Init(geometryArray[5], effectArray[1]);
+			asteroidArray[asteroidCount].Init(geometryArray[5], effectArray[1], 0, 30);
 			break;
 		case 1:
-			asteroidArray[asteroidCount].Init(geometryArray[6], effectArray[1]);
+			asteroidArray[asteroidCount].Init(geometryArray[6], effectArray[1], 0, 30);
 			break;
 		case 2:
-			asteroidArray[asteroidCount].Init(geometryArray[7], effectArray[1]);
+			asteroidArray[asteroidCount].Init(geometryArray[7], effectArray[1], 0, 30);
 			break;
 		default:
-			asteroidArray[asteroidCount].Init(geometryArray[5], effectArray[1]);
+			asteroidArray[asteroidCount].Init(geometryArray[5], effectArray[1], 0, 30);
 			break;
 		}
 	}
@@ -292,7 +292,7 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 	gameObject.Init(geometryArray[2], effectArray[0]);
 	gameObject.m_rigidBody.operator*().position = { 0,0,0 };
 	spaceBackground.Init(geometryArray[1], effectArray[2]);
-	ship.Init(geometryArray[4], effectArray[1]);
+	ship.Init(geometryArray[4], effectArray[1], 0, 60);
 	camera.Init();
 	camera.m_rigidBody.operator*().position = { 0, 250, 0 };
 	camera.m_rigidBody.operator*().orientation = Math::cQuaternion(1,-1,0,0);
@@ -310,6 +310,14 @@ eae6320::cResult eae6320::cMyGame::CleanUp()
 	ship.CleanUp();
 	testRocket.CleanUp();
 	camera.CleanUp();
+
+	for (uint16_t i = 0; i < maxAsteroids; i++) {
+		asteroidArray[i].CleanUp();
+	}
+
+	for (uint16_t i = 0; i < maxMissiles; i++) {
+		missileArray[i].CleanUp();
+	}
 
 	eae6320::ECS::RenderComponent::CleanUp();
 	eae6320::ECS::PhysicsSystem::CleanUp();
