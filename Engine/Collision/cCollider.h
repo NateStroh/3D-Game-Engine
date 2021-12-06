@@ -46,12 +46,13 @@ namespace eae6320
 			// If this is true on one of the two colliding objects, the maximum restitution of the two objects will be used instead of the average.
 			bool shouldUseMaxRestitution;
 			Physics::sRigidBodyState* rigidbody;	// It is the responsability of the application to ensure this memory remains valid as long as the collider is being updated and used
+			uint16_t CollisionType = 0;
 
 			// Interface
 			//==========
 
-			static cResult CreateCollider(Physics::sRigidBodyState* i_rigidbody, Math::sVector i_extents, bool isTrigger, cCollider*& o_collider);
-			static cResult CreateCollider(Physics::sRigidBodyState* i_rigidbody, Math::sVector i_extents, Math::sVector center, Math::cQuaternion orientation, bool isTrigger, cCollider*& o_collider);
+			static cResult CreateCollider(uint16_t i_collisionType, Physics::sRigidBodyState* i_rigidbody, Math::sVector i_extents, bool isTrigger, cCollider*& o_collider);
+			static cResult CreateCollider(uint16_t i_collisionType, Physics::sRigidBodyState* i_rigidbody, Math::sVector i_extents, Math::sVector center, Math::cQuaternion orientation, bool isTrigger, cCollider*& o_collider);
 
 			void SetPhysics(float mass, float restitution);
 			void SetPhysics(float mass, float restitution, bool shouldUseMaxRestitution);
@@ -110,7 +111,7 @@ namespace eae6320
 				return inv;
 			}
 
-			cCollider(Math::sVector center, Math::cQuaternion orientation, Math::sVector extents, bool isTrigger, Physics::sRigidBodyState* rigidbody);
+			cCollider(uint16_t i_collisionType, Math::sVector center, Math::cQuaternion orientation, Math::sVector extents, bool isTrigger, Physics::sRigidBodyState* rigidbody);
 
 			cCollider(const cCollider&) = delete;
 			cCollider(cCollider&&) = delete;

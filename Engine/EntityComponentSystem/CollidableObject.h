@@ -13,14 +13,14 @@ namespace eae6320
 	{
 		class CollidableObject : public ECSEntity {
 		private:
-
+			void ResolveCollision(eae6320::Collision::sCollision coll);
 		public:
 			SmartPointer<ECS::ECSEntity> m_pointer;
 			eae6320::Collision::cCollider* m_collider;
 			CollidableObject();
 			CollidableObject(eae6320::Graphics::Geometry* i_geometry, eae6320::Graphics::Effect* i_effect);
 			~CollidableObject();
-			cResult Init(eae6320::Graphics::Geometry* i_geometry, eae6320::Graphics::Effect* i_effect, Math::sVector i_extents, bool isTrigger, float i_drag = 0.1f, float i_maxSpeed = 1000.0f);
+			cResult Init(eae6320::Graphics::Geometry* i_geometry, eae6320::Graphics::Effect* i_effect, Math::sVector i_extents, bool isTrigger, uint16_t i_collisionType, float i_drag = 0.1f, float i_maxSpeed = 1000.0f);
 			cResult CleanUp();
 		};
 	}

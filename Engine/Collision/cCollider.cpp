@@ -10,8 +10,8 @@
 #include <algorithm>
 
 
-eae6320::Collision::cCollider::cCollider(Math::sVector center, Math::cQuaternion orientation, Math::sVector extents, bool isTrigger, Physics::sRigidBodyState* rigidbody)
-	: center(center), orientation(orientation), extents(extents), isTrigger(isTrigger), rigidbody(rigidbody), resolveAsKinematic(false), mass(1.0f), restitution(0.0f), shouldUseMaxRestitution(false)
+eae6320::Collision::cCollider::cCollider(uint16_t i_collisionType, Math::sVector center, Math::cQuaternion orientation, Math::sVector extents, bool isTrigger, Physics::sRigidBodyState* rigidbody)
+	: CollisionType(i_collisionType), center(center), orientation(orientation), extents(extents), isTrigger(isTrigger), rigidbody(rigidbody), resolveAsKinematic(false), mass(1.0f), restitution(0.0f), shouldUseMaxRestitution(false)
 {
 	collisionCallbacks = new std::vector<std::function<void(eae6320::Collision::sCollision coll)>>();
 }
@@ -22,7 +22,7 @@ eae6320::Collision::cCollider::~cCollider()
 	delete collisionCallbacks;
 }
 
-eae6320::cResult eae6320::Collision::cCollider::CreateCollider(Physics::sRigidBodyState* i_rigidbody, Math::sVector i_extents, Math::sVector center, Math::cQuaternion orientation, bool isTrigger, cCollider*& o_collider)
+eae6320::cResult eae6320::Collision::cCollider::CreateCollider(uint16_t i_collisionType, Physics::sRigidBodyState* i_rigidbody, Math::sVector i_extents, Math::sVector center, Math::cQuaternion orientation, bool isTrigger, cCollider*& o_collider)
 {
 	cResult result = Results::Success;
 	cCollider* newCollider = nullptr;
@@ -47,7 +47,7 @@ eae6320::cResult eae6320::Collision::cCollider::CreateCollider(Physics::sRigidBo
 		});
 
 	{
-		newCollider = new (std::nothrow) cCollider(center, orientation, i_extents, isTrigger, i_rigidbody);
+		newCollider = new (std::nothrow) cCollider(i_collisionType, center, orientation, i_extents, isTrigger, i_rigidbody);
 		if (!newCollider)
 		{
 			result = Results::OutOfMemory;
@@ -60,9 +60,9 @@ eae6320::cResult eae6320::Collision::cCollider::CreateCollider(Physics::sRigidBo
 	return result;
 }
 
-eae6320::cResult eae6320::Collision::cCollider::CreateCollider(Physics::sRigidBodyState* i_rigidbody, Math::sVector i_extents, bool isTrigger, cCollider*& o_collider)
+eae6320::cResult eae6320::Collision::cCollider::CreateCollider(uint16_t i_collisionType, Physics::sRigidBodyState* i_rigidbody, Math::sVector i_extents, bool isTrigger, cCollider*& o_collider)
 {
-	return cCollider::CreateCollider(i_rigidbody, i_extents, Math::sVector(), Math::cQuaternion(), isTrigger, o_collider);
+	return cCollider::CreateCollider(i_collisionType, i_rigidbody, i_extents, Math::sVector(), Math::cQuaternion(), isTrigger, o_collider);
 }
 
 void eae6320::Collision::cCollider::SetPhysics(float mass, float restitution)

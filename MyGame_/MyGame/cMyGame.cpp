@@ -52,7 +52,7 @@ eae6320::cResult eae6320::cMyGame::SpawnMissile(eae6320::Math::sVector i_positio
 	}
 
 	if (missleNeedsSetUp) {
-		missileArray[missileCount].Init(geometryArray[3], effectArray[1], {1, 1, 1}, false, 0);
+		missileArray[missileCount].Init(geometryArray[3], effectArray[1], {1, 1, 1}, true, 2, 0);
 	}
 	
 	missileArray[missileCount].m_rigidBody.operator*().position = i_position;
@@ -77,16 +77,16 @@ eae6320::cResult eae6320::cMyGame::SpawnAsteroid()
 	if (asteroidsNeedsSetUp) {
 		switch (asteroidType) {
 		case 0:
-			asteroidArray[asteroidCount].Init(geometryArray[5], effectArray[1], {10,1,10}, false, 0, 30);
+			asteroidArray[asteroidCount].Init(geometryArray[5], effectArray[1], {10,1,10}, true, 1, 0, 30);
 			break;
 		case 1:
-			asteroidArray[asteroidCount].Init(geometryArray[6], effectArray[1], { 20,1,20 }, false, 0, 30);
+			asteroidArray[asteroidCount].Init(geometryArray[6], effectArray[1], { 20,1,20 }, true, 1, 0, 30);
 			break;
 		case 2:
-			asteroidArray[asteroidCount].Init(geometryArray[7], effectArray[1], { 30,1,30 }, false, 0, 30);
+			asteroidArray[asteroidCount].Init(geometryArray[7], effectArray[1], { 30,1,30 }, true, 1, 0, 30);
 			break;
 		default:
-			asteroidArray[asteroidCount].Init(geometryArray[5], effectArray[1], { 10,1,10 }, false, 0, 30);
+			asteroidArray[asteroidCount].Init(geometryArray[5], effectArray[1], { 10,1,10 }, true, 1, 0, 30);
 			break;
 		}
 	}
@@ -309,13 +309,13 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 	gameObject.Init(geometryArray[2], effectArray[0]);
 	gameObject.m_rigidBody.operator*().position = { 0,0,0 };
 	spaceBackground.Init(geometryArray[1], effectArray[2]);
-	ship.Init(geometryArray[4], effectArray[1], {1,1,2}, false, 0, 60);
+	ship.Init(geometryArray[4], effectArray[1], {1,1,2}, true, 0, 0, 60);
 	camera.Init();
 	camera.m_rigidBody.operator*().position = { 0, 250, 0 };
 	camera.m_rigidBody.operator*().orientation = Math::cQuaternion(1,-1,0,0);
 
 	//collTest.Init(geometryArray[5], effectArray[0], { 10,1,10 }, false);
-	//collTest.m_rigidBody.operator*().position = { 0,0, -50 };
+	//collTest.m_rigidBody.operator*().position = { 0,0, 50 };
 	//
 	//collTest1.Init(geometryArray[2], effectArray[0], { 1,1,1 }, false);
 	//collTest1.m_rigidBody.operator*().position = { 0,0, -50 };
