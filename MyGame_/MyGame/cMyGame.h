@@ -118,15 +118,17 @@ namespace eae6320
 		//eae6320::ECS::CollidableObject collTest;
 		//eae6320::ECS::CollidableObject collTest1;
 
-		const static uint16_t maxMissiles = 30;
+		const static uint16_t maxMissiles = 10;
 		eae6320::ECS::CollidableObject missileArray[maxMissiles];
 		bool missleNeedsSetUp = true;
 		uint16_t missileCount = 0;
 
-		const static uint16_t maxAsteroids = 20;
+		const static uint16_t maxAsteroids = 10;
 		eae6320::ECS::CollidableObject asteroidArray[maxAsteroids];
 		bool asteroidsNeedsSetUp = true;
 		uint16_t asteroidCount = 0;
+
+		void eae6320::cMyGame::ResolveCollision(eae6320::Collision::sCollision coll);
 	};
 }
 

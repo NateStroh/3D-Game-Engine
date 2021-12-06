@@ -401,3 +401,18 @@ eae6320::cResult eae6320::cMyGame::InitializeShadingData() {
 
 	return result;
 }
+
+void eae6320::cMyGame::ResolveCollision(eae6320::Collision::sCollision coll)
+{
+	if (coll.colliderA->CollisionType == 0 && (coll.colliderB->CollisionType == 1 || coll.colliderB->CollisionType == 2)) {
+		//eae6320::Logging::OutputMessage("character should die");
+		SetSimulationRate(0);
+	}
+
+	if ((coll.colliderA->CollisionType == 1 && coll.colliderB->CollisionType == 2) || (coll.colliderA->CollisionType == 2 && coll.colliderB->CollisionType == 1)) {
+		coll.colliderA->rigidbody->position = { 0,500,0 };
+		coll.colliderA->rigidbody->velocity = { 0,0,0 };
+		coll.colliderB->rigidbody->position = { 0,500,0 };
+		coll.colliderB->rigidbody->velocity = { 0,0,0 };
+	}
+}

@@ -16,7 +16,7 @@ namespace eae6320
 			void ResolveCollision(eae6320::Collision::sCollision coll);
 		public:
 			SmartPointer<ECS::ECSEntity> m_pointer;
-			eae6320::Collision::cCollider* m_collider;
+			eae6320::Collision::cCollider* m_collider = nullptr;
 			CollidableObject();
 			CollidableObject(eae6320::Graphics::Geometry* i_geometry, eae6320::Graphics::Effect* i_effect);
 			~CollidableObject();
