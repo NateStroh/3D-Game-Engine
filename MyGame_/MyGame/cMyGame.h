@@ -97,6 +97,8 @@ namespace eae6320
 		eae6320::cResult InitializeGeometry();
 		eae6320::cResult InitializeShadingData();
 
+		cResult ResolveCollisions();
+
 		bool spacepressed = false;
 		bool shiftpressed = false;
 

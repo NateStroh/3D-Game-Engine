@@ -9,6 +9,7 @@
 #include <Engine/EntityComponentSystem/ECSTestSystem.h>
 #include <Engine/EntityComponentSystem/SmartPointer.h>
 #include <Engine/Time/Time.h>
+#include <Engine/Collision/CollisionComponent.h>
 
 #include <stdlib.h>
 #include <time.h>
@@ -239,6 +240,8 @@ bool InRange(double i_low, double i_high, double i_number) {
 void eae6320::cMyGame::UpdateSimulationBasedOnTime(const float i_elapsedSecondCount_sinceLastUpdate) {
 	eae6320::ECS::PhysicsSystem::Update(i_elapsedSecondCount_sinceLastUpdate);
 
+	Collision::RunAllCollisionTests();
+
 	if (ship.m_rigidBody.operator*().position.z >= 110) {
 		ship.m_rigidBody.operator*().position.z = -110;
 	}
@@ -291,6 +294,11 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 
 	gameObject.Init(geometryArray[2], effectArray[0]);
 	gameObject.m_rigidBody.operator*().position = { 0,0,0 };
+
+	CollisionComponent collComponent;
+	collComponent.SetParameters({ 1,1,1 });
+	collComponent.SetActive(true);
+
 	spaceBackground.Init(geometryArray[1], effectArray[2]);
 	ship.Init(geometryArray[4], effectArray[1], 0, 60);
 	camera.Init();
@@ -374,6 +382,15 @@ eae6320::cResult eae6320::cMyGame::InitializeShadingData() {
 	result = eae6320::Graphics::Effect::MakeEffect("data/Shaders/Vertex/standard.shader", "data/Shaders/Fragment/standard.shader", effectArray[1]);
 	result = eae6320::Graphics::Effect::MakeEffect("data/Shaders/Vertex/standard.shader", "data/Shaders/Fragment/StarShader.shader", effectArray[2]);
 
+
+	return result;
+}
+
+eae6320::cResult eae6320::cMyGame::ResolveCollisions()
+{
+	cResult result = Results::Success;
+
+	Logging::OutputMessage("Collided");
 
 	return result;
 }
