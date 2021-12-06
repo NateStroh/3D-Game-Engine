@@ -10,6 +10,7 @@
     <ClInclude Include="PhysicsSystem.h" />
     <ClInclude Include="ECSCameraObject.h" />
     <ClInclude Include="ECSGameObject.h" />
+    <ClInclude Include="CollidableObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ComponentSystem.cpp" />
@@ -19,5 +20,6 @@
     <ClCompile Include="PhysicsSystem.cpp" />
     <ClCompile Include="ECSCameraObject.cpp" />
     <ClCompile Include="ECSGameObject.cpp" />
+    <ClCompile Include="CollidableObject.cpp" />
   </ItemGroup>
 </Project>

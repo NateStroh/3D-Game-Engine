@@ -152,6 +152,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CollidableObject.h" />
     <ClInclude Include="ECSCameraObject.h" />
     <ClInclude Include="ComponentSystem.h" />
     <ClInclude Include="ECSEntity.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="WeakPointer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CollidableObject.cpp" />
     <ClCompile Include="ECSCameraObject.cpp" />
     <ClCompile Include="ComponentSystem.cpp" />
     <ClCompile Include="ECSEntity.cpp" />
@@ -174,6 +176,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Asserts\Asserts.vcxproj">
       <Project>{464a6551-fca9-4027-bd9e-2b26914782ab}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Collision\Collision.vcxproj">
+      <Project>{83bfa209-c74b-41eb-a6a5-1c779541a57a}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Graphics\Graphics.vcxproj">
       <Project>{fb81ba11-6314-4348-b4ed-6bdba30c18ed}</Project>

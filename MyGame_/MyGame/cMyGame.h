@@ -22,6 +22,7 @@
 #include <Engine/EntityComponentSystem/ECSCameraObject.h>
 #include <Engine/EntityComponentSystem/ECSGameObject.h>
 #include <Engine/Collision/Collision.h>
+#include <Engine/EntityComponentSystem/CollidableObject.h>
 
 #if defined( EAE6320_PLATFORM_WINDOWS )
 	#include "Resource Files/Resource.h"
@@ -110,28 +111,22 @@ namespace eae6320
 		eae6320::Graphics::Effect* effectArray[30];
 
 		ECS::ECSCameraObject camera;
-		eae6320::ECS::ECSGameObject testRocket;
 		eae6320::ECS::ECSGameObject gameObject;
 		eae6320::ECS::ECSGameObject spaceBackground;
-		eae6320::ECS::ECSGameObject ship;
+		eae6320::ECS::CollidableObject ship;
 
-		eae6320::Application::GameObject collTest;
-		eae6320::Collision::cCollider* colliderTest;
-		eae6320::Application::GameObject collTest1;
-		eae6320::Collision::cCollider* collider1Test;
+		//eae6320::ECS::CollidableObject collTest;
+		//eae6320::ECS::CollidableObject collTest1;
 
 		const static uint16_t maxMissiles = 30;
-		eae6320::ECS::ECSGameObject missileArray[maxMissiles];
+		eae6320::ECS::CollidableObject missileArray[maxMissiles];
 		bool missleNeedsSetUp = true;
 		uint16_t missileCount = 0;
 
 		const static uint16_t maxAsteroids = 20;
-		eae6320::ECS::ECSGameObject asteroidArray[maxAsteroids];
+		eae6320::ECS::CollidableObject asteroidArray[maxAsteroids];
 		bool asteroidsNeedsSetUp = true;
 		uint16_t asteroidCount = 0;
-
-		//SmartPointer<ECS::ECSEntity> entity = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity());
-		//SmartPointer<ECS::ECSEntity> entity2 = SmartPointer<ECS::ECSEntity>(new ECS::ECSEntity());
 	};
 }
 
