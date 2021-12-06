@@ -53,6 +53,7 @@ eae6320::cResult eae6320::cMyGame::SpawnMissile(eae6320::Math::sVector i_positio
 
 	if (missleNeedsSetUp) {
 		missileArray[missileCount].Init(geometryArray[3], effectArray[1], {1, 1, 1}, true, 2, 0);
+		missileArray[missileCount].m_collider->ListenToCollision(std::bind(&eae6320::cMyGame::ResolveCollision, this, std::placeholders::_1));
 	}
 	
 	missileArray[missileCount].m_rigidBody.operator*().position = i_position;
@@ -78,15 +79,19 @@ eae6320::cResult eae6320::cMyGame::SpawnAsteroid()
 		switch (asteroidType) {
 		case 0:
 			asteroidArray[asteroidCount].Init(geometryArray[5], effectArray[1], {10,1,10}, true, 1, 0, 30);
+			asteroidArray[asteroidCount].m_collider->ListenToCollision(std::bind(&eae6320::cMyGame::ResolveCollision, this, std::placeholders::_1));
 			break;
 		case 1:
 			asteroidArray[asteroidCount].Init(geometryArray[6], effectArray[1], { 20,1,20 }, true, 1, 0, 30);
+			asteroidArray[asteroidCount].m_collider->ListenToCollision(std::bind(&eae6320::cMyGame::ResolveCollision, this, std::placeholders::_1));
 			break;
 		case 2:
 			asteroidArray[asteroidCount].Init(geometryArray[7], effectArray[1], { 30,1,30 }, true, 1, 0, 30);
+			asteroidArray[asteroidCount].m_collider->ListenToCollision(std::bind(&eae6320::cMyGame::ResolveCollision, this, std::placeholders::_1));
 			break;
 		default:
 			asteroidArray[asteroidCount].Init(geometryArray[5], effectArray[1], { 10,1,10 }, true, 1, 0, 30);
+			asteroidArray[asteroidCount].m_collider->ListenToCollision(std::bind(&eae6320::cMyGame::ResolveCollision, this, std::placeholders::_1));
 			break;
 		}
 	}
@@ -310,6 +315,8 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 	gameObject.m_rigidBody.operator*().position = { 0,0,0 };
 	spaceBackground.Init(geometryArray[1], effectArray[2]);
 	ship.Init(geometryArray[4], effectArray[1], {1,1,2}, true, 0, 0, 60);
+	ship.m_collider->ListenToCollision(std::bind(&eae6320::cMyGame::ResolveCollision, this, std::placeholders::_1));
+
 	camera.Init();
 	camera.m_rigidBody.operator*().position = { 0, 250, 0 };
 	camera.m_rigidBody.operator*().orientation = Math::cQuaternion(1,-1,0,0);
@@ -405,7 +412,6 @@ eae6320::cResult eae6320::cMyGame::InitializeShadingData() {
 void eae6320::cMyGame::ResolveCollision(eae6320::Collision::sCollision coll)
 {
 	if (coll.colliderA->CollisionType == 0 && (coll.colliderB->CollisionType == 1 || coll.colliderB->CollisionType == 2)) {
-		//eae6320::Logging::OutputMessage("character should die");
 		SetSimulationRate(0);
 	}
 

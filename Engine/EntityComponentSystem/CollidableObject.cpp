@@ -42,7 +42,7 @@ eae6320::cResult eae6320::ECS::CollidableObject::Init(eae6320::Graphics::Geometr
 	m_rigidBody.operator*().maxSpeed = i_maxSpeed;
 
 	eae6320::Collision::cCollider::CreateCollider(i_collisionType, &m_rigidBody.operator*(), i_extents, isTrigger, m_collider);
-	m_collider->ListenToCollision(std::bind(&eae6320::ECS::CollidableObject::ResolveCollision, this, std::placeholders::_1));
+	//m_collider->ListenToCollision(std::bind(&eae6320::ECS::CollidableObject::ResolveCollision, this, std::placeholders::_1));m_collider->ListenToCollision(std::bind(&eae6320::ECS::CollidableObject::ResolveCollision, this, std::placeholders::_1));
 	//m_collider->ListenToCollision(std::bind(&eae6320::cMyGame:, this, std::placeholders::_1));
 
 	eae6320::ECS::RenderComponent::CreateRenderComponent(i_geometry, i_effect, m_rigidBody, m_pointer);
