@@ -21,6 +21,7 @@
 #include <Engine/EntityComponentSystem/PhysicsSystem.h>
 #include <Engine/EntityComponentSystem/ECSCameraObject.h>
 #include <Engine/EntityComponentSystem/ECSGameObject.h>
+#include <Engine/Collision/Collision.h>
 
 #if defined( EAE6320_PLATFORM_WINDOWS )
 	#include "Resource Files/Resource.h"
@@ -113,6 +114,11 @@ namespace eae6320
 		eae6320::ECS::ECSGameObject gameObject;
 		eae6320::ECS::ECSGameObject spaceBackground;
 		eae6320::ECS::ECSGameObject ship;
+
+		eae6320::Application::GameObject collTest;
+		eae6320::Collision::cCollider* colliderTest;
+		eae6320::Application::GameObject collTest1;
+		eae6320::Collision::cCollider* collider1Test;
 
 		const static uint16_t maxMissiles = 30;
 		eae6320::ECS::ECSGameObject missileArray[maxMissiles];

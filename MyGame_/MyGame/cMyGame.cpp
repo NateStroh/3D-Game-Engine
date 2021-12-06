@@ -32,7 +32,8 @@ void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_s
 	camera.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 
 	eae6320::ECS::RenderComponent::Update(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
-
+	collTest.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
+	collTest1.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 }
 
 void eae6320::cMyGame::UpdateBasedOnInput()
@@ -208,6 +209,21 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 		shiftpressed = false;
 	}
 
+
+	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Up)) {
+		collTest1.m_rigidBody.velocity += { 0.0f, 0.0f, -1.0f };
+	}
+	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Down)) {
+		collTest1.m_rigidBody.velocity += { 0.0f, 0.0f, 1.0f};
+	}
+	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Right)) {
+		collTest1.m_rigidBody.velocity += { 1.0f, 0.0f, 0.0f };
+	}
+	if (UserInput::IsKeyPressed(UserInput::KeyCodes::Left)) {
+		collTest1.m_rigidBody.velocity += { -1.0f, 0.0f, 0.0f };
+	}
+
+
 	if (UserInput::IsKeyPressed('Z')) {
 		camera.m_rigidBody.operator*().velocity += { 0.0f, 1.0f, 0.0f };
 	}
@@ -257,6 +273,9 @@ void eae6320::cMyGame::UpdateSimulationBasedOnTime(const float i_elapsedSecondCo
 		SpawnAsteroid();
 	}
 
+	//collTest.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
+	//collTest1.UpdateRigidBody(i_elapsedSecondCount_sinceLastUpdate);
+	Collision::UpdateCollisions(i_elapsedSecondCount_sinceLastUpdate);
 }
 
 // Initialize / Clean Up
@@ -286,6 +305,8 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 		}
 	}
 
+	result = Collision::Initialize();
+
 	eae6320::ECS::RenderComponent::Init();
 	eae6320::ECS::PhysicsSystem::Init();
 
@@ -296,6 +317,18 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 	camera.Init();
 	camera.m_rigidBody.operator*().position = { 0, 250, 0 };
 	camera.m_rigidBody.operator*().orientation = Math::cQuaternion(1,-1,0,0);
+
+	collTest.m_geometry = geometryArray[2];
+	collTest.m_effect = effectArray[0];
+	collTest.m_rigidBody;
+	collTest.m_rigidBody.position = { 0,0,50 };
+	eae6320::Collision::cCollider::CreateCollider(&collTest.m_rigidBody, {1,1,1}, false, colliderTest);
+
+	collTest1.m_geometry = geometryArray[2];
+	collTest1.m_effect = effectArray[0];
+	collTest1.m_rigidBody;
+	collTest1.m_rigidBody.position = { 0,0,-50 };
+	eae6320::Collision::cCollider::CreateCollider(&collTest1.m_rigidBody, { 1,1,1 }, false, collider1Test);
 
 	eae6320::Logging::OutputMessage("Finished Initializing MyGame");
 	return result;
@@ -321,6 +354,8 @@ eae6320::cResult eae6320::cMyGame::CleanUp()
 
 	eae6320::ECS::RenderComponent::CleanUp();
 	eae6320::ECS::PhysicsSystem::CleanUp();
+
+	Collision::CleanUp();
 
 	//geometry cleanup
 	geometryArray[0]->DecrementReferenceCount();
