@@ -192,7 +192,7 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 	else {
 
 		if (spacepressed == true) {
-			SpawnMissile((ship.m_rigidBody.operator*().position + forward * 2), ship.m_rigidBody.operator*().orientation, Math::sVector(forward * 500));
+			SpawnMissile((ship.m_rigidBody.operator*().position + forward * 10), ship.m_rigidBody.operator*().orientation, Math::sVector(forward * 300));
 		}
 		spacepressed = false;
 	}
