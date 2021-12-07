@@ -22,12 +22,12 @@
 void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate) {
 	Graphics::SetBackGroundColor(1.0f, 0.0f, 1.0f, 1.0f);
 
-	if(shiftpressed){
-		eae6320::ECS::RenderComponent::ChangeGeometry(geometryArray[0], effectArray[1], gameObject.m_pointer);
-	}
-	else {
-		eae6320::ECS::RenderComponent::ChangeGeometry(geometryArray[2], effectArray[0], gameObject.m_pointer);
-	}
+	//if(shiftpressed){
+	//	eae6320::ECS::RenderComponent::ChangeGeometry(geometryArray[0], effectArray[1], gameObject.m_pointer);
+	//}
+	//else {
+	//	eae6320::ECS::RenderComponent::ChangeGeometry(geometryArray[2], effectArray[0], gameObject.m_pointer);
+	//}
 	
 	camera.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 
@@ -212,21 +212,6 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 		shiftpressed = false;
 	}
 
-
-	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Up)) {
-	//	collTest1.m_rigidBody.operator*().velocity += { 0.0f, 0.0f, -1.0f };
-	//}
-	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Down)) {
-	//	collTest1.m_rigidBody.operator*().velocity += { 0.0f, 0.0f, 1.0f};
-	//}
-	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Right)) {
-	//	collTest1.m_rigidBody.operator*().velocity += { 1.0f, 0.0f, 0.0f };
-	//}
-	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Left)) {
-	//	collTest1.m_rigidBody.operator*().velocity += { -1.0f, 0.0f, 0.0f };
-	//}
-
-
 	if (UserInput::IsKeyPressed('Z')) {
 		camera.m_rigidBody.operator*().velocity += { 0.0f, 1.0f, 0.0f };
 	}
@@ -312,8 +297,8 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 	eae6320::ECS::RenderComponent::Init();
 	eae6320::ECS::PhysicsSystem::Init();
 
-	gameObject.Init(geometryArray[2], effectArray[0]);
-	gameObject.m_rigidBody.operator*().position = { 0,0,0 };
+	LoseText.Init(geometryArray[8], effectArray[1]);
+	LoseText.m_rigidBody.operator*().position = { 0,-100,0 };
 	
 	spaceBackground.Init(geometryArray[1], effectArray[2]);
 
@@ -338,7 +323,7 @@ eae6320::cResult eae6320::cMyGame::CleanUp()
 {
 	eae6320::Logging::OutputMessage("Cleaning Up MyGame");
 
-	gameObject.CleanUp();
+	LoseText.CleanUp();
 	spaceBackground.CleanUp();
 	ship.CleanUp();
 	camera.CleanUp();
@@ -397,6 +382,7 @@ eae6320::cResult eae6320::cMyGame::InitializeGeometry() {
 	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/AS.mesh", geometryArray[5]);
 	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/AM.mesh", geometryArray[6]);
 	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/AL.mesh", geometryArray[7]);
+	result = eae6320::Graphics::Geometry::MakeGeometry("data/Meshes/LoseText.mesh", geometryArray[8]);
 	return result;
 }
 
@@ -418,9 +404,11 @@ void eae6320::cMyGame::ResolveCollision(eae6320::Collision::sCollision coll)
 		return;
 
  	if (coll.colliderA->CollisionType == 0 && (coll.colliderB->CollisionType == 1 || coll.colliderB->CollisionType == 2)) {
+		LoseText.m_rigidBody.operator*().position = { 0,0,0 };
 		SetSimulationRate(0);
 	}
 	else if((coll.colliderA->CollisionType == 1 && coll.colliderB->CollisionType == 0) || (coll.colliderA->CollisionType == 2 && coll.colliderB->CollisionType == 0)) {
+		LoseText.m_rigidBody.operator*().position = { 0,0,0 };
 		SetSimulationRate(0);
 	}
 

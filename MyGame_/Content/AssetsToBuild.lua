@@ -31,5 +31,6 @@ return
 		"Meshes/AM.mesh",
 		"Meshes/AL.mesh",
 		"Meshes/Rocket.mesh",
+		"Meshes/LoseText.mesh",
 	},
 }

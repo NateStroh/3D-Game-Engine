@@ -111,7 +111,7 @@ namespace eae6320
 		eae6320::Graphics::Effect* effectArray[30];
 
 		ECS::ECSCameraObject camera;
-		eae6320::ECS::ECSGameObject gameObject;
+		eae6320::ECS::ECSGameObject LoseText;
 		eae6320::ECS::ECSGameObject spaceBackground;
 		eae6320::ECS::CollidableObject ship;
 
