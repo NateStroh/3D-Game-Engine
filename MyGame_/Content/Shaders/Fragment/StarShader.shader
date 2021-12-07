@@ -56,6 +56,7 @@ void main(
 
     float strength = step(1.0, random(ipos));
 	vec3 starColor = vec3(1.0, 1.0, 1.0) * strength * .7;
+	starColor += vec3(.001, .001, .001);
     color /= starColor;
     //color += vec3(random( ipos ));
     
