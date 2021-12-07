@@ -256,7 +256,7 @@ void eae6320::cMyGame::UpdateSimulationBasedOnTime(const float i_elapsedSecondCo
 	}
 
 	auto currTime = (Time::ConvertTicksToSeconds(Time::GetCurrentSystemTimeTickCount()));
-	if (InRange(0,0.06,fmod(currTime, 1.0))) {
+	if (InRange(0,0.07,fmod(currTime, 1.0))) {
 		SpawnAsteroid();
 	}
 
@@ -404,11 +404,11 @@ void eae6320::cMyGame::ResolveCollision(eae6320::Collision::sCollision coll)
 		return;
 
  	if (coll.colliderA->CollisionType == 0 && (coll.colliderB->CollisionType == 1 || coll.colliderB->CollisionType == 2)) {
-		LoseText.m_rigidBody.operator*().position = { 0,0,0 };
+		LoseText.m_rigidBody.operator*().position = { 0,50,0 };
 		SetSimulationRate(0);
 	}
 	else if((coll.colliderA->CollisionType == 1 && coll.colliderB->CollisionType == 0) || (coll.colliderA->CollisionType == 2 && coll.colliderB->CollisionType == 0)) {
-		LoseText.m_rigidBody.operator*().position = { 0,0,0 };
+		LoseText.m_rigidBody.operator*().position = { 0,50,0 };
 		SetSimulationRate(0);
 	}
 
