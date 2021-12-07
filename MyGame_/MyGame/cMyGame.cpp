@@ -58,7 +58,7 @@ eae6320::cResult eae6320::cMyGame::SpawnMissile(eae6320::Math::sVector i_positio
 	
 	missileArray[missileCount].m_rigidBody.operator*().position = i_position;
 	missileArray[missileCount].m_rigidBody.operator*().velocity = i_velocity;
-	missileArray[missileCount].m_rigidBody.operator*().orientation = i_orientation;
+	//missileArray[missileCount].m_rigidBody.operator*().orientation = i_orientation;
 	missileCount++;
 
 	return Results::Success;
@@ -256,7 +256,6 @@ bool InRange(double i_low, double i_high, double i_number) {
 }
 
 void eae6320::cMyGame::UpdateSimulationBasedOnTime(const float i_elapsedSecondCount_sinceLastUpdate) {
-	eae6320::ECS::PhysicsSystem::Update(i_elapsedSecondCount_sinceLastUpdate);
 
 	if (ship.m_rigidBody.operator*().position.z >= 110) {
 		ship.m_rigidBody.operator*().position.z = -110;
@@ -275,6 +274,8 @@ void eae6320::cMyGame::UpdateSimulationBasedOnTime(const float i_elapsedSecondCo
 	if (InRange(0,0.06,fmod(currTime, 1.0))) {
 		SpawnAsteroid();
 	}
+
+	eae6320::ECS::PhysicsSystem::Update(i_elapsedSecondCount_sinceLastUpdate);
 
 	Collision::UpdateCollisions(i_elapsedSecondCount_sinceLastUpdate);
 }
@@ -313,7 +314,9 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 
 	gameObject.Init(geometryArray[2], effectArray[0]);
 	gameObject.m_rigidBody.operator*().position = { 0,0,0 };
+	
 	spaceBackground.Init(geometryArray[1], effectArray[2]);
+
 	ship.Init(geometryArray[4], effectArray[1], {1,1,2}, true, 0, 0, 60);
 	ship.m_collider->ListenToCollision(std::bind(&eae6320::cMyGame::ResolveCollision, this, std::placeholders::_1));
 
@@ -411,14 +414,20 @@ eae6320::cResult eae6320::cMyGame::InitializeShadingData() {
 
 void eae6320::cMyGame::ResolveCollision(eae6320::Collision::sCollision coll)
 {
-	if (coll.colliderA->CollisionType == 0 && (coll.colliderB->CollisionType == 1 || coll.colliderB->CollisionType == 2)) {
+	if ((coll.colliderA->CollisionType == 1 && coll.colliderB->CollisionType == 1) || (coll.colliderA->CollisionType == 2 && coll.colliderB->CollisionType == 2))
+		return;
+
+ 	if (coll.colliderA->CollisionType == 0 && (coll.colliderB->CollisionType == 1 || coll.colliderB->CollisionType == 2)) {
+		SetSimulationRate(0);
+	}
+	else if((coll.colliderA->CollisionType == 1 && coll.colliderB->CollisionType == 0) || (coll.colliderA->CollisionType == 2 && coll.colliderB->CollisionType == 0)) {
 		SetSimulationRate(0);
 	}
 
 	if ((coll.colliderA->CollisionType == 1 && coll.colliderB->CollisionType == 2) || (coll.colliderA->CollisionType == 2 && coll.colliderB->CollisionType == 1)) {
 		coll.colliderA->rigidbody->position = { 0,500,0 };
 		coll.colliderA->rigidbody->velocity = { 0,0,0 };
-		coll.colliderB->rigidbody->position = { 0,500,0 };
+		coll.colliderB->rigidbody->position = { 0,-500,0 };
 		coll.colliderB->rigidbody->velocity = { 0,0,0 };
 	}
 }
