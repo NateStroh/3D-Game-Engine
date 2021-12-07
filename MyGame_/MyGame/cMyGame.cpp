@@ -350,6 +350,7 @@ eae6320::cResult eae6320::cMyGame::CleanUp()
 	geometryArray[5]->DecrementReferenceCount();
 	geometryArray[6]->DecrementReferenceCount();
 	geometryArray[7]->DecrementReferenceCount();
+	geometryArray[8]->DecrementReferenceCount();
 	geometryArray[0] = nullptr;
 	geometryArray[1] = nullptr;
 	geometryArray[2] = nullptr;
@@ -358,6 +359,7 @@ eae6320::cResult eae6320::cMyGame::CleanUp()
 	geometryArray[5] = nullptr;
 	geometryArray[6] = nullptr;
 	geometryArray[7] = nullptr;
+	geometryArray[8] = nullptr;
 
 	//shader cleanup
 	effectArray[0]->DecrementReferenceCount();
