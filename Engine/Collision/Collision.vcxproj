@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{5b66a7b0-de2e-4309-9c09-98e3bd521f12}</ProjectGuid>
-    <RootNamespace>EntityComponentSystem</RootNamespace>
+    <ProjectGuid>{83bfa209-c74b-41eb-a6a5-1c779541a57a}</ProjectGuid>
+    <RootNamespace>Collision</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -94,12 +94,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>
-      </SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -109,12 +108,11 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>
-      </SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -124,13 +122,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>
-      </SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -140,55 +136,38 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>
-      </SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="CollidableObject.h" />
-    <ClInclude Include="ECSCameraObject.h" />
-    <ClInclude Include="ComponentSystem.h" />
-    <ClInclude Include="ECSEntity.h" />
-    <ClInclude Include="ECSTestSystem.h" />
-    <ClInclude Include="ECSGameObject.h" />
-    <ClInclude Include="PhysicsSystem.h" />
-    <ClInclude Include="RenderComponent.h" />
-    <ClInclude Include="SmartPointer.h" />
-    <ClInclude Include="WeakPointer.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="CollidableObject.cpp" />
-    <ClCompile Include="ECSCameraObject.cpp" />
-    <ClCompile Include="ComponentSystem.cpp" />
-    <ClCompile Include="ECSEntity.cpp" />
-    <ClCompile Include="ECSTestSystem.cpp" />
-    <ClCompile Include="ECSGameObject.cpp" />
-    <ClCompile Include="PhysicsSystem.cpp" />
-    <ClCompile Include="RenderComponent.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Asserts\Asserts.vcxproj">
       <Project>{464a6551-fca9-4027-bd9e-2b26914782ab}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\Collision\Collision.vcxproj">
-      <Project>{83bfa209-c74b-41eb-a6a5-1c779541a57a}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Graphics\Graphics.vcxproj">
-      <Project>{fb81ba11-6314-4348-b4ed-6bdba30c18ed}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Logging\Logging.vcxproj">
-      <Project>{a5c152ad-26a3-4835-bb10-ef292daf94ac}</Project>
+    <ProjectReference Include="..\Math\Math.vcxproj">
+      <Project>{999c3d5f-7f79-4bd7-ae21-92eeed0c5962}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Physics\Physics.vcxproj">
       <Project>{30e6bb9f-138d-4b44-9733-869263f7bad5}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\Results\Results.vcxproj">
+      <Project>{5003f315-b5d5-48ab-ba3f-1cb0dec8c213}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cCollider.h" />
+    <ClInclude Include="Collision.h" />
+    <ClInclude Include="sCollision.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cCollider.cpp" />
+    <ClCompile Include="Collision.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

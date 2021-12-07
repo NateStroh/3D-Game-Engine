@@ -32,7 +32,6 @@ void eae6320::cMyGame::SubmitDataToBeRendered(const float i_elapsedSecondCount_s
 	camera.SubmitToBeRendered(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
 
 	eae6320::ECS::RenderComponent::Update(i_elapsedSecondCount_systemTime, i_elapsedSecondCount_sinceLastSimulationUpdate);
-
 }
 
 void eae6320::cMyGame::UpdateBasedOnInput()
@@ -53,12 +52,13 @@ eae6320::cResult eae6320::cMyGame::SpawnMissile(eae6320::Math::sVector i_positio
 	}
 
 	if (missleNeedsSetUp) {
-		missileArray[missileCount].Init(geometryArray[3], effectArray[1], 0);
+		missileArray[missileCount].Init(geometryArray[3], effectArray[1], {1, 1, 1}, true, 2, 0);
+		missileArray[missileCount].m_collider->ListenToCollision(std::bind(&eae6320::cMyGame::ResolveCollision, this, std::placeholders::_1));
 	}
 	
 	missileArray[missileCount].m_rigidBody.operator*().position = i_position;
 	missileArray[missileCount].m_rigidBody.operator*().velocity = i_velocity;
-	missileArray[missileCount].m_rigidBody.operator*().orientation = i_orientation;
+	//missileArray[missileCount].m_rigidBody.operator*().orientation = i_orientation;
 	missileCount++;
 
 	return Results::Success;
@@ -78,16 +78,20 @@ eae6320::cResult eae6320::cMyGame::SpawnAsteroid()
 	if (asteroidsNeedsSetUp) {
 		switch (asteroidType) {
 		case 0:
-			asteroidArray[asteroidCount].Init(geometryArray[5], effectArray[1], 0, 30);
+			asteroidArray[asteroidCount].Init(geometryArray[5], effectArray[1], {10,1,10}, true, 1, 0, 30);
+			asteroidArray[asteroidCount].m_collider->ListenToCollision(std::bind(&eae6320::cMyGame::ResolveCollision, this, std::placeholders::_1));
 			break;
 		case 1:
-			asteroidArray[asteroidCount].Init(geometryArray[6], effectArray[1], 0, 30);
+			asteroidArray[asteroidCount].Init(geometryArray[6], effectArray[1], { 20,1,20 }, true, 1, 0, 30);
+			asteroidArray[asteroidCount].m_collider->ListenToCollision(std::bind(&eae6320::cMyGame::ResolveCollision, this, std::placeholders::_1));
 			break;
 		case 2:
-			asteroidArray[asteroidCount].Init(geometryArray[7], effectArray[1], 0, 30);
+			asteroidArray[asteroidCount].Init(geometryArray[7], effectArray[1], { 30,1,30 }, true, 1, 0, 30);
+			asteroidArray[asteroidCount].m_collider->ListenToCollision(std::bind(&eae6320::cMyGame::ResolveCollision, this, std::placeholders::_1));
 			break;
 		default:
-			asteroidArray[asteroidCount].Init(geometryArray[5], effectArray[1], 0, 30);
+			asteroidArray[asteroidCount].Init(geometryArray[5], effectArray[1], { 10,1,10 }, true, 1, 0, 30);
+			asteroidArray[asteroidCount].m_collider->ListenToCollision(std::bind(&eae6320::cMyGame::ResolveCollision, this, std::placeholders::_1));
 			break;
 		}
 	}
@@ -193,7 +197,7 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 	else {
 
 		if (spacepressed == true) {
-			SpawnMissile((ship.m_rigidBody.operator*().position + forward * 2), ship.m_rigidBody.operator*().orientation, Math::sVector(forward * 500));
+			SpawnMissile((ship.m_rigidBody.operator*().position + forward * 10), ship.m_rigidBody.operator*().orientation, Math::sVector(forward * 300));
 		}
 		spacepressed = false;
 	}
@@ -207,6 +211,21 @@ void eae6320::cMyGame::UpdateSimulationBasedOnInput() {
 		//}
 		shiftpressed = false;
 	}
+
+
+	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Up)) {
+	//	collTest1.m_rigidBody.operator*().velocity += { 0.0f, 0.0f, -1.0f };
+	//}
+	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Down)) {
+	//	collTest1.m_rigidBody.operator*().velocity += { 0.0f, 0.0f, 1.0f};
+	//}
+	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Right)) {
+	//	collTest1.m_rigidBody.operator*().velocity += { 1.0f, 0.0f, 0.0f };
+	//}
+	//if (UserInput::IsKeyPressed(UserInput::KeyCodes::Left)) {
+	//	collTest1.m_rigidBody.operator*().velocity += { -1.0f, 0.0f, 0.0f };
+	//}
+
 
 	if (UserInput::IsKeyPressed('Z')) {
 		camera.m_rigidBody.operator*().velocity += { 0.0f, 1.0f, 0.0f };
@@ -237,7 +256,6 @@ bool InRange(double i_low, double i_high, double i_number) {
 }
 
 void eae6320::cMyGame::UpdateSimulationBasedOnTime(const float i_elapsedSecondCount_sinceLastUpdate) {
-	eae6320::ECS::PhysicsSystem::Update(i_elapsedSecondCount_sinceLastUpdate);
 
 	if (ship.m_rigidBody.operator*().position.z >= 110) {
 		ship.m_rigidBody.operator*().position.z = -110;
@@ -257,6 +275,9 @@ void eae6320::cMyGame::UpdateSimulationBasedOnTime(const float i_elapsedSecondCo
 		SpawnAsteroid();
 	}
 
+	eae6320::ECS::PhysicsSystem::Update(i_elapsedSecondCount_sinceLastUpdate);
+
+	Collision::UpdateCollisions(i_elapsedSecondCount_sinceLastUpdate);
 }
 
 // Initialize / Clean Up
@@ -286,16 +307,28 @@ eae6320::cResult eae6320::cMyGame::Initialize()
 		}
 	}
 
+	result = Collision::Initialize();
+
 	eae6320::ECS::RenderComponent::Init();
 	eae6320::ECS::PhysicsSystem::Init();
 
 	gameObject.Init(geometryArray[2], effectArray[0]);
 	gameObject.m_rigidBody.operator*().position = { 0,0,0 };
+	
 	spaceBackground.Init(geometryArray[1], effectArray[2]);
-	ship.Init(geometryArray[4], effectArray[1], 0, 60);
+
+	ship.Init(geometryArray[4], effectArray[1], {1,1,2}, true, 0, 0, 60);
+	ship.m_collider->ListenToCollision(std::bind(&eae6320::cMyGame::ResolveCollision, this, std::placeholders::_1));
+
 	camera.Init();
 	camera.m_rigidBody.operator*().position = { 0, 250, 0 };
 	camera.m_rigidBody.operator*().orientation = Math::cQuaternion(1,-1,0,0);
+
+	//collTest.Init(geometryArray[5], effectArray[0], { 10,1,10 }, false);
+	//collTest.m_rigidBody.operator*().position = { 0,0, 50 };
+	//
+	//collTest1.Init(geometryArray[2], effectArray[0], { 1,1,1 }, false);
+	//collTest1.m_rigidBody.operator*().position = { 0,0, -50 };
 
 	eae6320::Logging::OutputMessage("Finished Initializing MyGame");
 	return result;
@@ -308,7 +341,6 @@ eae6320::cResult eae6320::cMyGame::CleanUp()
 	gameObject.CleanUp();
 	spaceBackground.CleanUp();
 	ship.CleanUp();
-	testRocket.CleanUp();
 	camera.CleanUp();
 
 	for (uint16_t i = 0; i < maxAsteroids; i++) {
@@ -321,6 +353,8 @@ eae6320::cResult eae6320::cMyGame::CleanUp()
 
 	eae6320::ECS::RenderComponent::CleanUp();
 	eae6320::ECS::PhysicsSystem::CleanUp();
+
+	Collision::CleanUp();
 
 	//geometry cleanup
 	geometryArray[0]->DecrementReferenceCount();
@@ -376,4 +410,24 @@ eae6320::cResult eae6320::cMyGame::InitializeShadingData() {
 
 
 	return result;
+}
+
+void eae6320::cMyGame::ResolveCollision(eae6320::Collision::sCollision coll)
+{
+	if ((coll.colliderA->CollisionType == 1 && coll.colliderB->CollisionType == 1) || (coll.colliderA->CollisionType == 2 && coll.colliderB->CollisionType == 2))
+		return;
+
+ 	if (coll.colliderA->CollisionType == 0 && (coll.colliderB->CollisionType == 1 || coll.colliderB->CollisionType == 2)) {
+		SetSimulationRate(0);
+	}
+	else if((coll.colliderA->CollisionType == 1 && coll.colliderB->CollisionType == 0) || (coll.colliderA->CollisionType == 2 && coll.colliderB->CollisionType == 0)) {
+		SetSimulationRate(0);
+	}
+
+	if ((coll.colliderA->CollisionType == 1 && coll.colliderB->CollisionType == 2) || (coll.colliderA->CollisionType == 2 && coll.colliderB->CollisionType == 1)) {
+		coll.colliderA->rigidbody->position = { 0,500,0 };
+		coll.colliderA->rigidbody->velocity = { 0,0,0 };
+		coll.colliderB->rigidbody->position = { 0,-500,0 };
+		coll.colliderB->rigidbody->velocity = { 0,0,0 };
+	}
 }

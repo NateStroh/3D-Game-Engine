@@ -24,7 +24,7 @@ eae6320::cResult eae6320::ECS::ECSEntity::CleanUp()
 
 eae6320::ECS::ECSEntity::ECSEntity()
 {
-	m_rigidBody = SmartPointer<eae6320::Physics::sRigidBodyState>(new eae6320::Physics::sRigidBodyState());
+	//m_rigidBody = SmartPointer<eae6320::Physics::sRigidBodyState>(new eae6320::Physics::sRigidBodyState());
 }
 
 eae6320::ECS::ECSEntity::~ECSEntity() {
