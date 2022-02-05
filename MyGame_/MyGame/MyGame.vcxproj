@@ -43,6 +43,12 @@
     <ProjectReference Include="..\..\Engine\Asserts\Asserts.vcxproj">
       <Project>{464a6551-fca9-4027-bd9e-2b26914782ab}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\Engine\Collision\Collision.vcxproj">
+      <Project>{83bfa209-c74b-41eb-a6a5-1c779541a57a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Engine\EntityComponentSystem\EntityComponentSystem.vcxproj">
+      <Project>{5b66a7b0-de2e-4309-9c09-98e3bd521f12}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\Engine\Graphics\Graphics.vcxproj">
       <Project>{fb81ba11-6314-4348-b4ed-6bdba30c18ed}</Project>
     </ProjectReference>

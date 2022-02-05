@@ -11,6 +11,18 @@
 #include <Engine/Application/iApplication.h>
 #include <Engine/Results/Results.h>
 #include <Engine/Logging/Logging.h>
+#include <Engine/Graphics/Graphics.h>
+#include <Engine/Graphics/Effect.h>
+#include <Engine/Graphics/Geometry.h>
+#include <Engine/Application/GameObject.h>
+#include <Engine/Application/CameraObject.h>
+#include <Engine/EntityComponentSystem/ECSEntity.h>
+#include <Engine/EntityComponentSystem/RenderComponent.h>
+#include <Engine/EntityComponentSystem/PhysicsSystem.h>
+#include <Engine/EntityComponentSystem/ECSCameraObject.h>
+#include <Engine/EntityComponentSystem/ECSGameObject.h>
+#include <Engine/Collision/Collision.h>
+#include <Engine/EntityComponentSystem/CollidableObject.h>
 
 #if defined( EAE6320_PLATFORM_WINDOWS )
 	#include "Resource Files/Resource.h"
@@ -25,7 +37,8 @@ namespace eae6320
 	{
 		// Inherited Implementation
 		//=========================
-
+		void SubmitDataToBeRendered(const float i_elapsedSecondCount_systemTime, const float i_elapsedSecondCount_sinceLastSimulationUpdate);
+		void UpdateSimulationBasedOnTime(const float i_elapsedSecondCount_sinceLastUpdate);
 	private:
 
 		// Configuration
@@ -72,6 +85,10 @@ namespace eae6320
 		//----
 
 		void UpdateBasedOnInput() final;
+		void UpdateSimulationBasedOnInput() final;
+
+		eae6320::cResult SpawnMissile(eae6320::Math::sVector i_position, eae6320::Math::cQuaternion i_orientation, eae6320::Math::sVector i_velocity);
+		eae6320::cResult SpawnAsteroid();
 
 		// Initialize / Clean Up
 		//----------------------
@@ -79,6 +96,39 @@ namespace eae6320
 		cResult Initialize() final;
 		cResult CleanUp() final;
 
+		eae6320::cResult InitializeGeometry();
+		eae6320::cResult InitializeShadingData();
+
+		bool spacepressed = false;
+		bool shiftpressed = false;
+
+		// Geometry Data
+		//--------------
+		eae6320::Graphics::Geometry* geometryArray[30];
+	
+		// Shading Data
+		//-------------
+		eae6320::Graphics::Effect* effectArray[30];
+
+		ECS::ECSCameraObject camera;
+		eae6320::ECS::ECSGameObject LoseText;
+		eae6320::ECS::ECSGameObject spaceBackground;
+		eae6320::ECS::CollidableObject ship;
+
+		//eae6320::ECS::CollidableObject collTest;
+		//eae6320::ECS::CollidableObject collTest1;
+
+		const static uint16_t maxMissiles = 10;
+		eae6320::ECS::CollidableObject missileArray[maxMissiles];
+		bool missleNeedsSetUp = true;
+		uint16_t missileCount = 0;
+
+		const static uint16_t maxAsteroids = 10;
+		eae6320::ECS::CollidableObject asteroidArray[maxAsteroids];
+		bool asteroidsNeedsSetUp = true;
+		uint16_t asteroidCount = 0;
+
+		void eae6320::cMyGame::ResolveCollision(eae6320::Collision::sCollision coll);
 	};
 }
 

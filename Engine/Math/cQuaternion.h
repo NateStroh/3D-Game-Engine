@@ -69,7 +69,7 @@ namespace eae6320
 
 			// Data
 			//=====
-
+			constexpr cQuaternion(const float i_w, const float i_x, const float i_y, const float i_z);
 		private:
 
 			float m_w = 1.0f;
@@ -85,7 +85,7 @@ namespace eae6320
 			// Initialization / Clean Up
 			//--------------------------
 
-			constexpr cQuaternion( const float i_w, const float i_x, const float i_y, const float i_z );
+			
 
 			// Friends
 			//========

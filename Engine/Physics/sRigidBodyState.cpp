@@ -17,6 +17,23 @@ void eae6320::Physics::sRigidBodyState::Update( const float i_secondCountToInteg
 	// Update velocity
 	{
 		velocity += acceleration * i_secondCountToIntegrate;
+		velocity = velocity - drag * velocity;
+		
+		if (velocity.x >= maxSpeed)
+			velocity.x = maxSpeed;
+		else if (velocity.x <= -maxSpeed)
+			velocity.x = -maxSpeed;
+
+		if (velocity.y >= maxSpeed)
+			velocity.y = maxSpeed;
+		else if (velocity.y <= -maxSpeed)
+			velocity.y = -maxSpeed;
+
+		if (velocity.z >= maxSpeed)
+			velocity.z = maxSpeed;
+		else if (velocity.z <= -maxSpeed)
+			velocity.z = -maxSpeed;
+
 	}
 	// Update orientation
 	{

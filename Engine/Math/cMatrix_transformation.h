@@ -101,16 +101,16 @@ namespace eae6320
 			constexpr cMatrix_transformation() = default;	// The default constructor creates a a transform with no rotation and no translation
 			cMatrix_transformation( const cQuaternion& i_rotation, const sVector& i_translation );
 
-			// Data
-			//=====
-
-		private:
-
 			// Storage is column-major; see notes at the top of the file
 			float m_00 = 1.0f, m_10 = 0.0f, m_20 = 0.0f, m_30 = 0.0f,
 				m_01 = 0.0f, m_11 = 1.0f, m_21 = 0.0f, m_31 = 0.0f,
 				m_02 = 0.0f, m_12 = 0.0f, m_22 = 1.0f, m_32 = 0.0f,
 				m_03 = 0.0f, m_13 = 0.0f, m_23 = 0.0f, m_33 = 1.0f;
+
+			// Data
+			//=====
+
+		private:
 
 			// Implementation
 			//===============

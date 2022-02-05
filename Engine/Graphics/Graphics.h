@@ -9,9 +9,13 @@
 //=========
 
 #include "Configuration.h"
+#include "ConstantBufferFormats.h"
 
-#include <cstdint>
 #include <Engine/Results/Results.h>
+#include <Engine/Graphics/Effect.h>
+#include <Engine/Graphics/Geometry.h>
+#include <Engine/Application/CameraObject.h>
+#include <Engine/Math/cMatrix_transformation.h>
 
 #if defined( EAE6320_PLATFORM_WINDOWS )
 	#include <Engine/Windows/Includes.h>
@@ -26,6 +30,13 @@ namespace eae6320
 	{
 		// Submission
 		//-----------
+
+
+		struct sGeometryEffectPair {
+			Geometry* geometry = nullptr;
+			Effect* effect = nullptr;
+			eae6320::Graphics::ConstantBufferFormats::sDrawCall constantData_drawCall;
+		};
 
 		// These functions should be called from the application (on the application loop thread)
 
@@ -69,6 +80,12 @@ namespace eae6320
 
 		cResult Initialize( const sInitializationParameters& i_initializationParameters );
 		cResult CleanUp();
+
+		void SetBackGroundColor(float i_redVal = 0.0f, float i_greenVal = 0.0f, float i_blueVal = 0.0f, float i_opacity = 1.0f);
+		void SetBackGroundColor(sColor i_color);
+
+		void AddGeometryEffectPair(Geometry* i_geometry, Math::cMatrix_transformation i_transform, Effect* i_effect);
+		void SetCamera(Math::cMatrix_transformation i_transform, eae6320::Application::sCameraData i_cameraData);
 	}
 }
 
